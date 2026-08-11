@@ -18,6 +18,57 @@
 .hide{display:none !important}
   .page-hidden{display:none !important}
 
+.locked-empty{padding:56px 20px;text-align:center;color:#8a97a9}
+.locked-empty i{font-size:38px;color:#c1cbd9;margin-bottom:12px}
+.locked-empty strong{display:block;color:#5b6c82;font-size:15px;margin-bottom:5px}
+.veh-intro{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;padding:13px 17px;margin-bottom:14px;border:1px solid var(--line);border-radius:9px;background:var(--blue-soft)}
+.veh-intro p{margin:0;color:#2c4260;font-size:12.5px;line-height:1.6;max-width:640px}
+.veh-intro i{color:var(--blue);margin-right:5px}
+.req-doc-chip{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;border-radius:999px;background:#fff;border:1px solid #c6d3e2;padding:6px 12px;font-size:11.5px;font-weight:600;color:var(--blue-dark);white-space:nowrap}
+.veh-mode-switch{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
+.veh-mode-switch button{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;min-width:210px;border:1px solid var(--line);border-radius:9px;background:var(--paper);padding:11px 14px;color:var(--muted);font-family:inherit;font-weight:600;font-size:13px}
+.veh-mode-switch button i{margin-right:6px}
+.veh-mode-switch button small{font-weight:400;color:#93a2b8;font-size:10.5px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.veh-mode-switch button.active{border-color:var(--blue);background:var(--blue-soft);color:var(--blue-dark)}
+.veh-person-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;padding:13px 17px;margin-bottom:14px;border:1px solid var(--line);border-radius:9px;background:var(--soft)}
+.veh-person-bar div{font-size:13px;color:var(--ink);line-height:1.6}
+.role-chip{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:600;background:var(--blue-soft);color:var(--blue-dark)}
+.role-chip.mismatch{background:var(--red-soft);color:var(--red)}
+.veh-plate-card{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:17px 19px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.veh-plate-summary{display:flex;flex-wrap:wrap;gap:22px}
+.veh-plate-summary .cell span{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}
+.veh-plate-summary .cell strong{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.veh-plate-actions{display:flex;gap:10px;flex-wrap:wrap}
+.veh-hold-inline{display:flex;align-items:center;gap:8px;border-radius:8px;background:var(--red-soft);color:var(--red);padding:9px 13px;font-size:12.5px;font-weight:600;margin-bottom:14px}
+
+.veh-modal-mask{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px;background:rgba(13,27,62,.55);backdrop-filter:blur(2px)}
+.veh-modal{width:min(880px,100%);max-height:88vh;overflow:auto;border-radius:12px;background:var(--paper);box-shadow:0 22px 60px rgba(10,25,55,.4)}
+.veh-modal-head{position:sticky;top:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:17px 20px;border-bottom:1px solid #e2e8f0;background:var(--navy);color:#f7faff}
+.veh-modal-head h2{margin:0 0 4px;font-size:17px;font-weight:600}
+.veh-modal-head p{margin:0;color:#bac7dd;font-size:12px;line-height:1.5}
+.veh-modal-close{display:grid;width:34px;height:34px;flex:0 0 34px;place-items:center;border:1px solid rgba(255,255,255,.28);border-radius:8px;background:transparent;color:#f7faff}
+.veh-modal-close:hover{background:rgba(255,255,255,.12)}
+.veh-modal-hold{display:flex;align-items:center;gap:9px;margin:17px 20px 0;border-radius:8px;border:1px solid #e6b3af;background:var(--red-soft);color:var(--red);padding:11px 14px;font-size:13px;font-weight:600}
+.veh-modal-section{padding:17px 20px;border-bottom:1px solid #e6ebf1}
+.veh-modal-section:last-child{border-bottom:0}
+.veh-modal-section h3{margin:0 0 12px;font-size:14px;font-weight:600;color:#14294a}
+.veh-modal-section h3 i{color:var(--blue);margin-right:6px}
+.veh-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px 20px}
+.veh-detail-grid .cell span{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}
+.veh-detail-grid .cell strong{display:block;font-size:13.5px;font-weight:600;color:var(--ink)}
+.veh-owner-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.veh-owner-box{border:1px solid var(--line);border-radius:9px;padding:14px 16px;background:var(--soft)}
+.veh-owner-box.mismatch{border-color:#e6b3af;background:var(--red-soft)}
+.veh-owner-box h4{margin:0 0 10px;font-size:12.5px;font-weight:600;color:var(--blue-dark);display:flex;align-items:center;gap:6px}
+.veh-owner-box .cell{margin-bottom:9px}
+.veh-owner-box .cell:last-child{margin-bottom:0}
+.veh-owner-box .cell span{display:block;color:var(--muted);font-size:11px;margin-bottom:2px}
+.veh-owner-box .cell strong{display:block;font-size:13px;font-weight:600;color:var(--ink);line-height:1.5}
+.veh-modal-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.veh-pivot-group{display:flex;gap:9px;flex-wrap:wrap}
+@media (max-width:760px){.veh-detail-grid{grid-template-columns:1fr 1fr}.veh-owner-cols{grid-template-columns:1fr}}
+@media (max-width:560px){.veh-detail-grid{grid-template-columns:1fr}.veh-mode-switch button{min-width:100%}}
+
 
 /* ===== เฉพาะหน้าตรวจสอบประวัติบุคคล ===== */
 #page-dopa .id-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:9px;padding-right:6px}
@@ -47,11 +98,9 @@
 #page-dopa .import-buttons{display:flex;flex-wrap:wrap;gap:10px}
 #page-dopa .id-mask-hint{color:var(--muted);font-size:11px;margin-top:5px;display:block}
 #page-dopa .id-mask-hint.bad{color:var(--red)}
-#page-dopa .locked-empty{padding:56px 20px;text-align:center;color:#8a97a9}
-#page-dopa .locked-empty i{font-size:38px;color:#c1cbd9;margin-bottom:12px}
-#page-dopa .locked-empty strong{display:block;color:#5b6c82;font-size:15px;margin-bottom:5px}
 #page-dopa .toolbar{align-items:start}
 #page-dopa .field-btn-spacer{visibility:hidden}
+
 
 /* ===== เฉพาะหน้าตรวจสอบจัดซื้อจัดจ้าง ===== */
 #page-egp .toolbar{align-items:start;grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -67,9 +116,6 @@
 #page-egp .combo-list button:hover, #page-egp .combo-list button:focus-visible{background:var(--blue-soft);outline:0}
 #page-egp .combo-list button small{display:block;color:var(--muted);font-size:11px}
 #page-egp .combo-list .none{padding:12px;color:var(--muted);font-size:12px;text-align:center}
-#page-egp .locked-empty{padding:56px 20px;text-align:center;color:#8a97a9}
-#page-egp .locked-empty i{font-size:38px;color:#c1cbd9;margin-bottom:12px}
-#page-egp .locked-empty strong{display:block;color:#5b6c82;font-size:15px;margin-bottom:5px}
 #page-egp .empty-cell{padding:30px 10px;text-align:center;color:#8a97a9;font-size:13px}
 #page-egp .stats{grid-template-columns:repeat(4,minmax(128px,1fr))}
 #page-egp .stat small{display:block;margin-top:2px}
@@ -137,6 +183,13 @@
   .case-field input{width:150px;border:0;background:transparent;color:var(--ink);font-family:inherit;font-size:13px;font-weight:600;padding:2px 0}
   .case-field input:focus{outline:0}
   @media (max-width:820px){.case-field label{display:none}.case-field input{width:118px}}
+
+/* ===== เฉพาะหน้าตรวจสอบทะเบียนรถ ===== */
+#page-dlt .toolbar{align-items:start}
+#page-dlt .field-btn{display:flex;gap:10px;flex-wrap:wrap}
+#page-dlt .field-btn-spacer{visibility:hidden}
+@media (max-width:820px){#page-dlt .toolbar{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){#page-dlt .toolbar{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -147,6 +200,7 @@
       <div class="nav-module-label"><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i><span>โมดูลระบบ</span></div>
       <button class="nav-link level-one active" data-route="dopa" onclick="switchPage('dopa')"><i class="fa-solid fa-fingerprint icon" aria-hidden="true"></i><span>ตรวจสอบประวัติบุคคล (DOPA Linkage)</span></button>
       <button class="nav-link level-one" data-route="egp" onclick="switchPage('egp')"><i class="fa-solid fa-file-invoice-dollar icon" aria-hidden="true"></i><span>ตรวจสอบการจัดซื้อจัดจ้าง (ภาษีไปไหน / e-GP)</span></button>
+      <button class="nav-link level-one" data-route="dlt" onclick="switchPage('dlt')"><i class="fa-solid fa-car-side icon" aria-hidden="true"></i><span>ตรวจสอบทะเบียนรถ (กรมการขนส่งทางบก)</span></button>
     </nav>
     <div class="profile"><div class="avatar">อ</div><div><strong>อรรถพล</strong><small>เจ้าหน้าที่ ป.ป.ท.</small></div></div>
   </aside>
@@ -203,7 +257,7 @@
         <div class="locked-empty">
           <i class="fa-solid fa-id-card" aria-hidden="true"></i>
           <strong>ยังไม่มีข้อมูลแสดงผล</strong>
-          <span>กรอกเลขบัตรประชาชน เลขที่คดี และวัตถุประสงค์ แล้วกด "สืบค้นข้อมูล"<br>เลขทดสอบ: <b>1-2345-67890-12-3</b> (มีชีวิต) หรือ <b>3-4567-89012-34-5</b> (เสียชีวิต)</span>
+          <span>กรอกเลขบัตรประชาชน เลขที่คดี และวัตถุประสงค์ แล้วกด "สืบค้นข้อมูล"<br>เลขทดสอบ: <b>1-2345-67890-12-3</b> (มีชีวิต) หรือ <b>3-4567-89012-34-5</b> (เสียชีวิต) — ดูรายชื่อทดสอบทั้งหมด 12 รายการในเอกสาร test-data-dopa-dlt.md ที่แนบมา</span>
         </div>
       </section>
 
@@ -252,6 +306,7 @@
             <nav class="form-tabs" aria-label="แท็บข้อมูลเชิงลึก">
               <button class="active" data-tab="nameHistory" onclick="switchTab('nameHistory')"><span><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> ประวัติเปลี่ยนชื่อ-สกุล</span></button>
               <button data-tab="deathCert" onclick="switchTab('deathCert')"><span><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i> รายละเอียดมรณบัตร</span></button>
+              <button data-tab="vehicle" onclick="switchTab('vehicle')"><span><i class="fa-solid fa-car-side" aria-hidden="true"></i> ข้อมูลยานพาหนะ (DLT)</span></button>
             </nav>
           </div>
           <div id="tab-nameHistory">
@@ -263,6 +318,81 @@
             </div>
           </div>
           <div id="tab-deathCert" class="hide"><div id="deathCertContent"></div></div>
+
+          <!-- ===== แท็บย่อย: ข้อมูลยานพาหนะ (เชื่อมโยงกรมการขนส่งทางบก) ===== -->
+          <div id="tab-vehicle" class="hide">
+            <div class="veh-intro">
+              <p><i class="fa-solid fa-circle-info" aria-hidden="true"></i> เชื่อมต่อ Web Service กรมการขนส่งทางบก (VehicleInfo2Service) ตามบันทึกข้อตกลงความร่วมมือ ลงวันที่ 13 มิถุนายน 2567 ทุกคำขอส่งเลขบัตรของผู้ยื่นคำขอ (reqDocNo) กำกับเสมอเพื่อยืนยันสิทธิ์การใช้งาน</p>
+              <span class="req-doc-chip"><i class="fa-solid fa-id-badge" aria-hidden="true"></i>ผู้ยื่นคำขอ (reqDocNo): 3-1099-00456-78-1 · อรรถพล เจ้าหน้าที่ ป.ป.ท.</span>
+            </div>
+
+            <div class="veh-mode-switch" role="tablist" aria-label="วิธีค้นหายานพาหนะ">
+              <button class="active" data-vmode="person" onclick="switchVehMode('person')" type="button"><i class="fa-solid fa-user-check" aria-hidden="true"></i> ค้นจากบุคคลนี้ <small>getVehicleInfoByDocNo</small></button>
+              <button data-vmode="plate" onclick="switchVehMode('plate')" type="button"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> ค้นจากทะเบียนรถ <small>getVehicleInfoByPlate</small></button>
+            </div>
+
+            <!-- โหมด 1: ค้นจากบุคคลที่กำลังดูอยู่ -->
+            <div id="vehMode-person">
+              <div class="veh-person-bar">
+                <div>ค้นหายานพาหนะทั้งหมดที่มีชื่อ <strong id="vehPersonName">-</strong> (เลขบัตร <strong id="vehPersonId">-</strong>) เป็นผู้ถือกรรมสิทธิ์หรือผู้ครอบครอง</div>
+                <button class="btn" onclick="vehSearchByPerson()" type="button"><i class="fa-solid fa-car-side" aria-hidden="true"></i>ตรวจสอบยานพาหนะ</button>
+              </div>
+              <section class="card" id="vehPersonLockedCard">
+                <div class="locked-empty">
+                  <i class="fa-solid fa-car-side" aria-hidden="true"></i>
+                  <strong>ยังไม่ได้ตรวจสอบ</strong>
+                  <span>กดปุ่ม "ตรวจสอบยานพาหนะ" เพื่อค้นหารถทุกคันที่มีชื่อบุคคลนี้เป็นเจ้าของหรือผู้ครอบครอง</span>
+                </div>
+              </section>
+              <div id="vehPersonResult" class="hide">
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>ทะเบียน / จังหวัด</th><th>ยี่ห้อ / รุ่น</th><th>ประเภทรถ</th><th>บทบาทของบุคคลนี้</th><th>สถานะ</th><th></th></tr></thead>
+                    <tbody id="vehPersonBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- โหมด 2: ค้นจากเลขทะเบียนรถโดยตรง -->
+            <div id="vehMode-plate" class="hide">
+              <section class="toolbar">
+                <div class="field">
+                  <label>สำนักงานขนส่งจังหวัดที่จดทะเบียน <span style="color:var(--red)">*</span></label>
+                  <select id="vehOffLoc"><option value="">-- เลือกจังหวัด --</option></select>
+                  <span class="hint">พารามิเตอร์ offLocCode</span>
+                </div>
+                <div class="field">
+                  <label>ประเภทรถ <span style="color:var(--red)">*</span></label>
+                  <select id="vehTypeRef"><option value="">-- เลือกประเภทรถ --</option></select>
+                  <span class="hint">พารามิเตอร์ vehicleTypeRef</span>
+                </div>
+                <div class="field">
+                  <label>หมวดอักษรทะเบียน <span style="color:var(--red)">*</span></label>
+                  <input id="vehPlate1" maxlength="5" placeholder="เช่น กข">
+                  <span class="hint">พารามิเตอร์ plate1</span>
+                </div>
+                <div class="field">
+                  <label>เลขทะเบียน <span style="color:var(--red)">*</span></label>
+                  <input id="vehPlate2" maxlength="5" placeholder="เช่น 1234" inputmode="numeric">
+                  <span class="hint" id="vehPlate2Hint">พารามิเตอร์ plate2 (ตัวเลขเท่านั้น)</span>
+                </div>
+                <div class="field field-btn">
+                  <label class="field-btn-spacer" aria-hidden="true">&nbsp;</label>
+                  <button class="btn" onclick="vehSearchByPlate()" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ค้นหาทะเบียนรถ</button>
+                </div>
+              </section>
+              <div class="notice-box" style="margin:-6px 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ตัวอย่างทะเบียนที่มีข้อมูลในระบบทดสอบ: หมวด <b>ฮอ</b> เลข <b>5678</b> จังหวัดเชียงใหม่ ประเภทรถยนต์นั่งส่วนบุคคล</div>
+              <section class="card" id="vehPlateLockedCard">
+                <div class="locked-empty">
+                  <i class="fa-solid fa-car-side" aria-hidden="true"></i>
+                  <strong>ยังไม่มีข้อมูลแสดงผล</strong>
+                  <span>กรอกเงื่อนไขให้ครบทั้ง 4 ช่อง แล้วกด "ค้นหาทะเบียนรถ"</span>
+                </div>
+              </section>
+              <div id="vehPlateResult" class="hide"></div>
+            </div>
+          </div>
         </section>
 
         <!-- ZONE 4 -->
@@ -279,6 +409,36 @@
         </section>
 
       </div>
+
+      <!-- ===== Modal รายละเอียดยานพาหนะ ===== -->
+      <div class="veh-modal-mask hide" id="vehicleModalMask" onclick="if(event.target===this)closeVehicleModal()">
+        <div class="veh-modal" role="dialog" aria-modal="true" aria-labelledby="vehModalTitle">
+          <div class="veh-modal-head">
+            <div><h2 id="vehModalTitle">รายละเอียดยานพาหนะ</h2><p id="vehModalSub">-</p></div>
+            <button class="veh-modal-close" onclick="closeVehicleModal()" aria-label="ปิดหน้าต่าง"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          </div>
+          <div class="veh-modal-hold hide" id="vehHoldBanner"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> รถคันนี้ติดสถานะ "อายัด (Hold)" ตามคำสั่งศาลหรือหน่วยงานบังคับใช้กฎหมาย — โปรดตรวจสอบก่อนดำเนินการใด ๆ เกี่ยวกับทรัพย์สินนี้</div>
+          <div class="veh-modal-section">
+            <h3><i class="fa-solid fa-car" aria-hidden="true"></i> ข้อมูลทางกายภาพและรายละเอียดตัวรถ</h3>
+            <div class="veh-detail-grid" id="vehGridPhysical"></div>
+          </div>
+          <div class="veh-modal-section">
+            <h3><i class="fa-solid fa-file-signature" aria-hidden="true"></i> ข้อมูลการจดทะเบียนและภาษี</h3>
+            <div class="veh-detail-grid" id="vehGridReg"></div>
+          </div>
+          <div class="veh-modal-section">
+            <h3><i class="fa-solid fa-user-tag" aria-hidden="true"></i> ข้อมูลกรรมสิทธิ์และการครอบครอง</h3>
+            <div class="veh-owner-cols" id="vehGridOwner"></div>
+          </div>
+          <div class="veh-modal-section veh-modal-actions">
+            <div class="veh-pivot-group" id="vehPivotGroup"></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn secondary" onclick="closeVehicleModal()" type="button">ปิด</button>
+              <button class="btn" onclick="addVehicleToCase()" type="button"><i class="fa-solid fa-folder-plus" aria-hidden="true"></i>นำเข้าสำนวนคดี</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="content page-hidden" id="page-egp">
@@ -289,7 +449,7 @@
           <h1>ตรวจสอบโครงการจัดซื้อจัดจ้างภาครัฐประกอบสำนวนคดี</h1>
           <p>กิจกรรมที่ ๑๓ ข้อ ๑๓.๑.๔ ระบบเชื่อมโยงข้อมูลภาษีไปไหน — ดึงข้อมูลโครงการ วงเงิน ราคากลาง คู่สัญญา และผู้ชนะการเสนอราคาจากระบบ e-GP กรมบัญชีกลาง ผ่านระบบข้อมูลการใช้จ่ายภาครัฐของ DGA</p>
         </div>
-        <div class="actions"><span class="badge" id="caseChipTop"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</span><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>บันทึก Audit Log ทุกครั้ง</span></div>
+        <div class="actions"><span class="badge case-chip-live" id="caseChipTop"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</span><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>บันทึก Audit Log ทุกครั้ง</span></div>
       </div>
 
       <!-- ================= ZONE 1 : แผงค้นหาและคัดกรอง ================= -->
@@ -460,6 +620,92 @@
   </div>
 </div>
     </div>
+
+    <div class="content page-hidden" id="page-dlt">
+
+      <div class="breadcrumb">E-CMIS <b>›</b> เครื่องมือสืบสวน <b>›</b> ตรวจสอบทะเบียนรถ (กรมการขนส่งทางบก)</div>
+      <div class="page-head">
+        <div>
+          <h1>ตรวจสอบยานพาหนะจากเลขทะเบียนรถ</h1>
+          <p>เชื่อมต่อ Web Service กรมการขนส่งทางบก (VehicleInfo2Service · getVehicleInfoByPlate) สำหรับกรณีมีเบาะแสเป็นเลขทะเบียนรถ เช่น จากภาพกล้องวงจรปิดหรือคำให้การ แต่ยังไม่ทราบตัวบุคคล</p>
+        </div>
+        <div class="actions"><span class="badge case-chip-live" id="caseChipTopDlt"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</span><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>บันทึก Audit Log ทุกครั้ง</span></div>
+      </div>
+
+      <div class="veh-intro">
+        <p><i class="fa-solid fa-circle-info" aria-hidden="true"></i> หากทราบตัวบุคคลอยู่แล้ว แนะนำให้ค้นจากแท็บ "ตรวจสอบประวัติบุคคล (DOPA Linkage)" แทน เพราะจะดึงรถทุกคันของบุคคลนั้นได้ในคลิกเดียว หน้านี้เหมาะสำหรับกรณีมีเบาะแสเป็นทะเบียนรถเท่านั้น</p>
+        <span class="req-doc-chip"><i class="fa-solid fa-id-badge" aria-hidden="true"></i>ผู้ยื่นคำขอ (reqDocNo): 3-1099-00456-78-1 · อรรถพล เจ้าหน้าที่ ป.ป.ท.</span>
+      </div>
+
+      <section class="toolbar">
+        <div class="field">
+          <label>สำนักงานขนส่งจังหวัดที่จดทะเบียน <span style="color:var(--red)">*</span></label>
+          <select id="dltOffLoc"><option value="">-- เลือกจังหวัด --</option></select>
+          <span class="hint">พารามิเตอร์ offLocCode</span>
+        </div>
+        <div class="field">
+          <label>ประเภทรถ <span style="color:var(--red)">*</span></label>
+          <select id="dltTypeRef"><option value="">-- เลือกประเภทรถ --</option></select>
+          <span class="hint">พารามิเตอร์ vehicleTypeRef</span>
+        </div>
+        <div class="field">
+          <label>หมวดอักษรทะเบียน <span style="color:var(--red)">*</span></label>
+          <input id="dltPlate1" maxlength="5" placeholder="เช่น กข">
+          <span class="hint">พารามิเตอร์ plate1</span>
+        </div>
+        <div class="field">
+          <label>เลขทะเบียน <span style="color:var(--red)">*</span></label>
+          <input id="dltPlate2" maxlength="5" placeholder="เช่น 1234" inputmode="numeric">
+          <span class="hint" id="dltPlate2Hint">พารามิเตอร์ plate2 (ตัวเลขเท่านั้น)</span>
+        </div>
+        <div class="field field-btn">
+          <label class="field-btn-spacer" aria-hidden="true">&nbsp;</label>
+          <button class="btn secondary" onclick="dltReset()" type="button"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างเงื่อนไข</button>
+          <button class="btn" onclick="dltSearch()" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ค้นหาทะเบียนรถ</button>
+        </div>
+      </section>
+      <div class="notice-box" style="margin:-6px 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ตัวอย่างทะเบียนที่มีข้อมูลในระบบทดสอบ: หมวด <b>ฮก</b> เลข <b>8888</b> จังหวัดภูเก็ต ประเภทรถยนต์นั่งส่วนบุคคล (ติดสถานะอายัด) — ดูรายการทะเบียนทดสอบทั้งหมดได้ในเอกสาร test-data-dopa-dlt.md</div>
+
+      <section class="card" id="dltLockedCard">
+        <div class="locked-empty">
+          <i class="fa-solid fa-car-side" aria-hidden="true"></i>
+          <strong>ยังไม่มีข้อมูลแสดงผล</strong>
+          <span>กรอกเงื่อนไขให้ครบทั้ง 4 ช่อง แล้วกด "ค้นหาทะเบียนรถ"</span>
+        </div>
+      </section>
+
+      <div id="dltResultWrap" class="hide">
+        <div class="veh-modal-hold hide" id="dltHoldBanner" style="margin:0 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> รถคันนี้ติดสถานะ "อายัด (Hold)" ตามคำสั่งศาลหรือหน่วยงานบังคับใช้กฎหมาย — โปรดตรวจสอบก่อนดำเนินการใด ๆ เกี่ยวกับทรัพย์สินนี้</div>
+
+        <section class="card" style="margin-bottom:16px">
+          <div class="card-head">
+            <div><h2 id="dltTitle">-</h2><p id="dltSub">-</p></div>
+          </div>
+          <div class="veh-modal-section">
+            <h3><i class="fa-solid fa-car" aria-hidden="true"></i> ข้อมูลทางกายภาพและรายละเอียดตัวรถ</h3>
+            <div class="veh-detail-grid" id="dltGridPhysical"></div>
+          </div>
+          <div class="veh-modal-section">
+            <h3><i class="fa-solid fa-file-signature" aria-hidden="true"></i> ข้อมูลการจดทะเบียนและภาษี</h3>
+            <div class="veh-detail-grid" id="dltGridReg"></div>
+          </div>
+          <div class="veh-modal-section">
+            <h3><i class="fa-solid fa-user-tag" aria-hidden="true"></i> ข้อมูลกรรมสิทธิ์และการครอบครอง</h3>
+            <div class="veh-owner-cols" id="dltGridOwner"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head"><div><h2>นำเข้าข้อมูลสู่สำนวนคดี</h2><p>นำรายละเอียดยานพาหนะเข้าสำนวนแบบคลิกเดียว หรือย้อนกลับไปตรวจสอบตัวบุคคลต่อในระบบ DOPA</p></div></div>
+          <div class="import-actions">
+            <div class="veh-pivot-group" id="dltPivotGroup"></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn" onclick="dltAddToCase()" type="button"><i class="fa-solid fa-folder-plus" aria-hidden="true"></i>นำเข้าสำนวนคดี</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 </div>
 
@@ -470,13 +716,15 @@ function switchPage(route){
   document.querySelectorAll('.real-nav .nav-link').forEach(b=>b.classList.toggle('active', b.dataset.route===route));
   document.getElementById('page-dopa').classList.toggle('page-hidden', route!=='dopa');
   document.getElementById('page-egp').classList.toggle('page-hidden', route!=='egp');
+  document.getElementById('page-dlt').classList.toggle('page-hidden', route!=='dlt');
   syncCase();
   window.scrollTo({top:0});
 }
 function syncCase(){
   const v = document.getElementById('globalCaseNo').value.trim() || '-';
-  const chip = document.getElementById('caseChipTop');
-  if (chip) chip.innerHTML = '<i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ' + v;
+  document.querySelectorAll('.case-chip-live').forEach(chip=>{
+    chip.innerHTML = '<i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ' + v;
+  });
 }
 document.getElementById('globalCaseNo').addEventListener('input', syncCase);
 syncCase();
@@ -485,6 +733,18 @@ syncCase();
 <script>
 /* ================== หน้าตรวจสอบประวัติบุคคล (DOPA Linkage) ================== */
 const MOCK_DB = {
+  "3102500123456": {
+    citizenId:"3-1025-00123-45-6", nameTh:"นาย ประเสริฐ วงศ์คำ", nameEn:"Mr. Prasert Wongkham",
+    dob:"12 สิงหาคม 2519", age:"50 ปี", nat:"ไทย / อิสลาม",
+    address:"45 หมู่ 2 ตำบลสุไหงโก-ลก อำเภอสุไหงโก-ลก จังหวัดนราธิวาส 96120",
+    photoDate:"3 เม.ย. 2565", alive:true, nameHistory:[], death:null
+  },
+  "1029384756123": {
+    citizenId:"1-0293-84756-12-3", nameTh:"นาง สุพัตรา เจริญยิ่ง", nameEn:"Mrs. Supattra Charoenying",
+    dob:"9 มกราคม 2531", age:"38 ปี", nat:"ไทย / พุทธ",
+    address:"12 ถนนนิมมานเหมินท์ ตำบลสุเทพ อำเภอเมืองเชียงใหม่ จังหวัดเชียงใหม่ 50200",
+    photoDate:"27 มิ.ย. 2566", alive:true, nameHistory:[], death:null
+  },
   "1234567890123": {
     citizenId:"1-2345-67890-12-3", nameTh:"นาย สมชาย ใจดี", nameEn:"Mr. Somchai Jaidee",
     dob:"5 มิถุนายน 2532", age:"37 ปี", nat:"ไทย / พุทธ",
@@ -499,6 +759,71 @@ const MOCK_DB = {
     address:"88/2 หมู่ 3 ตำบลบางพลี อำเภอบางพลี จังหวัดสมุทรปราการ 10540",
     photoDate:"9 ก.ค. 2561", alive:false, nameHistory:[],
     death:{date:"3 พฤศจิกายน 2566", cause:"ภาวะหัวใจล้มเหลวเฉียบพลัน", place:"โรงพยาบาลสมุทรปราการ", certNo:"มค. 10540-66-004821", office:"สำนักทะเบียนอำเภอบางพลี"}
+  },
+  "2109876543210": {
+    citizenId:"2-1098-76543-21-0", nameTh:"นางสาว พิมพ์ชนก รุ่งเรืองกิจ", nameEn:"Miss Pimchanok Rungruengkit",
+    dob:"18 กุมภาพันธ์ 2538", age:"31 ปี", nat:"ไทย / พุทธ",
+    address:"89/12 หมู่บ้านชวนชื่น ถนนบางนา-ตราด ตำบลบางแก้ว อำเภอบางพลี จังหวัดสมุทรปราการ 10540",
+    photoDate:"2 ก.พ. 2566", alive:true, nameHistory:[], death:null
+  },
+  "4098765432109": {
+    citizenId:"4-0987-65432-10-9", nameTh:"นาย ธีรพงศ์ แก้วมณี", nameEn:"Mr. Theerapong Kaewmanee",
+    dob:"3 ตุลาคม 2530", age:"39 ปี", nat:"ไทย / พุทธ",
+    address:"199 ถนนสุขุมวิท ตำบลบางปูใหม่ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10280",
+    photoDate:"10 ธ.ค. 2564", alive:true, nameHistory:[], death:null
+  },
+  "5087654321098": {
+    citizenId:"5-0876-54321-09-8", nameTh:"นาง กัลยา ศรีสมบูรณ์", nameEn:"Mrs. Kanlaya Srisomboon",
+    dob:"25 พฤษภาคม 2515", age:"54 ปี", nat:"ไทย / พุทธ",
+    address:"56 หมู่ 4 ตำบลหนองปรือ อำเภอบางละมุง จังหวัดชลบุรี 20150",
+    photoDate:"18 ก.ย. 2563", alive:true,
+    nameHistory:[{old:"นาง กัลยา ทองสว่าง", new:"นาง กัลยา ศรีสมบูรณ์", date:"9 ก.พ. 2548", office:"สำนักทะเบียนอำเภอบางละมุง"}],
+    death:null
+  },
+  "6076543210987": {
+    citizenId:"6-0765-43210-98-7", nameTh:"นาย อนุชา ตันติเวชกุล", nameEn:"Mr. Anucha Tantivejkul",
+    dob:"11 มกราคม 2521", age:"48 ปี", nat:"ไทย / พุทธ",
+    address:"321/5 ซอยสุขุมวิท 71 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
+    photoDate:"30 มี.ค. 2567", alive:true, nameHistory:[], death:null
+  },
+  "7065432109876": {
+    citizenId:"7-0654-32109-87-6", nameTh:"นางสาว วราภรณ์ ลิ้มสกุล", nameEn:"Miss Waraporn Limsakul",
+    dob:"14 กรกฎาคม 2500", age:"66 ปี (ขณะเสียชีวิต)", nat:"ไทย / พุทธ",
+    address:"77 ถนนราชดำเนิน ตำบลในเมือง อำเภอเมืองนครราชสีมา จังหวัดนครราชสีมา 30000",
+    photoDate:"5 พ.ค. 2559", alive:false, nameHistory:[],
+    death:{date:"19 ธันวาคม 2566", cause:"โรคมะเร็งตับระยะสุดท้าย", place:"โรงพยาบาลมหาราชนครราชสีมา", certNo:"นม. 30000-66-011203", office:"สำนักทะเบียนอำเภอเมืองนครราชสีมา"}
+  },
+  "8054321098765": {
+    citizenId:"8-0543-21098-76-5", nameTh:"นาย ประพันธ์ จันทร์ดี", nameEn:"Mr. Praphan Chandee",
+    dob:"9 กันยายน 2528", age:"41 ปี", nat:"ไทย / พุทธ",
+    address:"12/3 หมู่ 7 ตำบลท่าศาลา อำเภอเมืองเชียงราย จังหวัดเชียงราย 57000",
+    photoDate:"14 พ.ย. 2560", alive:true, nameHistory:[], death:null
+  },
+  "9043210987654": {
+    citizenId:"9-0432-10987-65-4", nameTh:"นาง สมศรี บุญมาก", nameEn:"Mrs. Somsri Boonmak",
+    dob:"2 เมษายน 2518", age:"51 ปี", nat:"ไทย / พุทธ",
+    address:"45 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองอุดรธานี จังหวัดอุดรธานี 41000",
+    photoDate:"22 ส.ค. 2565", alive:true, nameHistory:[], death:null
+  },
+  "1032109876543": {
+    citizenId:"1-0321-09876-54-3", nameTh:"นาย วัชระ ทองสุข", nameEn:"Mr. Watchara Thongsuk",
+    dob:"27 พฤศจิกายน 2540", age:"28 ปี", nat:"ไทย / พุทธ",
+    address:"8/1 ซอยรามคำแหง 24 แขวงหัวหมาก เขตบางกะปิ กรุงเทพมหานคร 10240",
+    photoDate:"14 ม.ค. 2568", alive:true, nameHistory:[], death:null
+  },
+  "2021098765432": {
+    citizenId:"2-0210-98765-43-2", nameTh:"นาย ปิติ เลิศวิไล", nameEn:"Mr. Piti Lertwilai",
+    dob:"6 มิถุนายน 2512", age:"57 ปี", nat:"ไทย / พุทธ",
+    address:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000",
+    photoDate:"11 ก.ค. 2567", alive:true,
+    nameHistory:[{old:"นาย ปิติ แซ่ลิ้ม", new:"นาย ปิติ เลิศวิไล", date:"3 มี.ค. 2545", office:"สำนักทะเบียนอำเภอเมืองภูเก็ต"}],
+    death:null
+  },
+  "3010987654321": {
+    citizenId:"3-0109-87654-32-1", nameTh:"นางสาว ณัฐธิดา ไพศาลกิจ", nameEn:"Miss Nattida Paisankit",
+    dob:"30 ธันวาคม 2544", age:"24 ปี", nat:"ไทย / พุทธ",
+    address:"23 หมู่ 9 ตำบลเขาแก้ว อำเภอเมืองสุราษฎร์ธานี จังหวัดสุราษฎร์ธานี 84000",
+    photoDate:"19 ต.ค. 2566", alive:true, nameHistory:[], death:null
   }
 };
 
@@ -518,6 +843,15 @@ idInput.addEventListener('input', e=>{
   else {hint.textContent='รูปแบบ: 1-2345-67890-12-3';hint.classList.remove('bad');}
 });
 
+function isJuristicId(id){ return id.length===13 && id.startsWith('0'); }
+
+function pivotControl(docNo, label, onclickFn){
+  if (isJuristicId(docNo)){
+    return `<span class="role-chip mismatch" title="เลขนิติบุคคล ไม่สามารถตรวจสอบใน DOPA ได้ ต้องเชื่อมกับ DBD"><i class="fa-solid fa-building" aria-hidden="true"></i> ${label}เป็นนิติบุคคล — ต้องตรวจสอบผ่าน DBD</span>`;
+  }
+  return `<button class="btn secondary" onclick="${onclickFn}('${docNo}')" type="button"><i class="fa-solid fa-right-left" aria-hidden="true"></i>ตรวจสอบ${label}ใน DOPA</button>`;
+}
+
 function dopaSearch(){
   const rawId = idInput.value.replace(/\D/g,'');
   const caseNo = document.getElementById('globalCaseNo').value.trim();
@@ -526,6 +860,11 @@ function dopaSearch(){
   if (rawId.length!==13){ Swal.fire({...dopaSwal, icon:'warning', title:'เลขบัตรประชาชนไม่ถูกต้อง', text:'กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก'}); return; }
   if (!caseNo){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาระบุเลขที่สำนวนคดี', text:'ต้องผูกการสืบค้นกับคดีทุกครั้งเพื่อบันทึก Audit Log'}); return; }
   if (!purpose){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาเลือกวัตถุประสงค์การสืบค้น'}); return; }
+
+  if (isJuristicId(rawId)){
+    Swal.fire({...dopaSwal, icon:'info', title:'เลขนี้เป็นเลขทะเบียนนิติบุคคล', html:'DOPA (กรมการปกครอง) เก็บข้อมูลเฉพาะบุคคลธรรมดา เลขที่ขึ้นต้นด้วย <b>0</b> เป็นรูปแบบเลขทะเบียนนิติบุคคล ไม่ใช่เลขบัตรประชาชน<br><br>หากต้องการตรวจสอบข้อมูลนิติบุคคล (ชื่อบริษัท กรรมการ ผู้ถือหุ้น) ต้องเชื่อมโยงกับกรมพัฒนาธุรกิจการค้า (DBD) แยกต่างหาก ซึ่งยังไม่อยู่ในขอบเขตงานปัจจุบัน'});
+    return;
+  }
 
   const record = MOCK_DB[rawId];
   Swal.fire({...dopaSwal, title:'กำลังเรียกข้อมูลจาก Linkage Center API...', html:'กรมการปกครอง (adaptor-bora-pop)', timerProgressBar:true, timer:900, didOpen:()=>Swal.showLoading(), allowOutsideClick:false})
@@ -541,7 +880,10 @@ function dopaSearch(){
   });
 }
 
+let currentPerson = null;
+
 function renderRecord(r, caseNo){
+  currentPerson = r;
   document.getElementById('dopaLockedState').classList.add('hide');
   document.getElementById('dopaResultWrap').classList.remove('hide');
 
@@ -588,6 +930,14 @@ function renderRecord(r, caseNo){
       </div>`
     : '<div class="empty-cell">ไม่พบข้อมูลมรณบัตร (บุคคลนี้ยังมีชีวิตอยู่ตามฐานข้อมูลทะเบียนราษฎร)</div>';
 
+  document.getElementById('vehPersonName').textContent = r.nameTh;
+  document.getElementById('vehPersonId').textContent = r.citizenId;
+  document.getElementById('vehPersonResult').classList.add('hide');
+  document.getElementById('vehPersonLockedCard').classList.remove('hide');
+  document.getElementById('vehPlateResult').classList.add('hide');
+  document.getElementById('vehPlateLockedCard').classList.remove('hide');
+  switchVehMode('person');
+
   switchTab('nameHistory');
 }
 
@@ -595,6 +945,7 @@ function switchTab(tab){
   document.querySelectorAll('.form-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
   document.getElementById('tab-nameHistory').classList.toggle('hide', tab!=='nameHistory');
   document.getElementById('tab-deathCert').classList.toggle('hide', tab!=='deathCert');
+  document.getElementById('tab-vehicle').classList.toggle('hide', tab!=='vehicle');
 }
 
 function copyAddress(){
@@ -613,6 +964,477 @@ function addToCase(role){
   .then(res=>{
     if (res.isConfirmed){
       Swal.fire({...dopaSwal, icon:'success', title:'นำเข้าสำนวนคดีสำเร็จ', text:`บันทึกชื่อ ที่อยู่ และประวัติของ ${name} ลงในสำนวนคดีเรียบร้อยแล้ว โดยไม่มีการพิมพ์ข้อมูลด้วยมือ`});
+    }
+  });
+}
+
+/* ================== ข้อมูลยานพาหนะ (เชื่อมโยงกรมการขนส่งทางบก / DLT VehicleInfo2Service) ================== */
+const OFFLOC_LIST = [
+  {code:"10", name:"กรุงเทพมหานคร"}, {code:"11", name:"สมุทรปราการ"}, {code:"12", name:"นนทบุรี"}, {code:"13", name:"ปทุมธานี"},
+  {code:"14", name:"พระนครศรีอยุธยา"}, {code:"20", name:"ชลบุรี"}, {code:"30", name:"นครราชสีมา"}, {code:"40", name:"ขอนแก่น"},
+  {code:"41", name:"อุดรธานี"}, {code:"50", name:"เชียงใหม่"}, {code:"57", name:"เชียงราย"}, {code:"70", name:"ราชบุรี"},
+  {code:"83", name:"ภูเก็ต"}, {code:"84", name:"สุราษฎร์ธานี"}, {code:"90", name:"สงขลา"}, {code:"96", name:"นราธิวาส"}
+];
+const VEHTYPE_LIST = [
+  {code:"1", name:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน"},
+  {code:"2", name:"รถยนต์นั่งส่วนบุคคลเกิน 7 คน"},
+  {code:"3", name:"รถยนต์บรรทุกส่วนบุคคล (กระบะ/บรรทุก)"},
+  {code:"4", name:"รถจักรยานยนต์"},
+  {code:"5", name:"รถบรรทุก / รถโดยสาร (ขนส่ง)"}
+];
+function offLocName(c){ const f=OFFLOC_LIST.find(x=>x.code===c); return f?f.name:c; }
+function vehTypeName(c){ const f=VEHTYPE_LIST.find(x=>x.code===c); return f?f.name:c; }
+
+const MOCK_VEHICLES = [
+  {
+    id:"veh-001", regDate:"15 มี.ค. 2560", plate1:"กข", plate2:"1234", offLocCode:"10", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"TOYOTA", modelName:"CAMRY 2.5 HYBRID",
+    numBody:"MR053MMFX0P123456", carChkMasColorList:[{colorDesc:"ขาว"}], expDate:"14 มี.ค. 2570", numEng:"2ARFXE1234567",
+    fuelDesc:"น้ำมันเชื้อเพลิง + ไฟฟ้า (Hybrid)", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"1234567890123", owner1:"นาย สมชาย ใจดี", addressOwner1:"124/8 หมู่ 5 ซอยลาดพร้าว 42 ถนนลาดพร้าว แขวงสามเสนนอก เขตห้วยขวาง กรุงเทพมหานคร 10310",
+    docNo2:"1234567890123", owner2:"นาย สมชาย ใจดี", addressOwner2:"124/8 หมู่ 5 ซอยลาดพร้าว 42 ถนนลาดพร้าว แขวงสามเสนนอก เขตห้วยขวาง กรุงเทพมหานคร 10310"
+  },
+  {
+    id:"veh-002", regDate:"2 ส.ค. 2565", plate1:"ผข", plate2:"8899", offLocCode:"96", vehicleTypeRef:"3",
+    vehTypeDesc:"รถยนต์บรรทุกส่วนบุคคล", kindDesc:"รถกระบะ 4 ประตู", brnDesc:"ISUZU", modelName:"D-MAX V-CROSS 3.0",
+    numBody:"MPATFS85JN7112233", carChkMasColorList:[{colorDesc:"ดำ"},{colorDesc:"เทา"}], expDate:"1 ส.ค. 2567", numEng:"4JJ1XS998877",
+    fuelDesc:"ดีเซล", carStatus:"ระงับทะเบียนชั่วคราว", holdFlag:"H",
+    docNo1:"1234567890123", owner1:"นาย สมชาย ใจดี", addressOwner1:"124/8 หมู่ 5 ซอยลาดพร้าว 42 ถนนลาดพร้าว แขวงสามเสนนอก เขตห้วยขวาง กรุงเทพมหานคร 10310",
+    docNo2:"3102500123456", owner2:"นาย ประเสริฐ วงศ์คำ", addressOwner2:"45 หมู่ 2 ตำบลสุไหงโก-ลก อำเภอสุไหงโก-ลก จังหวัดนราธิวาส 96120"
+  },
+  {
+    id:"veh-003", regDate:"20 ม.ค. 2564", plate1:"ฮอ", plate2:"5678", offLocCode:"50", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"HONDA", modelName:"CITY 1.0 TURBO RS",
+    numBody:"MRHGM6870MP345678", carChkMasColorList:[{colorDesc:"แดง"}], expDate:"19 ม.ค. 2570", numEng:"L15B71234567",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"1029384756123", owner1:"นาง สุพัตรา เจริญยิ่ง", addressOwner1:"12 ถนนนิมมานเหมินท์ ตำบลสุเทพ อำเภอเมืองเชียงใหม่ จังหวัดเชียงใหม่ 50200",
+    docNo2:"1029384756123", owner2:"นาง สุพัตรา เจริญยิ่ง", addressOwner2:"12 ถนนนิมมานเหมินท์ ตำบลสุเทพ อำเภอเมืองเชียงใหม่ จังหวัดเชียงใหม่ 50200"
+  },
+
+  {
+    id:"veh-101", regDate:"6 พ.ค. 2564", plate1:"กม", plate2:"4455", offLocCode:"11", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"HONDA", modelName:"CIVIC 1.5 TURBO",
+    numBody:"MRHFC2360MP778899", carChkMasColorList:[{colorDesc:"เทา"}], expDate:"5 พ.ค. 2570", numEng:"L15B78899001",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"2109876543210", owner1:"นางสาว พิมพ์ชนก รุ่งเรืองกิจ", addressOwner1:"89/12 หมู่บ้านชวนชื่น ถนนบางนา-ตราด ตำบลบางแก้ว อำเภอบางพลี จังหวัดสมุทรปราการ 10540",
+    docNo2:"2109876543210", owner2:"นางสาว พิมพ์ชนก รุ่งเรืองกิจ", addressOwner2:"89/12 หมู่บ้านชวนชื่น ถนนบางนา-ตราด ตำบลบางแก้ว อำเภอบางพลี จังหวัดสมุทรปราการ 10540"
+  },
+  {
+    id:"veh-102", regDate:"14 ก.พ. 2566", plate1:"1กฮ", plate2:"2201", offLocCode:"11", vehicleTypeRef:"4",
+    vehTypeDesc:"รถจักรยานยนต์", kindDesc:"รถจักรยานยนต์ส่วนบุคคล", brnDesc:"YAMAHA", modelName:"FINN 115i",
+    numBody:"MYFG1156NP009911", carChkMasColorList:[{colorDesc:"ขาว"},{colorDesc:"น้ำเงิน"}], expDate:"13 ก.พ. 2570", numEng:"G3E5009911",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"2109876543210", owner1:"นางสาว พิมพ์ชนก รุ่งเรืองกิจ", addressOwner1:"89/12 หมู่บ้านชวนชื่น ถนนบางนา-ตราด ตำบลบางแก้ว อำเภอบางพลี จังหวัดสมุทรปราการ 10540",
+    docNo2:"2109876543210", owner2:"นางสาว พิมพ์ชนก รุ่งเรืองกิจ", addressOwner2:"89/12 หมู่บ้านชวนชื่น ถนนบางนา-ตราด ตำบลบางแก้ว อำเภอบางพลี จังหวัดสมุทรปราการ 10540"
+  },
+  {
+    id:"veh-103", regDate:"28 พ.ย. 2565", plate1:"ญห", plate2:"9911", offLocCode:"11", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"MERCEDES-BENZ", modelName:"E 300 e AMG PREMIUM",
+    numBody:"WDD2130123A556677", carChkMasColorList:[{colorDesc:"ดำ"}], expDate:"27 พ.ย. 2569", numEng:"M264E20556677",
+    fuelDesc:"น้ำมันเชื้อเพลิง + ไฟฟ้า (Plug-in Hybrid)", carStatus:"อยู่ระหว่างคดี", holdFlag:"H",
+    docNo1:"0105561098765", owner1:"บริษัท รุ่งเรืองทรัพย์ กรุ๊ป จำกัด", addressOwner1:"88/8 อาคารรุ่งเรืองทาวเวอร์ ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500",
+    docNo2:"4098765432109", owner2:"นาย ธีรพงศ์ แก้วมณี", addressOwner2:"199 ถนนสุขุมวิท ตำบลบางปูใหม่ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10280"
+  },
+  {
+    id:"veh-104", regDate:"19 มิ.ย. 2563", plate1:"ฌว", plate2:"5522", offLocCode:"10", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"BMW", modelName:"530e M SPORT",
+    numBody:"WBA5A9105LP334455", carChkMasColorList:[{colorDesc:"ขาวมุก"}], expDate:"18 มิ.ย. 2570", numEng:"B48B20334455",
+    fuelDesc:"น้ำมันเชื้อเพลิง + ไฟฟ้า (Plug-in Hybrid)", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"6076543210987", owner1:"นาย อนุชา ตันติเวชกุล", addressOwner1:"321/5 ซอยสุขุมวิท 71 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
+    docNo2:"6076543210987", owner2:"นาย อนุชา ตันติเวชกุล", addressOwner2:"321/5 ซอยสุขุมวิท 71 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110"
+  },
+  {
+    id:"veh-105", regDate:"3 ก.พ. 2565", plate1:"1กษ", plate2:"7744", offLocCode:"10", vehicleTypeRef:"4",
+    vehTypeDesc:"รถจักรยานยนต์", kindDesc:"รถจักรยานยนต์ส่วนบุคคล (บิ๊กไบค์)", brnDesc:"YAMAHA", modelName:"MT-09",
+    numBody:"MYRN1900PP667788", carChkMasColorList:[{colorDesc:"เทาด้าน"}], expDate:"2 ก.พ. 2570", numEng:"CP3A0667788",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"6076543210987", owner1:"นาย อนุชา ตันติเวชกุล", addressOwner1:"321/5 ซอยสุขุมวิท 71 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
+    docNo2:"6076543210987", owner2:"นาย อนุชา ตันติเวชกุล", addressOwner2:"321/5 ซอยสุขุมวิท 71 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110"
+  },
+  {
+    id:"veh-106", regDate:"11 ส.ค. 2559", plate1:"70", plate2:"4213", offLocCode:"10", vehicleTypeRef:"5",
+    vehTypeDesc:"รถบรรทุก / รถโดยสาร (ขนส่ง)", kindDesc:"รถบรรทุก 10 ล้อ", brnDesc:"VOLVO", modelName:"FM 420",
+    numBody:"YV2RT40A6GB112233", carChkMasColorList:[{colorDesc:"ฟ้า"}], expDate:"10 ส.ค. 2564", numEng:"D13A420112233",
+    fuelDesc:"ดีเซล", carStatus:"ระงับทะเบียน (ค้างชำระภาษีเกินกำหนด)", holdFlag:"",
+    docNo1:"6076543210987", owner1:"นาย อนุชา ตันติเวชกุล", addressOwner1:"321/5 ซอยสุขุมวิท 71 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
+    docNo2:"6076543210987", owner2:"นาย อนุชา ตันติเวชกุล", addressOwner2:"321/5 ซอยสุขุมวิท 71 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110"
+  },
+  {
+    id:"veh-107", regDate:"22 เม.ย. 2555", plate1:"บษ", plate2:"3301", offLocCode:"30", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถอเนกประสงค์ (SUV)", brnDesc:"TOYOTA", modelName:"FORTUNER 3.0V",
+    numBody:"MR0EX8CD5C0223344", carChkMasColorList:[{colorDesc:"เงิน"}], expDate:"21 เม.ย. 2568", numEng:"1KD223344",
+    fuelDesc:"ดีเซล", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"7065432109876", owner1:"นางสาว วราภรณ์ ลิ้มสกุล", addressOwner1:"77 ถนนราชดำเนิน ตำบลในเมือง อำเภอเมืองนครราชสีมา จังหวัดนครราชสีมา 30000",
+    docNo2:"7065432109876", owner2:"นางสาว วราภรณ์ ลิ้มสกุล", addressOwner2:"77 ถนนราชดำเนิน ตำบลในเมือง อำเภอเมืองนครราชสีมา จังหวัดนครราชสีมา 30000"
+  },
+  {
+    id:"veh-108", regDate:"14 มี.ค. 2554", plate1:"บฆ", plate2:"8802", offLocCode:"57", vehicleTypeRef:"3",
+    vehTypeDesc:"รถยนต์บรรทุกส่วนบุคคล", kindDesc:"รถกระบะ 2 ประตู", brnDesc:"NISSAN", modelName:"NAVARA 2.5",
+    numBody:"MNTND22S5AW112200", carChkMasColorList:[{colorDesc:"ขาว"}], expDate:"1 มิ.ย. 2562", numEng:"YD25DDTI112200",
+    fuelDesc:"ดีเซล", carStatus:"ระงับทะเบียน (ค้างชำระภาษีเกิน 3 ปี)", holdFlag:"",
+    docNo1:"8054321098765", owner1:"นาย ประพันธ์ จันทร์ดี", addressOwner1:"12/3 หมู่ 7 ตำบลท่าศาลา อำเภอเมืองเชียงราย จังหวัดเชียงราย 57000",
+    docNo2:"8054321098765", owner2:"นาย ประพันธ์ จันทร์ดี", addressOwner2:"12/3 หมู่ 7 ตำบลท่าศาลา อำเภอเมืองเชียงราย จังหวัดเชียงราย 57000"
+  },
+  {
+    id:"veh-109", regDate:"9 ต.ค. 2564", plate1:"กฮ", plate2:"1102", offLocCode:"41", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"TOYOTA", modelName:"VIOS 1.5 E",
+    numBody:"MR053CD1XMP665544", carChkMasColorList:[{colorDesc:"บรอนซ์เงิน"}], expDate:"8 ต.ค. 2569", numEng:"2NRFE665544",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"9043210987654", owner1:"นาง สมศรี บุญมาก", addressOwner1:"45 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองอุดรธานี จังหวัดอุดรธานี 41000",
+    docNo2:"9043210987654", owner2:"นาง สมศรี บุญมาก", addressOwner2:"45 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองอุดรธานี จังหวัดอุดรธานี 41000"
+  },
+  {
+    id:"veh-110", regDate:"5 ก.ย. 2566", plate1:"งม", plate2:"6600", offLocCode:"41", vehicleTypeRef:"2",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลเกิน 7 คน", kindDesc:"รถตู้ / รถอเนกประสงค์ขนาดใหญ่", brnDesc:"TOYOTA", modelName:"ALPHARD 2.5 HYBRID",
+    numBody:"JTNGA3EX70J445566", carChkMasColorList:[{colorDesc:"ดำ"}], expDate:"4 ก.ย. 2570", numEng:"2ARFXE445566",
+    fuelDesc:"น้ำมันเชื้อเพลิง + ไฟฟ้า (Hybrid)", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"0105558045678", owner1:"บริษัท เอกชัยพัฒนาการ จำกัด", addressOwner1:"168 อาคารเอกชัย ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310",
+    docNo2:"9043210987654", owner2:"นาง สมศรี บุญมาก", addressOwner2:"45 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองอุดรธานี จังหวัดอุดรธานี 41000"
+  },
+  {
+    id:"veh-111", regDate:"30 ธ.ค. 2567", plate1:"1กพ", plate2:"9090", offLocCode:"10", vehicleTypeRef:"4",
+    vehTypeDesc:"รถจักรยานยนต์", kindDesc:"รถจักรยานยนต์ส่วนบุคคล", brnDesc:"HONDA", modelName:"WAVE 110i",
+    numBody:"MLHJC4108PP113344", carChkMasColorList:[{colorDesc:"แดง"},{colorDesc:"ดำ"}], expDate:"29 ธ.ค. 2568", numEng:"JC41E0113344",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"1032109876543", owner1:"นาย วัชระ ทองสุข", addressOwner1:"8/1 ซอยรามคำแหง 24 แขวงหัวหมาก เขตบางกะปิ กรุงเทพมหานคร 10240",
+    docNo2:"1032109876543", owner2:"นาย วัชระ ทองสุข", addressOwner2:"8/1 ซอยรามคำแหง 24 แขวงหัวหมาก เขตบางกะปิ กรุงเทพมหานคร 10240"
+  },
+  {
+    id:"veh-112", regDate:"17 ม.ค. 2566", plate1:"ฮก", plate2:"8888", offLocCode:"83", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถอเนกประสงค์ (SUV)", brnDesc:"PORSCHE", modelName:"CAYENNE E-HYBRID",
+    numBody:"WP1AE2AY0PLA22110", carChkMasColorList:[{colorDesc:"ขาว"}], expDate:"16 ม.ค. 2570", numEng:"9A2V2A22110",
+    fuelDesc:"น้ำมันเชื้อเพลิง + ไฟฟ้า (Plug-in Hybrid)", carStatus:"อยู่ระหว่างคดี", holdFlag:"H",
+    docNo1:"2021098765432", owner1:"นาย ปิติ เลิศวิไล", addressOwner1:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000",
+    docNo2:"2021098765432", owner2:"นาย ปิติ เลิศวิไล", addressOwner2:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000"
+  },
+  {
+    id:"veh-113", regDate:"2 พ.ค. 2565", plate1:"ฮก", plate2:"8899", offLocCode:"83", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"MERCEDES-BENZ", modelName:"S 500 e AMG PREMIUM",
+    numBody:"WDD2231123A778800", carChkMasColorList:[{colorDesc:"ดำ"}], expDate:"1 พ.ค. 2569", numEng:"M256E778800",
+    fuelDesc:"น้ำมันเชื้อเพลิง + ไฟฟ้า (Plug-in Hybrid)", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"2021098765432", owner1:"นาย ปิติ เลิศวิไล", addressOwner1:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000",
+    docNo2:"2021098765432", owner2:"นาย ปิติ เลิศวิไล", addressOwner2:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000"
+  },
+  {
+    id:"veh-114", regDate:"25 พ.ย. 2564", plate1:"ฮก", plate2:"1122", offLocCode:"83", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถอเนกประสงค์ (SUV)", brnDesc:"LAND ROVER", modelName:"DEFENDER 110 X",
+    numBody:"SALLDHAM8MA556699", carChkMasColorList:[{colorDesc:"เขียวเข้ม"}], expDate:"24 พ.ย. 2568", numEng:"306DT556699",
+    fuelDesc:"ดีเซล", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"2021098765432", owner1:"นาย ปิติ เลิศวิไล", addressOwner1:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000",
+    docNo2:"2021098765432", owner2:"นาย ปิติ เลิศวิไล", addressOwner2:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000"
+  },
+  {
+    id:"veh-115", regDate:"8 ก.ค. 2566", plate1:"1กจ", plate2:"5050", offLocCode:"83", vehicleTypeRef:"4",
+    vehTypeDesc:"รถจักรยานยนต์", kindDesc:"รถจักรยานยนต์ส่วนบุคคล (บิ๊กไบค์)", brnDesc:"DUCATI", modelName:"MULTISTRADA V4",
+    numBody:"ZDM1260APPB110022", carChkMasColorList:[{colorDesc:"แดง"}], expDate:"7 ก.ค. 2570", numEng:"V4G110022",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"2021098765432", owner1:"นาย ปิติ เลิศวิไล", addressOwner1:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000",
+    docNo2:"2021098765432", owner2:"นาย ปิติ เลิศวิไล", addressOwner2:"99/99 ถนนเฉลิมพระเกียรติ ตำบลรัษฎา อำเภอเมืองภูเก็ต จังหวัดภูเก็ต 83000"
+  },
+  {
+    id:"veh-116", regDate:"12 ส.ค. 2565", plate1:"กถ", plate2:"3030", offLocCode:"84", vehicleTypeRef:"1",
+    vehTypeDesc:"รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน", kindDesc:"รถเก๋ง 4 ประตู", brnDesc:"MAZDA", modelName:"2 SKYACTIV-G",
+    numBody:"JMZDJ2W7XN0334477", carChkMasColorList:[{colorDesc:"แดง"}], expDate:"11 ส.ค. 2569", numEng:"P5334477",
+    fuelDesc:"น้ำมันเชื้อเพลิง", carStatus:"ใช้งานปกติ", holdFlag:"",
+    docNo1:"3010987654321", owner1:"นางสาว ณัฐธิดา ไพศาลกิจ", addressOwner1:"23 หมู่ 9 ตำบลเขาแก้ว อำเภอเมืองสุราษฎร์ธานี จังหวัดสุราษฎร์ธานี 84000",
+    docNo2:"3010987654321", owner2:"นางสาว ณัฐธิดา ไพศาลกิจ", addressOwner2:"23 หมู่ 9 ตำบลเขาแก้ว อำเภอเมืองสุราษฎร์ธานี จังหวัดสุราษฎร์ธานี 84000"
+  }
+];
+
+(function initVehFilters(){
+  document.getElementById('vehOffLoc').innerHTML += OFFLOC_LIST.map(o=>`<option value="${o.code}">${o.name}</option>`).join('');
+  document.getElementById('vehTypeRef').innerHTML += VEHTYPE_LIST.map(o=>`<option value="${o.code}">${o.name}</option>`).join('');
+  document.getElementById('vehPlate2').addEventListener('input', e=>{
+    const v = e.target.value.replace(/\D/g,'').slice(0,5);
+    e.target.value = v;
+    const hint = document.getElementById('vehPlate2Hint');
+    hint.textContent = 'พารามิเตอร์ plate2 (ตัวเลขเท่านั้น)';
+    hint.classList.remove('bad');
+  });
+})();
+
+function switchVehMode(mode){
+  document.querySelectorAll('.veh-mode-switch button').forEach(b=>b.classList.toggle('active', b.dataset.vmode===mode));
+  document.getElementById('vehMode-person').classList.toggle('hide', mode!=='person');
+  document.getElementById('vehMode-plate').classList.toggle('hide', mode!=='plate');
+}
+
+function vehSearchByPerson(){
+  if (!currentPerson){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาสืบค้นข้อมูลบุคคลก่อน'}); return; }
+  const caseNo = document.getElementById('globalCaseNo').value.trim();
+  if (!caseNo){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาระบุเลขที่สำนวนคดี', text:'ต้องผูกการสืบค้นกับคดีทุกครั้งเพื่อบันทึก Audit Log'}); return; }
+  const docNo = currentPerson.citizenId.replace(/\D/g,'');
+
+  Swal.fire({...dopaSwal, title:'กำลังเรียกข้อมูลจากกรมการขนส่งทางบก...', html:'VehicleInfo2Service · getVehicleInfoByDocNo', timerProgressBar:true, timer:900, didOpen:()=>Swal.showLoading(), allowOutsideClick:false})
+  .then(()=>{
+    const list = MOCK_VEHICLES.filter(v=>v.docNo1===docNo || v.docNo2===docNo);
+    document.getElementById('vehPersonLockedCard').classList.toggle('hide', list.length>0);
+    document.getElementById('vehPersonResult').classList.toggle('hide', list.length===0);
+    if (list.length===0){
+      Swal.fire({...dopaSwal, icon:'info', title:'ไม่พบยานพาหนะ (Data Not Found)', text:'ไม่พบรถที่มีชื่อบุคคลนี้เป็นเจ้าของหรือผู้ครอบครองในระบบกรมการขนส่งทางบก'});
+      return;
+    }
+    document.getElementById('vehPersonBody').innerHTML = list.map(v=>{
+      const isOwner = v.docNo1===docNo, isPoss = v.docNo2===docNo;
+      const role = isOwner && isPoss ? 'เจ้าของ และผู้ครอบครอง' : (isOwner ? 'เจ้าของ (ผู้ครอบครองเป็นบุคคลอื่น)' : 'ผู้ครอบครอง (เจ้าของเป็นบุคคลอื่น)');
+      const mismatch = !(isOwner && isPoss);
+      return `<tr>
+        <td><strong>${v.plate1} ${v.plate2}</strong><small>${offLocName(v.offLocCode)}</small></td>
+        <td><strong>${v.brnDesc}</strong><small>${v.modelName}</small></td>
+        <td>${v.vehTypeDesc}</td>
+        <td><span class="role-chip ${mismatch?'mismatch':''}">${role}</span></td>
+        <td>${v.holdFlag==='H' ? '<span class="badge danger"><i class="fa-solid fa-lock" aria-hidden="true"></i>อายัด (Hold)</span>' : `<span class="badge success">${v.carStatus}</span>`}</td>
+        <td><button class="btn secondary" onclick="openVehicleModal('${v.id}')" type="button">ดูรายละเอียด</button></td>
+      </tr>`;
+    }).join('');
+    Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ '+list.length+' คัน', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
+  });
+}
+
+function vehSearchByPlate(){
+  const offLoc = document.getElementById('vehOffLoc').value;
+  const vtype = document.getElementById('vehTypeRef').value;
+  const p1 = document.getElementById('vehPlate1').value.trim();
+  const p2 = document.getElementById('vehPlate2').value.trim();
+  const caseNo = document.getElementById('globalCaseNo').value.trim();
+
+  if (!caseNo){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาระบุเลขที่สำนวนคดี'}); return; }
+  if (!offLoc || !vtype || !p1 || !p2){ Swal.fire({...dopaSwal, icon:'warning', title:'กรอกเงื่อนไขไม่ครบ (Invalid Parameters)', text:'ต้องระบุจังหวัด ประเภทรถ หมวดอักษร และเลขทะเบียนให้ครบทุกช่อง'}); return; }
+  if (!/^\d{1,5}$/.test(p2)){
+    const hint = document.getElementById('vehPlate2Hint');
+    hint.textContent = 'รูปแบบเลขทะเบียนไม่ถูกต้อง (Incorrect Plate Number Format)'; hint.classList.add('bad');
+    Swal.fire({...dopaSwal, icon:'warning', title:'รูปแบบเลขทะเบียนไม่ถูกต้อง', text:'เลขทะเบียน (plate2) ต้องเป็นตัวเลขเท่านั้น'});
+    return;
+  }
+
+  Swal.fire({...dopaSwal, title:'กำลังเรียกข้อมูลจากกรมการขนส่งทางบก...', html:'VehicleInfo2Service · getVehicleInfoByPlate', timerProgressBar:true, timer:900, didOpen:()=>Swal.showLoading(), allowOutsideClick:false})
+  .then(()=>{
+    const v = MOCK_VEHICLES.find(x=>x.plate1===p1 && x.plate2===p2 && x.offLocCode===offLoc);
+    document.getElementById('vehPlateLockedCard').classList.toggle('hide', !!v);
+    const resultBox = document.getElementById('vehPlateResult');
+    if (!v){
+      resultBox.classList.add('hide');
+      Swal.fire({...dopaSwal, icon:'info', title:'ไม่พบข้อมูลรถ (Data Not Found)', text:'ไม่พบรถตามเลขทะเบียนและจังหวัดที่ระบุในระบบกรมการขนส่งทางบก'});
+      return;
+    }
+    resultBox.classList.remove('hide');
+    resultBox.innerHTML = `
+      ${v.holdFlag==='H' ? '<div class="veh-hold-inline"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>รถคันนี้ติดสถานะ "อายัด (Hold)" ตามคำสั่งศาลหรือหน่วยงานบังคับใช้กฎหมาย</div>' : ''}
+      <div class="veh-plate-card">
+        <div class="veh-plate-summary">
+          <div class="cell"><span>ทะเบียน / จังหวัด</span><strong>${v.plate1} ${v.plate2} · ${offLocName(v.offLocCode)}</strong></div>
+          <div class="cell"><span>ยี่ห้อ / รุ่น</span><strong>${v.brnDesc} ${v.modelName}</strong></div>
+          <div class="cell"><span>ผู้ถือกรรมสิทธิ์</span><strong>${v.owner1}</strong></div>
+          <div class="cell"><span>สถานะ</span><strong>${v.holdFlag==='H'?'อายัด (Hold)':v.carStatus}</strong></div>
+        </div>
+        <div class="veh-plate-actions">
+          <button class="btn secondary" onclick="openVehicleModal('${v.id}')" type="button"><i class="fa-solid fa-eye" aria-hidden="true"></i>ดูรายละเอียดเต็ม</button>
+        </div>
+      </div>`;
+    Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
+  });
+}
+
+let currentVehicle = null;
+function openVehicleModal(id){
+  const v = MOCK_VEHICLES.find(x=>x.id===id);
+  if (!v) return;
+  currentVehicle = v;
+
+  document.getElementById('vehModalTitle').textContent = v.brnDesc + ' ' + v.modelName;
+  document.getElementById('vehModalSub').textContent = 'ทะเบียน ' + v.plate1 + ' ' + v.plate2 + ' · ' + offLocName(v.offLocCode) + ' · เลขตัวรถ ' + v.numBody;
+  document.getElementById('vehHoldBanner').classList.toggle('hide', v.holdFlag!=='H');
+
+  document.getElementById('vehGridPhysical').innerHTML = `
+    <div class="cell"><span>ยี่ห้อ / แบบรถ</span><strong>${v.brnDesc} / ${v.modelName}</strong></div>
+    <div class="cell"><span>ประเภทรถ</span><strong>${v.vehTypeDesc}</strong></div>
+    <div class="cell"><span>ลักษณะ / มาตรฐานรถ</span><strong>${v.kindDesc}</strong></div>
+    <div class="cell"><span>เลขตัวรถ (numBody)</span><strong>${v.numBody}</strong></div>
+    <div class="cell"><span>เลขเครื่องยนต์ (numEng)</span><strong>${v.numEng}</strong></div>
+    <div class="cell"><span>สี</span><strong>${v.carChkMasColorList.map(c=>c.colorDesc).join(' / ')}</strong></div>
+    <div class="cell"><span>เชื้อเพลิง</span><strong>${v.fuelDesc}</strong></div>
+    <div class="cell"><span>สถานะทางทะเบียน</span><strong>${v.carStatus}</strong></div>`;
+
+  document.getElementById('vehGridReg').innerHTML = `
+    <div class="cell"><span>เลขทะเบียน</span><strong>${v.plate1} ${v.plate2}</strong></div>
+    <div class="cell"><span>จังหวัดที่จดทะเบียน (offLocCode)</span><strong>${offLocName(v.offLocCode)} (${v.offLocCode})</strong></div>
+    <div class="cell"><span>วันที่จดทะเบียนครั้งแรก</span><strong>${v.regDate}</strong></div>
+    <div class="cell"><span>วันสิ้นอายุภาษีประจำปี</span><strong>${v.expDate}</strong></div>`;
+
+  const mismatch = v.docNo1 !== v.docNo2;
+  document.getElementById('vehGridOwner').innerHTML = `
+    <div class="veh-owner-box${mismatch?' mismatch':''}">
+      <h4><i class="fa-solid fa-user-shield" aria-hidden="true"></i>ผู้ถือกรรมสิทธิ์ (เจ้าของตามกฎหมาย)</h4>
+      <div class="cell"><span>เลขประจำตัว</span><strong>${v.docNo1}</strong></div>
+      <div class="cell"><span>ชื่อ-นามสกุล / นิติบุคคล</span><strong>${v.owner1}</strong></div>
+      <div class="cell"><span>ที่อยู่ตามทะเบียน</span><strong>${v.addressOwner1}</strong></div>
+    </div>
+    <div class="veh-owner-box${mismatch?' mismatch':''}">
+      <h4><i class="fa-solid fa-user-check" aria-hidden="true"></i>ผู้ครอบครอง</h4>
+      <div class="cell"><span>เลขประจำตัว</span><strong>${v.docNo2}</strong></div>
+      <div class="cell"><span>ชื่อ-นามสกุล / นิติบุคคล</span><strong>${v.owner2}</strong></div>
+      <div class="cell"><span>ที่อยู่ปัจจุบัน</span><strong>${v.addressOwner2}</strong></div>
+    </div>`;
+  if (mismatch){
+    document.getElementById('vehGridOwner').insertAdjacentHTML('beforeend', '<div class="empty-cell" style="grid-column:1/-1;text-align:left;padding:0;margin-top:2px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true" style="color:var(--red);margin-right:6px"></i>ผู้ถือกรรมสิทธิ์และผู้ครอบครองเป็นคนละบุคคล ควรตรวจสอบความสัมพันธ์และที่มาของการครอบครองเพิ่มเติม</div>');
+  }
+
+  const pivotGroup = document.getElementById('vehPivotGroup');
+  if (mismatch){
+    pivotGroup.innerHTML = pivotControl(v.docNo1, 'ผู้ถือกรรมสิทธิ์', 'pivotToDopa') + pivotControl(v.docNo2, 'ผู้ครอบครอง', 'pivotToDopa');
+  } else {
+    pivotGroup.innerHTML = pivotControl(v.docNo1, 'เจ้าของ', 'pivotToDopa');
+  }
+
+  document.getElementById('vehicleModalMask').classList.remove('hide');
+}
+function closeVehicleModal(){ document.getElementById('vehicleModalMask').classList.add('hide'); }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeVehicleModal(); });
+
+function pivotToDopa(docNo){
+  if (isJuristicId(docNo)){ Swal.fire({...dopaSwal, icon:'info', title:'เลขนี้เป็นเลขทะเบียนนิติบุคคล', text:'ไม่สามารถตรวจสอบในระบบ DOPA ได้ ต้องเชื่อมกับกรมพัฒนาธุรกิจการค้า (DBD) แยกต่างหาก'}); return; }
+  closeVehicleModal();
+  const formatted = docNo.length===13 ? docNo[0]+'-'+docNo.slice(1,5)+'-'+docNo.slice(5,10)+'-'+docNo.slice(10,12)+'-'+docNo.slice(12) : docNo;
+  idInput.value = formatted;
+  idInput.dispatchEvent(new Event('input'));
+  if (!document.getElementById('purpose').value) document.getElementById('purpose').value = 'factfinding';
+  dopaSearch();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function addVehicleToCase(){
+  if (!currentVehicle) return;
+  const v = currentVehicle;
+  const caseNo = document.getElementById('globalCaseNo').value.trim() || document.getElementById('caseChipFooter').textContent.replace('คดีเลขที่: ','');
+  const label = v.brnDesc + ' ' + v.modelName + ' ทะเบียน ' + v.plate1 + ' ' + v.plate2;
+  Swal.fire({...dopaSwal, icon:'question', title:'ยืนยันการนำเข้าสำนวนคดี', html:`นำยานพาหนะ <b>${label}</b><br>เข้าเป็นพยานหลักฐาน (ทรัพย์สิน)<br>ในคดีเลขที่ <b>${caseNo}</b> ใช่หรือไม่?`, showCancelButton:true, confirmButtonText:'ยืนยัน', cancelButtonText:'ยกเลิก'})
+  .then(res=>{
+    if (res.isConfirmed){
+      closeVehicleModal();
+      Swal.fire({...dopaSwal, icon:'success', title:'นำเข้าสำนวนคดีสำเร็จ', text:'บันทึกรายละเอียดยานพาหนะ เจ้าของ และผู้ครอบครองลงในสำนวนคดีเรียบร้อยแล้ว โดยไม่มีการพิมพ์ข้อมูลด้วยมือ'});
+    }
+  });
+}
+
+/* ================== หน้าแยก: ตรวจสอบทะเบียนรถ (page-dlt) ================== */
+(function initDltPage(){
+  document.getElementById('dltOffLoc').innerHTML += OFFLOC_LIST.map(o=>`<option value="${o.code}">${o.name}</option>`).join('');
+  document.getElementById('dltTypeRef').innerHTML += VEHTYPE_LIST.map(o=>`<option value="${o.code}">${o.name}</option>`).join('');
+  document.getElementById('dltPlate2').addEventListener('input', e=>{
+    e.target.value = e.target.value.replace(/\D/g,'').slice(0,5);
+    const hint = document.getElementById('dltPlate2Hint');
+    hint.textContent = 'พารามิเตอร์ plate2 (ตัวเลขเท่านั้น)'; hint.classList.remove('bad');
+  });
+})();
+
+let currentDltVehicle = null;
+
+function dltReset(){
+  ['dltOffLoc','dltTypeRef','dltPlate1','dltPlate2'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('dltResultWrap').classList.add('hide');
+  document.getElementById('dltLockedCard').classList.remove('hide');
+  currentDltVehicle = null;
+}
+
+function dltSearch(){
+  const offLoc = document.getElementById('dltOffLoc').value;
+  const vtype = document.getElementById('dltTypeRef').value;
+  const p1 = document.getElementById('dltPlate1').value.trim();
+  const p2 = document.getElementById('dltPlate2').value.trim();
+  const caseNo = document.getElementById('globalCaseNo').value.trim();
+
+  if (!caseNo){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาระบุเลขที่สำนวนคดี', text:'ต้องผูกการสืบค้นกับคดีทุกครั้งเพื่อบันทึก Audit Log'}); return; }
+  if (!offLoc || !vtype || !p1 || !p2){ Swal.fire({...dopaSwal, icon:'warning', title:'กรอกเงื่อนไขไม่ครบ (Invalid Parameters)', text:'ต้องระบุจังหวัด ประเภทรถ หมวดอักษร และเลขทะเบียนให้ครบทุกช่อง'}); return; }
+  if (!/^\d{1,5}$/.test(p2)){
+    const hint = document.getElementById('dltPlate2Hint');
+    hint.textContent = 'รูปแบบเลขทะเบียนไม่ถูกต้อง (Incorrect Plate Number Format)'; hint.classList.add('bad');
+    Swal.fire({...dopaSwal, icon:'warning', title:'รูปแบบเลขทะเบียนไม่ถูกต้อง', text:'เลขทะเบียน (plate2) ต้องเป็นตัวเลขเท่านั้น'});
+    return;
+  }
+
+  Swal.fire({...dopaSwal, title:'กำลังเรียกข้อมูลจากกรมการขนส่งทางบก...', html:'VehicleInfo2Service · getVehicleInfoByPlate', timerProgressBar:true, timer:900, didOpen:()=>Swal.showLoading(), allowOutsideClick:false})
+  .then(()=>{
+    const v = MOCK_VEHICLES.find(x=>x.plate1===p1 && x.plate2===p2 && x.offLocCode===offLoc);
+    document.getElementById('dltLockedCard').classList.toggle('hide', !!v);
+    document.getElementById('dltResultWrap').classList.toggle('hide', !v);
+    if (!v){
+      currentDltVehicle = null;
+      Swal.fire({...dopaSwal, icon:'info', title:'ไม่พบข้อมูลรถ (Data Not Found)', text:'ไม่พบรถตามเลขทะเบียนและจังหวัดที่ระบุในระบบกรมการขนส่งทางบก'});
+      return;
+    }
+    currentDltVehicle = v;
+    renderDltVehicle(v);
+    Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
+  });
+}
+
+function renderDltVehicle(v){
+  document.getElementById('dltTitle').textContent = v.brnDesc + ' ' + v.modelName;
+  document.getElementById('dltSub').textContent = 'ทะเบียน ' + v.plate1 + ' ' + v.plate2 + ' · ' + offLocName(v.offLocCode) + ' · เลขตัวรถ ' + v.numBody;
+  document.getElementById('dltHoldBanner').classList.toggle('hide', v.holdFlag!=='H');
+
+  document.getElementById('dltGridPhysical').innerHTML = `
+    <div class="cell"><span>ยี่ห้อ / แบบรถ</span><strong>${v.brnDesc} / ${v.modelName}</strong></div>
+    <div class="cell"><span>ประเภทรถ</span><strong>${v.vehTypeDesc}</strong></div>
+    <div class="cell"><span>ลักษณะ / มาตรฐานรถ</span><strong>${v.kindDesc}</strong></div>
+    <div class="cell"><span>เลขตัวรถ (numBody)</span><strong>${v.numBody}</strong></div>
+    <div class="cell"><span>เลขเครื่องยนต์ (numEng)</span><strong>${v.numEng}</strong></div>
+    <div class="cell"><span>สี</span><strong>${v.carChkMasColorList.map(c=>c.colorDesc).join(' / ')}</strong></div>
+    <div class="cell"><span>เชื้อเพลิง</span><strong>${v.fuelDesc}</strong></div>
+    <div class="cell"><span>สถานะทางทะเบียน</span><strong>${v.carStatus}</strong></div>`;
+
+  document.getElementById('dltGridReg').innerHTML = `
+    <div class="cell"><span>เลขทะเบียน</span><strong>${v.plate1} ${v.plate2}</strong></div>
+    <div class="cell"><span>จังหวัดที่จดทะเบียน (offLocCode)</span><strong>${offLocName(v.offLocCode)} (${v.offLocCode})</strong></div>
+    <div class="cell"><span>วันที่จดทะเบียนครั้งแรก</span><strong>${v.regDate}</strong></div>
+    <div class="cell"><span>วันสิ้นอายุภาษีประจำปี</span><strong>${v.expDate}</strong></div>`;
+
+  const mismatch = v.docNo1 !== v.docNo2;
+  document.getElementById('dltGridOwner').innerHTML = `
+    <div class="veh-owner-box${mismatch?' mismatch':''}">
+      <h4><i class="fa-solid fa-user-shield" aria-hidden="true"></i>ผู้ถือกรรมสิทธิ์ (เจ้าของตามกฎหมาย)</h4>
+      <div class="cell"><span>เลขประจำตัว</span><strong>${v.docNo1}</strong></div>
+      <div class="cell"><span>ชื่อ-นามสกุล / นิติบุคคล</span><strong>${v.owner1}</strong></div>
+      <div class="cell"><span>ที่อยู่ตามทะเบียน</span><strong>${v.addressOwner1}</strong></div>
+    </div>
+    <div class="veh-owner-box${mismatch?' mismatch':''}">
+      <h4><i class="fa-solid fa-user-check" aria-hidden="true"></i>ผู้ครอบครอง</h4>
+      <div class="cell"><span>เลขประจำตัว</span><strong>${v.docNo2}</strong></div>
+      <div class="cell"><span>ชื่อ-นามสกุล / นิติบุคคล</span><strong>${v.owner2}</strong></div>
+      <div class="cell"><span>ที่อยู่ปัจจุบัน</span><strong>${v.addressOwner2}</strong></div>
+    </div>`;
+  if (mismatch){
+    document.getElementById('dltGridOwner').insertAdjacentHTML('beforeend', '<div class="empty-cell" style="grid-column:1/-1;text-align:left;padding:0;margin-top:2px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true" style="color:var(--red);margin-right:6px"></i>ผู้ถือกรรมสิทธิ์และผู้ครอบครองเป็นคนละบุคคล ควรตรวจสอบความสัมพันธ์และที่มาของการครอบครองเพิ่มเติม</div>');
+  }
+
+  const pivotGroup = document.getElementById('dltPivotGroup');
+  if (mismatch){
+    pivotGroup.innerHTML = pivotControl(v.docNo1, 'ผู้ถือกรรมสิทธิ์', 'dltPivotToDopa') + pivotControl(v.docNo2, 'ผู้ครอบครอง', 'dltPivotToDopa');
+  } else {
+    pivotGroup.innerHTML = pivotControl(v.docNo1, 'เจ้าของ', 'dltPivotToDopa');
+  }
+}
+
+function dltPivotToDopa(docNo){
+  if (isJuristicId(docNo)){ Swal.fire({...dopaSwal, icon:'info', title:'เลขนี้เป็นเลขทะเบียนนิติบุคคล', text:'ไม่สามารถตรวจสอบในระบบ DOPA ได้ ต้องเชื่อมกับกรมพัฒนาธุรกิจการค้า (DBD) แยกต่างหาก'}); return; }
+  switchPage('dopa');
+  document.querySelector("button[data-route='dopa']").scrollIntoView({block:'nearest'});
+  const formatted = docNo.length===13 ? docNo[0]+'-'+docNo.slice(1,5)+'-'+docNo.slice(5,10)+'-'+docNo.slice(10,12)+'-'+docNo.slice(12) : docNo;
+  idInput.value = formatted;
+  idInput.dispatchEvent(new Event('input'));
+  if (!document.getElementById('purpose').value) document.getElementById('purpose').value = 'factfinding';
+  dopaSearch();
+}
+
+function dltAddToCase(){
+  if (!currentDltVehicle) return;
+  const v = currentDltVehicle;
+  const caseNo = document.getElementById('globalCaseNo').value.trim();
+  const label = v.brnDesc + ' ' + v.modelName + ' ทะเบียน ' + v.plate1 + ' ' + v.plate2;
+  Swal.fire({...dopaSwal, icon:'question', title:'ยืนยันการนำเข้าสำนวนคดี', html:`นำยานพาหนะ <b>${label}</b><br>เข้าเป็นพยานหลักฐาน (ทรัพย์สิน)<br>ในคดีเลขที่ <b>${caseNo}</b> ใช่หรือไม่?`, showCancelButton:true, confirmButtonText:'ยืนยัน', cancelButtonText:'ยกเลิก'})
+  .then(res=>{
+    if (res.isConfirmed){
+      Swal.fire({...dopaSwal, icon:'success', title:'นำเข้าสำนวนคดีสำเร็จ', text:'บันทึกรายละเอียดยานพาหนะ เจ้าของ และผู้ครอบครองลงในสำนวนคดีเรียบร้อยแล้ว โดยไม่มีการพิมพ์ข้อมูลด้วยมือ'});
     }
   });
 }
