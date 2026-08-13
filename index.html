@@ -17,6 +17,14 @@
 /* ===== ใช้ร่วมกันทั้งสองหน้า ===== */
 .hide{display:none !important}
   .page-hidden{display:none !important}
+  .audit-log{max-height:220px;overflow:auto}
+  .audit-log table{min-width:640px}
+  .audit-log td{font-size:12px;padding:9px 14px}
+  .locked-panel{display:grid;grid-template-columns:44px 1fr;gap:13px;border:1px dashed #9fb2c6;border-radius:9px;background:#f4f7fa;padding:15px 17px;color:#5b6c82}
+  .locked-panel i{font-size:22px;color:#8497ad}
+  .locked-panel strong{display:block;margin-bottom:4px;color:#42556e;font-size:13.5px}
+  .locked-panel small{display:block;font-size:12px;line-height:1.65}
+  .locked-panel code{background:#e7edf4;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px}
 
 .locked-empty{padding:56px 20px;text-align:center;color:#8a97a9}
 .locked-empty i{font-size:38px;color:#c1cbd9;margin-bottom:12px}
@@ -157,11 +165,6 @@
 #page-egp .score-box{display:flex;align-items:center;justify-content:space-between;gap:14px;border:2px solid #397ab2;border-radius:9px;background:#f4f9fe;padding:14px 16px;margin-bottom:14px}
 #page-egp .score-box .num{font-size:26px;font-weight:600;color:#14294a}
 #page-egp .score-box p{margin:3px 0 0;color:var(--muted);font-size:12px}
-#page-egp .locked-panel{display:grid;grid-template-columns:44px 1fr;gap:13px;border:1px dashed #9fb2c6;border-radius:9px;background:#f4f7fa;padding:15px 17px;color:#5b6c82}
-#page-egp .locked-panel i{font-size:22px;color:#8497ad}
-#page-egp .locked-panel strong{display:block;margin-bottom:4px;color:#42556e;font-size:13.5px}
-#page-egp .locked-panel small{display:block;font-size:12px;line-height:1.65}
-#page-egp .locked-panel code{background:#e7edf4;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px}
 #page-egp .api-trace{overflow:hidden;border:1px solid #cfdcea;border-radius:8px;background:#f7fafd}
 #page-egp .api-trace header{display:flex;align-items:center;gap:8px;padding:9px 13px;background:#173d68;color:#fff;font-size:11.5px;font-weight:500}
 #page-egp .api-trace ul{list-style:none;margin:0;padding:0}
@@ -173,9 +176,6 @@
 #page-egp .import-buttons{display:flex;flex-wrap:wrap;gap:10px}
 #page-egp .quota{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:11.5px}
 #page-egp .quota b{color:#16558f;font-weight:600}
-#page-egp .audit-log{max-height:220px;overflow:auto}
-#page-egp .audit-log table{min-width:640px}
-#page-egp .audit-log td{font-size:12px;padding:9px 14px}
 @media (max-width:820px){#page-egp .toolbar{grid-template-columns:1fr 1fr}#page-egp .toolbar .field.wide{grid-column:span 2}}
 @media (max-width:560px){#page-egp .toolbar, #page-egp .toolbar .field.wide{grid-template-columns:1fr;grid-column:auto}#page-egp .stats{grid-template-columns:1fr 1fr}}
   .case-field{display:flex;align-items:center;gap:8px;border:1px solid #c6d3e2;border-radius:9px;background:#fff;padding:5px 11px}
@@ -188,6 +188,9 @@
 #page-dlt .toolbar{align-items:start}
 #page-dlt .field-btn{display:flex;gap:10px;flex-wrap:wrap}
 #page-dlt .field-btn-spacer{visibility:hidden}
+#page-dlt .toolbar .field.wide{grid-column:span 2}
+@media (max-width:820px){#page-dlt .toolbar .field.wide{grid-column:span 2}}
+@media (max-width:560px){#page-dlt .toolbar .field.wide{grid-column:auto}}
 @media (max-width:820px){#page-dlt .toolbar{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){#page-dlt .toolbar{grid-template-columns:1fr}}
 </style>
@@ -322,7 +325,7 @@
           <!-- ===== แท็บย่อย: ข้อมูลยานพาหนะ (เชื่อมโยงกรมการขนส่งทางบก) ===== -->
           <div id="tab-vehicle" class="hide">
             <div class="veh-intro">
-              <p><i class="fa-solid fa-circle-info" aria-hidden="true"></i> เชื่อมต่อ Web Service กรมการขนส่งทางบก (VehicleInfo2Service) ตามบันทึกข้อตกลงความร่วมมือ ลงวันที่ 13 มิถุนายน 2567 ทุกคำขอส่งเลขบัตรของผู้ยื่นคำขอ (reqDocNo) กำกับเสมอเพื่อยืนยันสิทธิ์การใช้งาน</p>
+              <p><i class="fa-solid fa-circle-info" aria-hidden="true"></i> เชื่อมต่อ Web Service กรมการขนส่งทางบก (VehicleInfo2Service) ภายใต้บันทึกข้อตกลงความร่วมมือที่มีผลบังคับใช้แล้ว ทุกคำขอส่งเลขบัตรของผู้ยื่นคำขอ (reqDocNo) กำกับเสมอเพื่อยืนยันสิทธิ์การใช้งาน</p>
               <span class="req-doc-chip"><i class="fa-solid fa-id-badge" aria-hidden="true"></i>ผู้ยื่นคำขอ (reqDocNo): 3-1099-00456-78-1 · อรรถพล เจ้าหน้าที่ ป.ป.ท.</span>
             </div>
 
@@ -382,7 +385,8 @@
                   <button class="btn" onclick="vehSearchByPlate()" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ค้นหาทะเบียนรถ</button>
                 </div>
               </section>
-              <div class="notice-box" style="margin:-6px 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ตัวอย่างทะเบียนที่มีข้อมูลในระบบทดสอบ: หมวด <b>ฮอ</b> เลข <b>5678</b> จังหวัดเชียงใหม่ ประเภทรถยนต์นั่งส่วนบุคคล</div>
+              <div class="notice-box" style="margin:-6px 0 10px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ตัวอย่างทะเบียนที่มีข้อมูลในระบบทดสอบ: หมวด <b>ฮอ</b> เลข <b>5678</b> จังหวัดเชียงใหม่ ประเภทรถยนต์นั่งส่วนบุคคล</div>
+              <div class="notice-box" style="margin:0 0 16px"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> รหัสจังหวัด (offLocCode) และรหัสประเภทรถ (vehicleTypeRef) ในหน้านี้เป็น<b>ตัวอย่างเพื่อสาธิตเท่านั้น</b> ของจริงต้องอ้างอิงไฟล์ <code>offLocCode-รหัสขนส่งจังหวัดตามทะเบียนรถ.xlsx</code> และ <code>tabtVehicleTypeRef-รหัสอ้างอิงประเภทรถ.xlsx</code> ตามที่ระบุไว้ในเอกสาร "รายละเอียด Web Service v2.0.0 - ปปท - v2.pdf" ซึ่งยังไม่ได้รับไฟล์อ้างอิงทั้งสอง</div>
               <section class="card" id="vehPlateLockedCard">
                 <div class="locked-empty">
                   <i class="fa-solid fa-car-side" aria-hidden="true"></i>
@@ -405,6 +409,16 @@
               <button class="btn gold" onclick="addToCase('พยาน/บุคคลที่เกี่ยวข้อง (Witness)')"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>เพิ่มเป็นพยาน/บุคคลที่เกี่ยวข้อง</button>
             </div>
             <span class="badge" id="caseChipFooter">คดีเลขที่: -</span>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="card-head"><div><h2>Audit Log การเข้าถึงข้อมูล</h2><p>บันทึกผู้ใช้ เงื่อนไขที่สืบค้น เลขที่สำนวน และเวลา เพื่อการตรวจสอบย้อนหลังตาม PDPA</p></div></div>
+          <div class="table-wrap audit-log">
+            <table>
+              <thead><tr><th>เวลา</th><th>ผู้ใช้งาน</th><th>การกระทำ</th><th>รายละเอียด</th><th>เลขที่สำนวน</th></tr></thead>
+              <tbody id="dopaAuditBody"></tbody>
+            </table>
           </div>
         </section>
 
@@ -626,53 +640,89 @@
       <div class="breadcrumb">E-CMIS <b>›</b> เครื่องมือสืบสวน <b>›</b> ตรวจสอบทะเบียนรถ (กรมการขนส่งทางบก)</div>
       <div class="page-head">
         <div>
-          <h1>ตรวจสอบยานพาหนะจากเลขทะเบียนรถ</h1>
-          <p>เชื่อมต่อ Web Service กรมการขนส่งทางบก (VehicleInfo2Service · getVehicleInfoByPlate) สำหรับกรณีมีเบาะแสเป็นเลขทะเบียนรถ เช่น จากภาพกล้องวงจรปิดหรือคำให้การ แต่ยังไม่ทราบตัวบุคคล</p>
+          <h1>ตรวจสอบยานพาหนะจากเลขทะเบียนรถหรือเลขที่เอกสาร</h1>
+          <p>เชื่อมต่อ Web Service กรมการขนส่งทางบก (VehicleInfo2Service) รองรับทั้งการค้นด้วยเลขทะเบียนรถ (getVehicleInfoByPlate) และค้นด้วยเลขที่เอกสารเจ้าของรถ (getVehicleInfoByDocNo) สำหรับกรณีมีเบาะแสเป็นทะเบียนรถ หรือทราบเลขบัตร/เลขนิติบุคคลของเป้าหมายแต่ยังไม่ได้เปิดโปรไฟล์ในระบบ DOPA</p>
         </div>
         <div class="actions"><span class="badge case-chip-live" id="caseChipTopDlt"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</span><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>บันทึก Audit Log ทุกครั้ง</span></div>
       </div>
 
       <div class="veh-intro">
-        <p><i class="fa-solid fa-circle-info" aria-hidden="true"></i> หากทราบตัวบุคคลอยู่แล้ว แนะนำให้ค้นจากแท็บ "ตรวจสอบประวัติบุคคล (DOPA Linkage)" แทน เพราะจะดึงรถทุกคันของบุคคลนั้นได้ในคลิกเดียว หน้านี้เหมาะสำหรับกรณีมีเบาะแสเป็นทะเบียนรถเท่านั้น</p>
+        <p><i class="fa-solid fa-circle-info" aria-hidden="true"></i> หากทราบตัวบุคคล (บุคคลธรรมดา) อยู่แล้ว แนะนำให้ค้นจากแท็บ "ตรวจสอบประวัติบุคคล (DOPA Linkage)" แทน เพราะดึงรถทุกคันได้ในคลิกเดียว หน้านี้เหมาะสำหรับกรณีมีเบาะแสเป็นทะเบียนรถ หรือมีเลขบัตร/เลขนิติบุคคลอยู่แล้วจากแหล่งอื่น (เช่น DBD) โดยยังไม่ผ่าน DOPA</p>
         <span class="req-doc-chip"><i class="fa-solid fa-id-badge" aria-hidden="true"></i>ผู้ยื่นคำขอ (reqDocNo): 3-1099-00456-78-1 · อรรถพล เจ้าหน้าที่ ป.ป.ท.</span>
       </div>
 
-      <section class="toolbar">
-        <div class="field">
-          <label>สำนักงานขนส่งจังหวัดที่จดทะเบียน <span style="color:var(--red)">*</span></label>
-          <select id="dltOffLoc"><option value="">-- เลือกจังหวัด --</option></select>
-          <span class="hint">พารามิเตอร์ offLocCode</span>
-        </div>
-        <div class="field">
-          <label>ประเภทรถ <span style="color:var(--red)">*</span></label>
-          <select id="dltTypeRef"><option value="">-- เลือกประเภทรถ --</option></select>
-          <span class="hint">พารามิเตอร์ vehicleTypeRef</span>
-        </div>
-        <div class="field">
-          <label>หมวดอักษรทะเบียน <span style="color:var(--red)">*</span></label>
-          <input id="dltPlate1" maxlength="5" placeholder="เช่น กข">
-          <span class="hint">พารามิเตอร์ plate1</span>
-        </div>
-        <div class="field">
-          <label>เลขทะเบียน <span style="color:var(--red)">*</span></label>
-          <input id="dltPlate2" maxlength="5" placeholder="เช่น 1234" inputmode="numeric">
-          <span class="hint" id="dltPlate2Hint">พารามิเตอร์ plate2 (ตัวเลขเท่านั้น)</span>
-        </div>
-        <div class="field field-btn">
-          <label class="field-btn-spacer" aria-hidden="true">&nbsp;</label>
-          <button class="btn secondary" onclick="dltReset()" type="button"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างเงื่อนไข</button>
-          <button class="btn" onclick="dltSearch()" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ค้นหาทะเบียนรถ</button>
-        </div>
-      </section>
-      <div class="notice-box" style="margin:-6px 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ตัวอย่างทะเบียนที่มีข้อมูลในระบบทดสอบ: หมวด <b>ฮก</b> เลข <b>8888</b> จังหวัดภูเก็ต ประเภทรถยนต์นั่งส่วนบุคคล (ติดสถานะอายัด) — ดูรายการทะเบียนทดสอบทั้งหมดได้ในเอกสาร test-data-dopa-dlt.md</div>
+      <div class="veh-mode-switch" role="tablist" aria-label="วิธีค้นหายานพาหนะ">
+        <button class="active" data-dltmode="plate" onclick="switchDltMode('plate')" type="button"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> ค้นจากทะเบียนรถ <small>getVehicleInfoByPlate</small></button>
+        <button data-dltmode="doc" onclick="switchDltMode('doc')" type="button"><i class="fa-solid fa-id-card" aria-hidden="true"></i> ค้นจากเลขบัตร / เลขนิติบุคคล <small>getVehicleInfoByDocNo</small></button>
+      </div>
+
+      <div id="dltMode-plate">
+        <section class="toolbar">
+          <div class="field">
+            <label>สำนักงานขนส่งจังหวัดที่จดทะเบียน <span style="color:var(--red)">*</span></label>
+            <select id="dltOffLoc"><option value="">-- เลือกจังหวัด --</option></select>
+            <span class="hint">พารามิเตอร์ offLocCode</span>
+          </div>
+          <div class="field">
+            <label>ประเภทรถ <span style="color:var(--red)">*</span></label>
+            <select id="dltTypeRef"><option value="">-- เลือกประเภทรถ --</option></select>
+            <span class="hint">พารามิเตอร์ vehicleTypeRef</span>
+          </div>
+          <div class="field">
+            <label>หมวดอักษรทะเบียน <span style="color:var(--red)">*</span></label>
+            <input id="dltPlate1" maxlength="5" placeholder="เช่น กข">
+            <span class="hint">พารามิเตอร์ plate1</span>
+          </div>
+          <div class="field">
+            <label>เลขทะเบียน <span style="color:var(--red)">*</span></label>
+            <input id="dltPlate2" maxlength="5" placeholder="เช่น 1234" inputmode="numeric">
+            <span class="hint" id="dltPlate2Hint">พารามิเตอร์ plate2 (ตัวเลขเท่านั้น)</span>
+          </div>
+          <div class="field field-btn">
+            <label class="field-btn-spacer" aria-hidden="true">&nbsp;</label>
+            <button class="btn secondary" onclick="dltReset()" type="button"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างเงื่อนไข</button>
+            <button class="btn" onclick="dltSearch()" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ค้นหาทะเบียนรถ</button>
+          </div>
+        </section>
+        <div class="notice-box" style="margin:-6px 0 10px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ตัวอย่างทะเบียนที่มีข้อมูลในระบบทดสอบ: หมวด <b>ฮก</b> เลข <b>8888</b> จังหวัดภูเก็ต ประเภทรถยนต์นั่งส่วนบุคคล (ติดสถานะอายัด) — ดูรายการทะเบียนทดสอบทั้งหมดได้ในเอกสาร test-data-dopa-dlt.md</div>
+        <div class="notice-box" style="margin:0 0 16px"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> รหัสจังหวัด (offLocCode) และรหัสประเภทรถ (vehicleTypeRef) ในหน้านี้เป็น<b>ตัวอย่างเพื่อสาธิตเท่านั้น</b> ของจริงต้องอ้างอิงไฟล์ <code>offLocCode-รหัสขนส่งจังหวัดตามทะเบียนรถ.xlsx</code> และ <code>tabtVehicleTypeRef-รหัสอ้างอิงประเภทรถ.xlsx</code> ตามที่ระบุไว้ในเอกสาร "รายละเอียด Web Service v2.0.0 - ปปท - v2.pdf" ซึ่งยังไม่ได้รับไฟล์อ้างอิงทั้งสอง</div>
+      </div>
+
+      <div id="dltMode-doc" class="hide">
+        <section class="toolbar">
+          <div class="field wide">
+            <label>เลขที่เอกสาร (เลขบัตรประชาชน หรือเลขทะเบียนนิติบุคคล) <span style="color:var(--red)">*</span></label>
+            <input id="dltDocNo" maxlength="20" placeholder="เช่น 1234567890123 หรือ 0105561098765" inputmode="numeric">
+            <span class="hint">พารามิเตอร์ docNo — ใช้ได้ทั้งเลขบัตรประชาชน 13 หลักและเลขทะเบียนนิติบุคคล 13 หลัก</span>
+          </div>
+          <div class="field field-btn">
+            <label class="field-btn-spacer" aria-hidden="true">&nbsp;</label>
+            <button class="btn secondary" onclick="dltDocReset()" type="button"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างเงื่อนไข</button>
+            <button class="btn" onclick="dltDocSearch()" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ค้นหา</button>
+          </div>
+        </section>
+        <div class="notice-box" style="margin:-6px 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ตัวอย่างที่มีข้อมูลในระบบทดสอบ: เลขบัตร <b>2021098765432</b> (ปิติ เลิศวิไล มีรถ 4 คัน) หรือเลขนิติบุคคล <b>0105561098765</b> (บริษัท รุ่งเรืองทรัพย์ กรุ๊ป จำกัด) — ดูรายชื่อทดสอบทั้งหมดได้ในเอกสาร test-data-dopa-dlt.md</div>
+      </div>
 
       <section class="card" id="dltLockedCard">
         <div class="locked-empty">
           <i class="fa-solid fa-car-side" aria-hidden="true"></i>
           <strong>ยังไม่มีข้อมูลแสดงผล</strong>
-          <span>กรอกเงื่อนไขให้ครบทั้ง 4 ช่อง แล้วกด "ค้นหาทะเบียนรถ"</span>
+          <span>กรอกเงื่อนไขให้ครบ แล้วกด "ค้นหา"</span>
         </div>
       </section>
+
+      <div id="dltDocListWrap" class="hide">
+        <section class="card" style="margin-bottom:16px">
+          <div class="card-head"><div><h2>ผลการค้นหา</h2><p>พบยานพาหนะที่ผูกกับเลขที่เอกสารนี้ กดดูรายละเอียดเพื่อดูข้อมูลเต็ม</p></div></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ทะเบียน / จังหวัด</th><th>ยี่ห้อ / รุ่น</th><th>ประเภทรถ</th><th>บทบาทของเลขที่ค้น</th><th>สถานะ</th><th></th></tr></thead>
+              <tbody id="dltDocBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
 
       <div id="dltResultWrap" class="hide">
         <div class="veh-modal-hold hide" id="dltHoldBanner" style="margin:0 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> รถคันนี้ติดสถานะ "อายัด (Hold)" ตามคำสั่งศาลหรือหน่วยงานบังคับใช้กฎหมาย — โปรดตรวจสอบก่อนดำเนินการใด ๆ เกี่ยวกับทรัพย์สินนี้</div>
@@ -705,6 +755,32 @@
           </div>
         </section>
       </div>
+
+      <section class="card" style="margin-top:16px">
+        <div class="card-head"><div><h2>Audit Log การเข้าถึงข้อมูล</h2><p>บันทึกผู้ใช้ เงื่อนไขที่สืบค้น เลขที่สำนวน และเวลา เพื่อการตรวจสอบย้อนหลังตาม PDPA</p></div></div>
+        <div class="table-wrap audit-log">
+          <table>
+            <thead><tr><th>เวลา</th><th>ผู้ใช้งาน</th><th>การกระทำ</th><th>รายละเอียด</th><th>เลขที่สำนวน</th></tr></thead>
+            <tbody id="dltAuditBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:16px">
+        <div class="card-head"><div><h2>บริการที่อยู่ระหว่างขอเปิดสิทธิ์การใช้งาน</h2><p>บริการอื่นของกรมการขนส่งทางบกที่ ป.ป.ท. ระบุความต้องการเชื่อมโยงไว้ แต่ยังไม่ได้รับสิทธิ์เข้าถึงระบบทดสอบ (UAT)</p></div></div>
+        <div class="locked-panel" style="margin:0 19px 19px">
+          <i class="fa-solid fa-lock" aria-hidden="true"></i>
+          <div>
+            <strong>ยังไม่สามารถเรียกใช้งานได้ในระยะนี้ — รอกรมการขนส่งทางบกเปิดสิทธิ์</strong>
+            <small>
+              • ข้อมูลใบอนุญาตขับรถ <code>[DLT-001-01]</code> — ประวัติการถือใบขับขี่ ประเภท และสถานะใบอนุญาต<br>
+              • ข้อมูลใบอนุญาตผู้ประจำรถ <code>[DLT-003-01]</code> — สำหรับผู้ขับขี่รถขนส่งสาธารณะและรถบรรทุกขนาดใหญ่<br>
+              • บริการสืบค้นประวัติทางทะเบียนย่อยอื่น ๆ ตามบัญชีข้อมูลภาครัฐ (Data Catalog)<br><br>
+              ปัจจุบันใช้งานได้เฉพาะ <b>VehicleInfo2Service</b> จำนวน 2 operation คือ <code>getVehicleInfoByPlate</code> และ <code>getVehicleInfoByDocNo</code> ตามเอกสาร "รายละเอียด Web Service v2.0.0 - ปปท - v2.pdf"
+            </small>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 </div>
@@ -852,6 +928,22 @@ function pivotControl(docNo, label, onclickFn){
   return `<button class="btn secondary" onclick="${onclickFn}('${docNo}')" type="button"><i class="fa-solid fa-right-left" aria-hidden="true"></i>ตรวจสอบ${label}ใน DOPA</button>`;
 }
 
+/* บันทึก Audit Log ของแท็บ DOPA (ใช้ USER และ nowStr() ที่ประกาศไว้ในสคริปต์ของแท็บ e-GP
+   อ้างอิงข้ามบล็อกสคริปต์ได้เพราะทุกสคริปต์ในหน้าเดียวกันใช้ global scope ร่วมกัน
+   และฟังก์ชันเหล่านี้จะถูกเรียกหลังโหลดหน้าเสร็จสมบูรณ์เท่านั้น (ผ่าน onclick) */
+function dopaAddAudit(action, detail, caseNo){
+  const tb = document.getElementById('dopaAuditBody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${nowStr()}</td><td>${USER}</td><td><strong>${action}</strong></td><td>${detail}</td><td>${caseNo||'-'}</td>`;
+  tb.insertBefore(tr, tb.firstChild);
+}
+function dltAddAudit(action, detail, caseNo){
+  const tb = document.getElementById('dltAuditBody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${nowStr()}</td><td>${USER}</td><td><strong>${action}</strong></td><td>${detail}</td><td>${caseNo||'-'}</td>`;
+  tb.insertBefore(tr, tb.firstChild);
+}
+
 function dopaSearch(){
   const rawId = idInput.value.replace(/\D/g,'');
   const caseNo = document.getElementById('globalCaseNo').value.trim();
@@ -876,6 +968,7 @@ function dopaSearch(){
       return;
     }
     renderRecord(record, caseNo);
+    dopaAddAudit('สืบค้นข้อมูลบุคคล', record.nameTh + ' (' + record.citizenId + ') — วัตถุประสงค์: ' + document.getElementById('purpose').selectedOptions[0].text, caseNo);
     Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
   });
 }
@@ -963,6 +1056,7 @@ function addToCase(role){
   Swal.fire({...dopaSwal, icon:'question', title:'ยืนยันการนำเข้าสำนวนคดี', html:`นำ <b>${name}</b> เข้าเป็น<br><b>${role}</b><br>ในคดีเลขที่ <b>${caseNo}</b> ใช่หรือไม่?`, showCancelButton:true, confirmButtonText:'ยืนยัน', cancelButtonText:'ยกเลิก'})
   .then(res=>{
     if (res.isConfirmed){
+      dopaAddAudit('นำข้อมูลเข้าสำนวนคดี', role + ' — ' + name, caseNo);
       Swal.fire({...dopaSwal, icon:'success', title:'นำเข้าสำนวนคดีสำเร็จ', text:`บันทึกชื่อ ที่อยู่ และประวัติของ ${name} ลงในสำนวนคดีเรียบร้อยแล้ว โดยไม่มีการพิมพ์ข้อมูลด้วยมือ`});
     }
   });
@@ -1187,6 +1281,7 @@ function vehSearchByPerson(){
         <td><button class="btn secondary" onclick="openVehicleModal('${v.id}')" type="button">ดูรายละเอียด</button></td>
       </tr>`;
     }).join('');
+    dopaAddAudit('ตรวจสอบยานพาหนะจากบุคคล (getVehicleInfoByDocNo)', currentPerson.nameTh + ' — พบ ' + list.length + ' คัน', caseNo);
     Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ '+list.length+' คัน', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
   });
 }
@@ -1231,10 +1326,10 @@ function vehSearchByPlate(){
           <button class="btn secondary" onclick="openVehicleModal('${v.id}')" type="button"><i class="fa-solid fa-eye" aria-hidden="true"></i>ดูรายละเอียดเต็ม</button>
         </div>
       </div>`;
+    dopaAddAudit('ค้นหาทะเบียนรถ (getVehicleInfoByPlate)', v.plate1 + ' ' + v.plate2 + ' · ' + offLocName(v.offLocCode) + ' — ' + v.brnDesc + ' ' + v.modelName, caseNo);
     Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
   });
 }
-
 let currentVehicle = null;
 function openVehicleModal(id){
   const v = MOCK_VEHICLES.find(x=>x.id===id);
@@ -1287,6 +1382,7 @@ function openVehicleModal(id){
   }
 
   document.getElementById('vehicleModalMask').classList.remove('hide');
+  dopaAddAudit('เปิดดูรายละเอียดยานพาหนะ', v.brnDesc + ' ' + v.modelName + ' ทะเบียน ' + v.plate1 + ' ' + v.plate2, document.getElementById('caseChipFooter').textContent.replace('คดีเลขที่: ',''));
 }
 function closeVehicleModal(){ document.getElementById('vehicleModalMask').classList.add('hide'); }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeVehicleModal(); });
@@ -1311,6 +1407,7 @@ function addVehicleToCase(){
   .then(res=>{
     if (res.isConfirmed){
       closeVehicleModal();
+      dopaAddAudit('นำยานพาหนะเข้าสำนวนคดี', label, caseNo);
       Swal.fire({...dopaSwal, icon:'success', title:'นำเข้าสำนวนคดีสำเร็จ', text:'บันทึกรายละเอียดยานพาหนะ เจ้าของ และผู้ครอบครองลงในสำนวนคดีเรียบร้อยแล้ว โดยไม่มีการพิมพ์ข้อมูลด้วยมือ'});
     }
   });
@@ -1325,12 +1422,34 @@ function addVehicleToCase(){
     const hint = document.getElementById('dltPlate2Hint');
     hint.textContent = 'พารามิเตอร์ plate2 (ตัวเลขเท่านั้น)'; hint.classList.remove('bad');
   });
+  document.getElementById('dltDocNo').addEventListener('input', e=>{
+    e.target.value = e.target.value.replace(/\D/g,'').slice(0,20);
+  });
 })();
 
 let currentDltVehicle = null;
 
+function switchDltMode(mode){
+  document.querySelectorAll('.veh-mode-switch button[data-dltmode]').forEach(b=>b.classList.toggle('active', b.dataset.dltmode===mode));
+  document.getElementById('dltMode-plate').classList.toggle('hide', mode!=='plate');
+  document.getElementById('dltMode-doc').classList.toggle('hide', mode!=='doc');
+  document.getElementById('dltDocListWrap').classList.add('hide');
+  document.getElementById('dltResultWrap').classList.add('hide');
+  document.getElementById('dltLockedCard').classList.remove('hide');
+  currentDltVehicle = null;
+}
+
 function dltReset(){
   ['dltOffLoc','dltTypeRef','dltPlate1','dltPlate2'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('dltDocListWrap').classList.add('hide');
+  document.getElementById('dltResultWrap').classList.add('hide');
+  document.getElementById('dltLockedCard').classList.remove('hide');
+  currentDltVehicle = null;
+}
+
+function dltDocReset(){
+  document.getElementById('dltDocNo').value = '';
+  document.getElementById('dltDocListWrap').classList.add('hide');
   document.getElementById('dltResultWrap').classList.add('hide');
   document.getElementById('dltLockedCard').classList.remove('hide');
   currentDltVehicle = null;
@@ -1364,8 +1483,55 @@ function dltSearch(){
     }
     currentDltVehicle = v;
     renderDltVehicle(v);
+    dltAddAudit('ค้นหาทะเบียนรถ (getVehicleInfoByPlate)', v.plate1 + ' ' + v.plate2 + ' · ' + offLocName(v.offLocCode) + ' — ' + v.brnDesc + ' ' + v.modelName, caseNo);
     Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
   });
+}
+
+function dltDocSearch(){
+  const raw = document.getElementById('dltDocNo').value.replace(/\D/g,'');
+  const caseNo = document.getElementById('globalCaseNo').value.trim();
+
+  if (!caseNo){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาระบุเลขที่สำนวนคดี', text:'ต้องผูกการสืบค้นกับคดีทุกครั้งเพื่อบันทึก Audit Log'}); return; }
+  if (raw.length!==13){ Swal.fire({...dopaSwal, icon:'warning', title:'กรอกเงื่อนไขไม่ครบ (Invalid Parameters)', text:'เลขที่เอกสาร (docNo) ต้องมี 13 หลัก ไม่ว่าจะเป็นเลขบัตรประชาชนหรือเลขทะเบียนนิติบุคคล'}); return; }
+
+  Swal.fire({...dopaSwal, title:'กำลังเรียกข้อมูลจากกรมการขนส่งทางบก...', html:'VehicleInfo2Service · getVehicleInfoByDocNo', timerProgressBar:true, timer:900, didOpen:()=>Swal.showLoading(), allowOutsideClick:false})
+  .then(()=>{
+    const list = MOCK_VEHICLES.filter(v=>v.docNo1===raw || v.docNo2===raw);
+    document.getElementById('dltResultWrap').classList.add('hide');
+    currentDltVehicle = null;
+    document.getElementById('dltLockedCard').classList.toggle('hide', list.length>0);
+    document.getElementById('dltDocListWrap').classList.toggle('hide', list.length===0);
+    if (list.length===0){
+      Swal.fire({...dopaSwal, icon:'info', title:'ไม่พบยานพาหนะ (Data Not Found)', text:'ไม่พบรถที่มีเลขที่เอกสารนี้เป็นเจ้าของหรือผู้ครอบครองในระบบกรมการขนส่งทางบก'});
+      return;
+    }
+    document.getElementById('dltDocBody').innerHTML = list.map(v=>{
+      const isOwner = v.docNo1===raw, isPoss = v.docNo2===raw;
+      const role = isOwner && isPoss ? 'เจ้าของ และผู้ครอบครอง' : (isOwner ? 'เจ้าของ (ผู้ครอบครองเป็นบุคคล/นิติบุคคลอื่น)' : 'ผู้ครอบครอง (เจ้าของเป็นบุคคล/นิติบุคคลอื่น)');
+      const mismatch = !(isOwner && isPoss);
+      return `<tr>
+        <td><strong>${v.plate1} ${v.plate2}</strong><small>${offLocName(v.offLocCode)}</small></td>
+        <td><strong>${v.brnDesc}</strong><small>${v.modelName}</small></td>
+        <td>${v.vehTypeDesc}</td>
+        <td><span class="role-chip ${mismatch?'mismatch':''}">${role}</span></td>
+        <td>${v.holdFlag==='H' ? '<span class="badge danger"><i class="fa-solid fa-lock" aria-hidden="true"></i>อายัด (Hold)</span>' : `<span class="badge success">${v.carStatus}</span>`}</td>
+        <td><button class="btn secondary" onclick="selectDltDocVehicle('${v.id}')" type="button">ดูรายละเอียด</button></td>
+      </tr>`;
+    }).join('');
+    dltAddAudit('ค้นหาด้วยเลขบัตร/นิติบุคคล (getVehicleInfoByDocNo)', raw + ' — พบ ' + list.length + ' คัน', caseNo);
+    Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ '+list.length+' คัน', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
+  });
+}
+
+function selectDltDocVehicle(id){
+  const v = MOCK_VEHICLES.find(x=>x.id===id);
+  if (!v) return;
+  currentDltVehicle = v;
+  renderDltVehicle(v);
+  document.getElementById('dltResultWrap').classList.remove('hide');
+  dltAddAudit('เปิดดูรายละเอียดยานพาหนะ', v.brnDesc + ' ' + v.modelName + ' ทะเบียน ' + v.plate1 + ' ' + v.plate2, document.getElementById('globalCaseNo').value.trim());
+  document.getElementById('dltResultWrap').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 function renderDltVehicle(v){
@@ -1417,6 +1583,7 @@ function renderDltVehicle(v){
 
 function dltPivotToDopa(docNo){
   if (isJuristicId(docNo)){ Swal.fire({...dopaSwal, icon:'info', title:'เลขนี้เป็นเลขทะเบียนนิติบุคคล', text:'ไม่สามารถตรวจสอบในระบบ DOPA ได้ ต้องเชื่อมกับกรมพัฒนาธุรกิจการค้า (DBD) แยกต่างหาก'}); return; }
+  dltAddAudit('ย้อนกลับไปตรวจสอบบุคคลใน DOPA', 'เลขบัตร ' + docNo, document.getElementById('globalCaseNo').value.trim());
   switchPage('dopa');
   document.querySelector("button[data-route='dopa']").scrollIntoView({block:'nearest'});
   const formatted = docNo.length===13 ? docNo[0]+'-'+docNo.slice(1,5)+'-'+docNo.slice(5,10)+'-'+docNo.slice(10,12)+'-'+docNo.slice(12) : docNo;
@@ -1434,6 +1601,7 @@ function dltAddToCase(){
   Swal.fire({...dopaSwal, icon:'question', title:'ยืนยันการนำเข้าสำนวนคดี', html:`นำยานพาหนะ <b>${label}</b><br>เข้าเป็นพยานหลักฐาน (ทรัพย์สิน)<br>ในคดีเลขที่ <b>${caseNo}</b> ใช่หรือไม่?`, showCancelButton:true, confirmButtonText:'ยืนยัน', cancelButtonText:'ยกเลิก'})
   .then(res=>{
     if (res.isConfirmed){
+      dltAddAudit('นำยานพาหนะเข้าสำนวนคดี', label, caseNo);
       Swal.fire({...dopaSwal, icon:'success', title:'นำเข้าสำนวนคดีสำเร็จ', text:'บันทึกรายละเอียดยานพาหนะ เจ้าของ และผู้ครอบครองลงในสำนวนคดีเรียบร้อยแล้ว โดยไม่มีการพิมพ์ข้อมูลด้วยมือ'});
     }
   });
