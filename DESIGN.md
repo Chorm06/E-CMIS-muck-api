@@ -50,7 +50,10 @@ Light operational workspace for government case officers working on desktop disp
 ## Content Rules
 
 - Use `ที่อยู่ตามทะเบียนบ้าน`, not `ที่อยู่ปัจจุบัน`
+- Separate `ที่อยู่ตามทะเบียนบ้าน` from `ที่อยู่บนบัตรประชาชน`; the latter always carries a warning that it may be outdated
 - Use `ข้อมูลทะเบียนเพิ่มเติม`, not `ข้อมูลเชิงลึก`
 - Distinguish `ไม่พบข้อมูล`, `ไม่ได้รับสิทธิ์`, and `บริการไม่พร้อม`
 - Label all mock data as Sandbox Mock
 - Never invent a service field such as photo capture date when it is absent from the official output specification
+- Printed person reports use the house-registration address, list every known name, and source contact phone numbers from the E-CMIS case rather than DOPA
+- Historical portrait UI remains a marked mock until its service ID and access contract are confirmed
