@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>E-CMIS ระบบเชื่อมโยงข้อมูลเพื่องานคดี (DOPA / ภาษีไปไหน e-GP)</title>
+<title>E-CMIS ระบบเชื่อมโยงข้อมูลเพื่องานคดี</title>
 <link rel="stylesheet" href="./assets/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="./assets/sweetalert2/sweetalert2.min.css">
 <link rel="stylesheet" href="./assets/mockup.css">
@@ -61,36 +61,129 @@
 @media (max-width:560px){.veh-detail-grid{grid-template-columns:1fr}.veh-mode-switch button{min-width:100%}}
 
 
-/* ===== เฉพาะหน้าตรวจสอบประวัติบุคคล ===== */
-#page-dopa .id-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:9px;padding-right:6px}
-#page-dopa .id-photo{width:132px;height:160px;border-radius:9px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(150deg,#e4ebf3,#c9d6e6);display:grid;place-items:center;color:#7f93ac}
-#page-dopa .id-photo i{font-size:46px}
-#page-dopa .id-photo-date{font-size:11px;color:var(--muted);text-align:center}
-#page-dopa .status-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600}
-#page-dopa .status-pill.alive{background:var(--green2);color:var(--green)}
-#page-dopa .status-pill.dead{background:var(--red2);color:var(--red)}
-#page-dopa .status-pill i{font-size:9px}
-#page-dopa .id-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 22px;flex:1}
-#page-dopa .id-info-grid .cell span{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}
-#page-dopa .id-info-grid .cell strong{display:block;font-size:14.5px;font-weight:600;color:var(--ink)}
-#page-dopa .id-card-body{display:flex;gap:24px;padding:19px}
-@media (max-width:760px){#page-dopa .id-card-body{flex-direction:column}#page-dopa .id-info-grid{grid-template-columns:1fr 1fr}}
-#page-dopa .addr-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px;padding:11px 14px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:13.5px;grid-column:1/-1}
-#page-dopa .addr-row button{flex:0 0 auto}
-#page-dopa .name-history-old{color:#9aa7ba;text-decoration:line-through}
-#page-dopa .name-history-new{color:var(--ink);font-weight:600}
-#page-dopa .name-history-old + i{margin:0 8px;color:#9aa7ba}
-#page-dopa .empty-cell{padding:34px 10px;text-align:center;color:#8a97a9;font-size:13px}
-#page-dopa .death-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 26px;padding:18px 19px}
-#page-dopa .death-grid .cell span{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}
-#page-dopa .death-grid .cell strong{display:block;font-size:14.5px;font-weight:600;color:var(--red)}
-@media (max-width:600px){#page-dopa .death-grid{grid-template-columns:1fr}}
-#page-dopa .import-actions{display:flex;flex-wrap:wrap;gap:10px;padding:18px 19px;align-items:center;justify-content:space-between}
-#page-dopa .import-buttons{display:flex;flex-wrap:wrap;gap:10px}
-#page-dopa .id-mask-hint{color:var(--muted);font-size:11px;margin-top:5px;display:block}
-#page-dopa .id-mask-hint.bad{color:var(--red)}
-#page-dopa .toolbar{align-items:start}
-#page-dopa .field-btn-spacer{visibility:hidden}
+/* ===== DOPA Linkage Center 2: spec-driven investigation workflow ===== */
+#page-dopa .dopa-context{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;padding:10px 13px;border:1px solid #c9d8e7;border-radius:8px;background:#f4f8fc;color:#425872;font-size:12px}
+#page-dopa .dopa-context>div{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
+#page-dopa .dopa-context i{color:var(--blue)}
+#page-dopa .dopa-context code{color:#174f83;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px}
+#page-dopa .dopa-search-tool{margin-bottom:16px;border:1px solid var(--line);border-radius:8px;background:var(--paper);box-shadow:var(--shadow)}
+#page-dopa .dopa-search-modes{display:flex;gap:4px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid var(--line);background:#f5f8fb}
+#page-dopa .dopa-search-modes button{display:inline-flex;align-items:center;gap:7px;min-height:36px;border:1px solid transparent;border-radius:6px;background:transparent;padding:7px 11px;color:#576a81;white-space:nowrap}
+#page-dopa .dopa-search-modes button.active{border-color:#a9c1d8;background:#e7f0f8;color:#174f83;font-weight:600}
+#page-dopa .dopa-search-modes button:focus-visible{outline:3px solid #d7b84c;outline-offset:1px}
+#page-dopa .dopa-search-body{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(220px,.7fr) auto;gap:12px;align-items:end;padding:16px}
+#page-dopa .dopa-query-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+#page-dopa .dopa-query-fields.pid{grid-template-columns:minmax(260px,1fr)}
+#page-dopa .dopa-search-actions{display:flex;gap:8px;justify-content:flex-end}
+#page-dopa .dopa-hint{display:block;margin-top:5px;color:var(--muted);font-size:10.5px;line-height:1.5}
+#page-dopa .dopa-hint.bad{color:var(--red)}
+#page-dopa .dopa-demo-tools{margin:0 16px 14px;border-top:1px solid #e5eaf0;padding-top:10px}
+#page-dopa .dopa-demo-tools summary,#page-dopa .dopa-tech summary{cursor:pointer;color:#52677f;font-size:11.5px;font-weight:500}
+#page-dopa .dopa-demo-grid{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:12px;align-items:end;padding-top:10px}
+#page-dopa .dopa-demo-grid p{margin:0;color:var(--muted);font-size:11px;line-height:1.55}
+#page-dopa .dopa-empty{padding:48px 20px;text-align:center;color:#7d8ca0}
+#page-dopa .dopa-empty i{display:block;margin-bottom:12px;color:#9fb0c2;font-size:34px}
+#page-dopa .dopa-empty strong{display:block;margin-bottom:5px;color:#43576f;font-size:15px}
+#page-dopa .dopa-empty span{font-size:12px;line-height:1.65}
+#page-dopa .dopa-loading{display:grid;grid-template-columns:44px 1fr;gap:13px;align-items:center;padding:22px}
+#page-dopa .dopa-loading-icon{display:grid;width:42px;height:42px;place-items:center;border-radius:8px;background:#e7f0f8;color:var(--blue);font-size:18px}
+#page-dopa .dopa-loading h2{margin:0 0 3px;font-size:15px}
+#page-dopa .dopa-loading p{margin:0;color:var(--muted);font-size:12px}
+#page-dopa .dopa-loading-line{height:4px;margin-top:10px;overflow:hidden;border-radius:999px;background:#e2e9f0}
+#page-dopa .dopa-loading-line span{display:block;width:68%;height:100%;background:var(--blue);animation:dopa-progress 800ms ease-out infinite alternate}
+@keyframes dopa-progress{from{transform:translateX(-35%)}to{transform:translateX(98%)}}
+#page-dopa .dopa-candidate-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line)}
+#page-dopa .dopa-candidate-head h2{margin:0 0 3px;font-size:17px}
+#page-dopa .dopa-candidate-head p{margin:0;color:var(--muted);font-size:12px}
+#page-dopa .dopa-candidate{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.55fr);gap:0}
+#page-dopa .dopa-candidate-main{padding:20px 22px;border-right:1px solid var(--line)}
+#page-dopa .dopa-candidate-name{display:flex;align-items:flex-start;gap:13px}
+#page-dopa .dopa-candidate-avatar{display:grid;width:48px;height:48px;flex:0 0 48px;place-items:center;border-radius:8px;background:#e7eef6;color:#56718c;font-size:20px}
+#page-dopa .dopa-candidate-name h3{margin:0 0 4px;font-size:19px;font-weight:600}
+#page-dopa .dopa-candidate-name p{margin:0;color:var(--muted);font-size:12px}
+#page-dopa .dopa-candidate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px 18px;margin-top:18px}
+#page-dopa .dopa-candidate-grid span,#page-dopa .dopa-field span{display:block;margin-bottom:3px;color:var(--muted);font-size:10.5px}
+#page-dopa .dopa-candidate-grid strong,#page-dopa .dopa-field strong{display:block;color:var(--ink);font-size:13px;font-weight:600;overflow-wrap:anywhere}
+#page-dopa .dopa-candidate-aside{padding:20px;background:#f7f9fc}
+#page-dopa .dopa-candidate-aside h3{margin:0 0 12px;font-size:13px;color:#264667}
+#page-dopa .dopa-candidate-aside .dopa-field{margin-bottom:11px}
+#page-dopa .dopa-candidate-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 18px;border-top:1px solid var(--line)}
+#page-dopa .dopa-candidate-nav>span{color:var(--muted);font-size:11.5px}
+#page-dopa .dopa-candidate-nav div{display:flex;gap:8px}
+#page-dopa .dopa-error-state{padding:25px 20px;text-align:center}
+#page-dopa .dopa-error-state .icon{display:grid;width:52px;height:52px;margin:0 auto 11px;place-items:center;border-radius:8px;background:var(--red-soft);color:var(--red);font-size:21px}
+#page-dopa .dopa-error-state h2{margin:6px 0 4px;color:#70302f;font-size:18px}
+#page-dopa .dopa-error-state p{max-width:680px;margin:0 auto 15px;color:var(--muted)}
+#page-dopa .dopa-result-summary{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:18px;align-items:center;padding:19px;border-bottom:1px solid var(--line)}
+#page-dopa .dopa-photo{display:grid;width:132px;height:158px;place-items:center;border:1px solid #c9d5e1;border-radius:8px;background:#e7edf4;color:#6d839a;text-align:center}
+#page-dopa .dopa-photo i{font-size:42px}
+#page-dopa .dopa-photo small{display:block;margin-top:7px;color:#718399;font-size:10.5px}
+#page-dopa .dopa-photo.locked{background:#f0f3f6;color:#8b99a8}
+#page-dopa .dopa-person-title h2{margin:0 0 5px;font-size:21px;font-weight:600}
+#page-dopa .dopa-person-title p{margin:0;color:var(--muted);font-size:12px}
+#page-dopa .dopa-person-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 18px;margin-top:17px}
+#page-dopa .dopa-result-actions{display:flex;align-items:flex-end;flex-direction:column;gap:9px;text-align:right}
+#page-dopa .dopa-status-pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:6px 10px;font-size:11.5px;font-weight:600}
+#page-dopa .dopa-status-pill.success{background:var(--green-soft);color:var(--green)}
+#page-dopa .dopa-status-pill.danger{background:var(--red-soft);color:var(--red)}
+#page-dopa .dopa-status-pill.warning{background:var(--orange-soft);color:var(--orange)}
+#page-dopa .dopa-result-actions small{color:var(--muted);font-size:10.5px}
+#page-dopa .dopa-tabs{display:flex;gap:4px;overflow-x:auto;padding:9px 11px;border-bottom:1px solid var(--line);background:#f5f8fb}
+#page-dopa .dopa-tabs button{display:flex;align-items:center;gap:7px;min-height:37px;border:1px solid transparent;border-radius:6px;background:transparent;padding:7px 10px;color:#586b82;white-space:nowrap}
+#page-dopa .dopa-tabs button.active{border-color:#aec4d8;background:#e7f0f8;color:#174f83;font-weight:600}
+#page-dopa .dopa-tabs button:focus-visible{outline:3px solid #d7b84c;outline-offset:1px}
+#page-dopa .dopa-tab-state{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:999px;background:#e1e7ee;color:#64778d;padding:0 5px;font-size:9px}
+#page-dopa .dopa-tab-state.ok{background:var(--green-soft);color:var(--green)}
+#page-dopa .dopa-tab-state.warn{background:var(--orange-soft);color:var(--orange)}
+#page-dopa .dopa-tab-state.lock{background:#eceff3;color:#68798b}
+#page-dopa .dopa-tab-panel{min-height:240px;padding:20px}
+#page-dopa .dopa-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:17px}
+#page-dopa .dopa-panel-head h3{margin:0 0 3px;color:#1d4166;font-size:15px}
+#page-dopa .dopa-panel-head p{margin:0;color:var(--muted);font-size:11.5px}
+#page-dopa .dopa-field-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 22px}
+#page-dopa .dopa-field.wide{grid-column:span 2}
+#page-dopa .dopa-field-key{display:block;margin-top:4px;color:#8290a1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;font-weight:400}
+#page-dopa .dopa-address-line{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px;padding:13px 14px;border:1px solid var(--line);border-radius:7px;background:#f5f8fb}
+#page-dopa .dopa-address-line strong{font-size:13.5px;font-weight:600}
+#page-dopa .dopa-empty-panel{padding:38px 15px;text-align:center;color:#77889b}
+#page-dopa .dopa-empty-panel i{display:block;margin-bottom:9px;color:#9aabba;font-size:25px}
+#page-dopa .dopa-history-old{color:#7f8fa2;text-decoration:line-through}
+#page-dopa .dopa-history-new{font-weight:600;color:var(--ink)}
+#page-dopa .dopa-history-arrow{margin:0 8px;color:#71869b}
+#page-dopa .dopa-import-band{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:16px;padding:15px 17px;border:1px solid #bfd0df;border-radius:8px;background:#f1f6fa}
+#page-dopa .dopa-import-band h2{margin:0 0 3px;font-size:15px}
+#page-dopa .dopa-import-band p{margin:0;color:var(--muted);font-size:11.5px}
+#page-dopa .dopa-tech{margin-top:14px;border:1px solid var(--line);border-radius:8px;background:#f7f9fc;padding:12px 14px}
+#page-dopa .dopa-tech[open] summary{margin-bottom:12px}
+#page-dopa .dopa-tech-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:12px;border:1px solid var(--line);border-radius:7px;background:var(--paper);overflow:hidden}
+#page-dopa .dopa-tech-meta>div{padding:10px 12px;border-right:1px solid var(--line)}
+#page-dopa .dopa-tech-meta>div:last-child{border-right:0}
+#page-dopa .dopa-tech-meta span,#page-dopa .dopa-tech-meta small{display:block;color:var(--muted);font-size:9.5px}
+#page-dopa .dopa-tech-meta strong{display:block;margin:3px 0;color:#23476c;font-size:11.5px;overflow-wrap:anywhere}
+#page-dopa .dopa-tech table{min-width:860px}
+#page-dopa .dopa-tech td,#page-dopa .dopa-tech th{padding:9px 11px;font-size:10.5px}
+#page-dopa .dopa-audit{margin-top:16px}
+#page-dopa .dopa-audit table{min-width:760px}
+#page-dopa .dopa-import-dialog{width:min(690px,calc(100vw - 28px));max-height:88vh;border:0;border-radius:8px;background:var(--paper);padding:0;color:var(--ink);box-shadow:0 24px 70px rgba(13,27,62,.35)}
+#page-dopa .dopa-import-dialog::backdrop{background:rgba(13,27,62,.58)}
+#page-dopa .dopa-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line);background:var(--navy);color:#f7faff}
+#page-dopa .dopa-dialog-head h2{margin:0 0 3px;font-size:17px}
+#page-dopa .dopa-dialog-head p{margin:0;color:#bac7dd;font-size:11.5px}
+#page-dopa .dopa-dialog-close{display:grid;width:34px;height:34px;place-items:center;border:1px solid rgba(255,255,255,.28);border-radius:7px;background:transparent;color:#f7faff}
+#page-dopa .dopa-dialog-body{padding:17px 18px}
+#page-dopa .dopa-duplicate-note{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;border:1px solid #e1c985;border-radius:7px;background:var(--gold-soft);padding:11px 12px;color:#6c5318;font-size:12px}
+#page-dopa .dopa-import-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+#page-dopa .dopa-import-summary>div{padding:10px 12px;border:1px solid var(--line);border-radius:7px;background:#f6f8fb}
+#page-dopa .dopa-import-summary span{display:block;color:var(--muted);font-size:10px}
+#page-dopa .dopa-import-summary strong{display:block;margin-top:3px;font-size:12.5px}
+#page-dopa .dopa-import-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+#page-dopa .dopa-import-options label{display:flex;align-items:center;gap:8px;min-height:38px;border:1px solid var(--line);border-radius:7px;background:#f9fbfd;padding:8px 10px;font-size:12px}
+#page-dopa .dopa-import-options input{width:16px;height:16px;accent-color:var(--blue)}
+#page-dopa .dopa-dialog-actions{display:flex;justify-content:flex-end;gap:8px;padding:13px 18px;border-top:1px solid var(--line);background:#f5f8fb}
+@media (prefers-reduced-motion:reduce){#page-dopa .dopa-loading-line span{animation:none;width:100%}}
+@media (max-width:1050px){#page-dopa .dopa-search-body{grid-template-columns:1fr 1fr}#page-dopa .dopa-search-actions{grid-column:1/-1}#page-dopa .dopa-result-summary{grid-template-columns:132px 1fr}#page-dopa .dopa-result-actions{grid-column:1/-1;align-items:flex-start;text-align:left}#page-dopa .dopa-field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){#page-dopa .dopa-context{align-items:flex-start;flex-direction:column}#page-dopa .dopa-search-body{grid-template-columns:1fr}#page-dopa .dopa-search-actions{grid-column:auto}#page-dopa .dopa-query-fields{grid-template-columns:1fr}#page-dopa .dopa-demo-grid{grid-template-columns:1fr}#page-dopa .dopa-candidate{grid-template-columns:1fr}#page-dopa .dopa-candidate-main{border-right:0;border-bottom:1px solid var(--line)}#page-dopa .dopa-candidate-grid{grid-template-columns:1fr 1fr}#page-dopa .dopa-result-summary{grid-template-columns:1fr}#page-dopa .dopa-photo{width:112px;height:132px}#page-dopa .dopa-person-facts{grid-template-columns:1fr 1fr}#page-dopa .dopa-tech-meta{grid-template-columns:1fr 1fr}#page-dopa .dopa-tech-meta>div:nth-child(2){border-right:0}#page-dopa .dopa-import-band{align-items:flex-start;flex-direction:column}}
+@media (max-width:520px){#page-dopa .dopa-candidate-grid,#page-dopa .dopa-person-facts,#page-dopa .dopa-field-grid,#page-dopa .dopa-import-summary,#page-dopa .dopa-import-options{grid-template-columns:1fr}#page-dopa .dopa-field.wide{grid-column:auto}#page-dopa .dopa-candidate-nav{align-items:flex-start;flex-direction:column}#page-dopa .dopa-candidate-nav div{width:100%}#page-dopa .dopa-candidate-nav .btn{flex:1}#page-dopa .dopa-address-line{align-items:flex-start;flex-direction:column}#page-dopa .dopa-tech-meta{grid-template-columns:1fr}#page-dopa .dopa-tech-meta>div{border-right:0;border-bottom:1px solid var(--line)}#page-dopa .dopa-tech-meta>div:last-child{border-bottom:0}}
 
 
 /* ===== เฉพาะหน้าตรวจสอบจัดซื้อจัดจ้าง ===== */
@@ -167,6 +260,62 @@
 @media (max-width:560px){#page-dlt-plate .toolbar .field.wide, #page-dlt-doc .toolbar .field.wide{grid-column:auto}}
 @media (max-width:820px){#page-dlt-plate .toolbar, #page-dlt-doc .toolbar{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){#page-dlt-plate .toolbar, #page-dlt-doc .toolbar{grid-template-columns:1fr}}
+
+/* ===== ระบบเชื่อมโยงข้อมูลสำนักงานประกันสังคม (SSO SOAP Web Service) ===== */
+.sso-page .toolbar{grid-template-columns:repeat(4,minmax(0,1fr));align-items:start}
+.sso-page .toolbar .wide{grid-column:span 2}
+.sso-page .field-btn{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.sso-page .hint{display:block;margin-top:5px;color:var(--muted);font-size:11px;line-height:1.45}
+.sso-page .hint.bad{color:var(--red)}
+.sso-service-strip{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;padding:13px 16px;border:1px solid #c9d8e7;border-left:4px solid var(--blue);border-radius:8px;background:#f4f9fe}
+.sso-service-strip p{margin:0;color:#425872;font-size:12px;line-height:1.65}
+.sso-service-strip code{color:#174f83;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px}
+.sso-protocol{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;flex:0 0 auto}
+.sso-profile{display:grid;grid-template-columns:82px minmax(0,1fr) auto;gap:18px;align-items:center;padding:19px}
+.sso-profile-icon{display:grid;width:72px;height:72px;place-items:center;border-radius:8px;background:#e8f1fa;color:#16558f;font-size:28px}
+.sso-profile h2{margin:0 0 5px;font-size:19px;font-weight:600}
+.sso-profile p{margin:0;color:var(--muted);font-size:12px}
+.sso-profile-meta{display:flex;align-items:flex-end;flex-direction:column;gap:7px;text-align:right}
+.sso-detail-section{padding:18px 19px;border-top:1px solid #e3e9f0}
+.sso-detail-section h3{margin:0 0 13px;color:#193b63;font-size:14px;font-weight:600}
+.sso-detail-section h3 i{width:21px;color:#2870a8}
+.sso-detail-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px 22px}
+.sso-detail-grid .cell span{display:block;margin-bottom:3px;color:var(--muted);font-size:11px}
+.sso-detail-grid .cell strong{display:block;color:var(--ink);font-size:13.5px;font-weight:600;line-height:1.5;overflow-wrap:anywhere}
+.sso-detail-grid .cell .sso-field-key{display:block;margin-top:4px;color:#8290a1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;font-weight:400}
+.sso-detail-grid .cell.wide{grid-column:span 2}
+.sso-response-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #e3e9f0;border-bottom:1px solid #e3e9f0;background:#f7f9fc}
+.sso-response-meta>div{min-width:0;padding:12px 16px;border-right:1px solid #e0e7ef}
+.sso-response-meta>div:last-child{border-right:0}
+.sso-response-meta span,.sso-response-meta small{display:block;color:var(--muted);font-size:10.5px}
+.sso-response-meta strong{display:block;margin:4px 0;color:#183b62;font-size:13px;font-weight:600;overflow-wrap:anywhere}
+.sso-response-meta code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px}
+.sso-error-state{padding:24px 20px;text-align:center}
+.sso-error-icon{display:grid;width:54px;height:54px;margin:0 auto 12px;place-items:center;border-radius:8px;background:var(--red-soft);color:var(--red);font-size:23px}
+.sso-error-state h2{margin:8px 0 4px;color:#70302f;font-size:18px}
+.sso-error-state>p{max-width:720px;margin:0 auto 17px;color:var(--muted)}
+.sso-error-state .sso-response-meta{max-width:900px;margin:auto;border:1px solid #ead6d5;border-radius:8px;text-align:left;overflow:hidden}
+.sso-kpis{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:12px;margin-bottom:16px}
+.sso-kpi{min-height:98px;padding:14px 15px;border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:8px;background:#fff}
+.sso-kpi span,.sso-kpi small{display:block;color:var(--muted);font-size:11px}
+.sso-kpi strong{display:block;margin:6px 0 2px;color:#16375d;font-size:22px;font-weight:600}
+.sso-tabs{display:flex;gap:5px;overflow:auto;padding:10px 12px;border-bottom:1px solid var(--line);background:#f7f9fc}
+.sso-tabs button{border:1px solid transparent;border-radius:7px;background:transparent;padding:8px 12px;color:#586b82;font-family:inherit;white-space:nowrap}
+.sso-tabs button.active{border-color:#b6cbe0;background:#e8f1fa;color:#174f83;font-weight:600}
+.sso-tab-panel{padding:0}
+.sso-contract-table table{min-width:1040px;table-layout:fixed}
+.sso-contract-table table th:first-child{width:34%}
+.sso-contract-table.contributions table{min-width:1100px}
+.sso-contract-table.contributions table th:first-child{width:28%}
+.sso-contract-table th small{display:block;margin-top:3px;color:#7b8999;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9px;font-weight:400}
+.sso-source-note{display:flex;align-items:flex-start;gap:8px;margin:14px 19px;padding:10px 12px;border-radius:7px;background:#f2f5f8;color:#617187;font-size:11px;line-height:1.55}
+.sso-source-note i{margin-top:2px;color:#527493}
+.sso-audit table{min-width:760px}
+.swal2-popup.swal2-toast.ecmis-swal{width:min(360px,calc(100vw - 24px))!important;max-width:calc(100vw - 24px)!important;padding:12px 14px!important}
+.swal2-container.swal2-top-end{padding:12px!important}
+@media (max-width:1050px){.sso-page .toolbar{grid-template-columns:1fr 1fr}.sso-detail-grid{grid-template-columns:1fr 1fr}.sso-kpis{grid-template-columns:1fr 1fr}}
+@media (max-width:650px){.sso-page .toolbar,.sso-detail-grid{grid-template-columns:1fr}.sso-page .toolbar .wide,.sso-detail-grid .cell.wide{grid-column:auto}.sso-profile{grid-template-columns:58px 1fr}.sso-profile-icon{width:54px;height:54px}.sso-profile-meta{grid-column:1/-1;align-items:flex-start;text-align:left}.sso-service-strip{align-items:flex-start;flex-direction:column}.sso-protocol{justify-content:flex-start}.sso-kpis{grid-template-columns:1fr 1fr}.sso-response-meta{grid-template-columns:1fr 1fr}.sso-response-meta>div:nth-child(2){border-right:0}.sso-response-meta>div:nth-child(-n+2){border-bottom:1px solid #e0e7ef}}
+@media (max-width:560px){.top .case-field,.top .role-select{display:none}.top-right{min-width:42px}.sso-page{overflow-x:hidden}}
 </style>
 </head>
 <body>
@@ -179,6 +328,10 @@
       <button class="nav-link level-one" data-route="egp" onclick="switchPage('egp')"><i class="fa-solid fa-file-invoice-dollar icon" aria-hidden="true"></i><span>ตรวจสอบการจัดซื้อจัดจ้าง (ภาษีไปไหน / e-GP)</span></button>
       <button class="nav-link level-one" data-route="dlt-plate" onclick="switchPage('dlt-plate')"><i class="fa-solid fa-car-side icon" aria-hidden="true"></i><span>ตรวจสอบทะเบียนรถ (กรมการขนส่งทางบก)</span></button>
       <button class="nav-link level-two" data-route="dlt-doc" onclick="switchPage('dlt-doc')"><i class="fa-solid fa-id-card icon" aria-hidden="true"></i><span>ค้นหาจากเลขบัตร/นิติบุคคล</span></button>
+      <div class="nav-section-label">สำนักงานประกันสังคม</div>
+      <button class="nav-link level-one" data-route="sso-hospital" onclick="switchPage('sso-hospital')"><i class="fa-solid fa-hospital-user icon" aria-hidden="true"></i><span>ผู้ประกันตนและสถานพยาบาล</span></button>
+      <button class="nav-link level-two" data-route="sso-employer" onclick="switchPage('sso-employer')"><i class="fa-solid fa-building icon" aria-hidden="true"></i><span>ข้อมูลสถานประกอบการ</span></button>
+      <button class="nav-link level-two" data-route="sso-employment" onclick="switchPage('sso-employment')"><i class="fa-solid fa-briefcase icon" aria-hidden="true"></i><span>ประวัติการจ้างและเงินสมทบ</span></button>
     </nav>
     <div class="profile"><div class="avatar">อ</div><div><strong>อรรถพล</strong><small>เจ้าหน้าที่ ป.ป.ท.</small></div></div>
   </aside>
@@ -197,130 +350,124 @@
     </header>
 
     <div class="content" id="page-dopa">
-
       <div class="breadcrumb">E-CMIS <b>›</b> เครื่องมือสืบสวน <b>›</b> ตรวจสอบประวัติบุคคล (DOPA Linkage)</div>
       <div class="page-head">
         <div>
-          <h1>สืบค้นประวัติและยืนยันตัวบุคคลในคดี</h1>
-          <p>Person Profile Search — เชื่อมต่อ Linkage Center API กรมการปกครอง (adaptor-bora-pop) กรอกเลขบัตรประชาชน 13 หลัก เพื่อดึงข้อมูลทะเบียนราษฎรมาใช้ในสำนวนคดีโดยไม่ต้องคีย์ข้อมูลเอง</p>
+          <h1>สืบค้นและยืนยันตัวบุคคลในสำนวนคดี</h1>
+          <p>ค้นด้วยเลขประจำตัวประชาชน ชื่อปัจจุบัน หรือชื่อเดิม แล้วเลือกบุคคลก่อนเรียกข้อมูลทะเบียนเพิ่มเติม</p>
         </div>
         <div class="actions"><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>ข้อมูลชั้นความลับ · บันทึก Audit Log ทุกครั้ง</span></div>
       </div>
 
-      <!-- ZONE 1 -->
-      <section class="toolbar">
-        <div class="field">
-          <label>เลขบัตรประจำตัวประชาชน <span style="color:var(--red)">*</span></label>
-          <input id="citizenId" placeholder="1-2345-67890-12-3" maxlength="17">
-          <span class="id-mask-hint" id="idHint">รูปแบบ: 1-2345-67890-12-3</span>
-        </div>
-        <div class="field">
-          <label>วัตถุประสงค์การสืบค้น <span style="color:var(--red)">*</span></label>
-          <select id="purpose">
-            <option value="">-- เลือกวัตถุประสงค์ --</option>
-            <option value="accused" selected>เพื่อตรวจสอบสถานะผู้ถูกกล่าวหา</option>
-            <option value="witness">เพื่อตรวจสอบพยาน</option>
-            <option value="factfinding">เพื่อการไต่สวนข้อเท็จจริง</option>
-          </select>
-        </div>
-        <div class="field field-btn">
-          <label class="field-btn-spacer" aria-hidden="true">&nbsp;</label>
-          <button class="btn" onclick="dopaSearch()"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>สืบค้นข้อมูล</button>
-        </div>
-      </section>
-      <div class="notice-box" style="margin:-6px 0 16px"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> การสืบค้นทุกครั้งจะถูกบันทึกลง Audit Log (User, เลขบัตรฯ, เลขคดี, เวลา) เพื่อการตรวจสอบย้อนหลังตาม PDPA และมาตรฐานความปลอดภัยข้อมูลภาครัฐ</div>
+      <div class="dopa-context">
+        <div><strong class="case-chip-live">คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</strong><span>·</span><span>เจ้าหน้าที่ผู้ค้นหา: อรรถพล</span></div>
+        <div><span class="badge warning">Sandbox Mock</span><code>DOPA Linkage Center 2</code></div>
+      </div>
 
-      <!-- LOCKED STATE -->
-      <section class="card" id="dopaLockedState">
-        <div class="locked-empty">
-          <i class="fa-solid fa-id-card" aria-hidden="true"></i>
-          <strong>ยังไม่มีข้อมูลแสดงผล</strong>
-          <span>กรอกเลขบัตรประชาชน เลขที่คดี และวัตถุประสงค์ แล้วกด "สืบค้นข้อมูล"<br>เลขทดสอบ: <b>1-2345-67890-12-3</b> (มีชีวิต) หรือ <b>3-4567-89012-34-5</b> (เสียชีวิต) — ดูรายชื่อทดสอบทั้งหมด 12 รายการในเอกสาร test-data-dopa-dlt.md ที่แนบมา</span>
+      <section class="dopa-search-tool" aria-label="ค้นหาบุคคลจากกรมการปกครอง">
+        <div class="dopa-search-modes" role="tablist" aria-label="วิธีค้นหา">
+          <button class="active" id="dopaModePid" type="button" role="tab" aria-selected="true" onclick="dopaSetSearchMode('pid')"><i class="fa-solid fa-id-card" aria-hidden="true"></i>เลขประจำตัวประชาชน</button>
+          <button id="dopaModeCurrent" type="button" role="tab" aria-selected="false" onclick="dopaSetSearchMode('current-name')"><i class="fa-solid fa-user" aria-hidden="true"></i>ชื่อปัจจุบัน</button>
+          <button id="dopaModeOld" type="button" role="tab" aria-selected="false" onclick="dopaSetSearchMode('old-name')"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>ชื่อเดิม</button>
         </div>
+        <div class="dopa-search-body">
+          <div class="dopa-query-fields pid" id="dopaPidFields">
+            <div class="field">
+              <label for="citizenId">เลขประจำตัวประชาชน <span style="color:var(--red)">*</span></label>
+              <input id="citizenId" placeholder="1-2345-67890-12-3" maxlength="17" inputmode="numeric" value="1-2345-67890-12-3">
+              <span class="dopa-hint" id="idHint">เรียกข้อมูลทะเบียนราษฎรด้วย <code>personalID</code></span>
+            </div>
+          </div>
+          <div class="dopa-query-fields hide" id="dopaCurrentNameFields">
+            <div class="field"><label for="dopaFirstName">ชื่อตัว <span style="color:var(--red)">*</span></label><input id="dopaFirstName" value="สมชาย" placeholder="เช่น สมชาย"></div>
+            <div class="field"><label for="dopaMiddleName">ชื่อกลาง</label><input id="dopaMiddleName" placeholder="ไม่บังคับ"></div>
+            <div class="field"><label for="dopaLastName">ชื่อสกุล <span style="color:var(--red)">*</span></label><input id="dopaLastName" value="ใจดี" placeholder="เช่น ใจดี"></div>
+          </div>
+          <div class="dopa-query-fields hide" id="dopaOldNameFields">
+            <div class="field"><label for="dopaOldFirstName">ชื่อตัวเดิม <span style="color:var(--red)">*</span></label><input id="dopaOldFirstName" value="สมพงษ์" placeholder="เช่น สมพงษ์"></div>
+            <div class="field"><label for="dopaOldLastName">ชื่อสกุลเดิม <span style="color:var(--red)">*</span></label><input id="dopaOldLastName" value="ศรีสุข" placeholder="เช่น ศรีสุข"></div>
+          </div>
+          <div class="field">
+            <label for="purpose">วัตถุประสงค์การสืบค้น <span style="color:var(--red)">*</span></label>
+            <select id="purpose"><option value="">-- เลือกวัตถุประสงค์ --</option><option value="accused" selected>ตรวจสอบสถานะผู้ถูกกล่าวหา</option><option value="witness">ตรวจสอบพยานหรือบุคคลที่เกี่ยวข้อง</option><option value="factfinding">ประกอบการไต่สวนข้อเท็จจริง</option></select>
+          </div>
+          <div class="dopa-search-actions">
+            <button class="btn secondary" type="button" onclick="dopaReset()" title="ล้างเงื่อนไขค้นหา"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างข้อมูล</button>
+            <button class="btn" type="button" onclick="dopaSearch()"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ค้นหาข้อมูล</button>
+          </div>
+        </div>
+        <details class="dopa-demo-tools"><summary><i class="fa-solid fa-flask" aria-hidden="true"></i> ตั้งค่าผลจำลองสำหรับการนำเสนอ</summary><div class="dopa-demo-grid"><div class="field"><label for="dopaScenario">สถานการณ์</label><select id="dopaScenario"><option value="success">พบข้อมูลและบริการพร้อม</option><option value="partial">พบข้อมูล แต่บางบริการไม่ได้รับสิทธิ์</option><option value="not-found">ไม่พบข้อมูล</option><option value="no-token">ไม่มี Bearer Token</option><option value="token-expired">Token หมดอายุ</option><option value="no-job-permission">ไม่มีสิทธิ์กระบวนงาน</option><option value="proxy-unavailable">Proxy Server ไม่พร้อม</option></select></div><p>ตัวเลือกนี้มีเฉพาะ Prototype และต้องตัดออกจาก Production การค้นด้วยชื่อ “สมชาย ใจดี” จะแสดงชื่อซ้ำ 4 รายการเพื่อทดสอบการเลือกบุคคล</p></div></details>
+      </section>
+      <div class="notice-box" style="margin:0 0 16px"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> ค้นด้วยชื่อจะใช้ข้อมูลขั้นต่ำเพื่อแยกบุคคลก่อน ระบบจะเรียกภาพ ที่อยู่ และทะเบียนเพิ่มเติมหลังเจ้าหน้าที่เลือกบุคคลแล้วเท่านั้น</div>
+
+      <section class="card" id="dopaLockedState"><div class="dopa-empty"><i class="fa-solid fa-user-magnifying-glass" aria-hidden="true"></i><strong>เลือกวิธีค้นหาแล้วระบุข้อมูลบุคคล</strong><span>ค้นด้วยเลขประชาชนเพื่อเปิดข้อมูลตรงบุคคล หรือค้นด้วยชื่อเมื่อยังไม่ทราบเลขประชาชน<br>ข้อมูลทั้งหมดใน Prototype เป็นข้อมูลสมมติสำหรับตกลง Workflow</span></div></section>
+
+      <section class="card hide" id="dopaLoadingState" aria-live="polite">
+        <div class="dopa-loading"><div class="dopa-loading-icon"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></div><div><h2 id="dopaLoadingTitle">กำลังค้นหาบุคคล</h2><p id="dopaLoadingText">กำลังส่งคำขอผ่าน Linkage Proxy Server</p><div class="dopa-loading-line"><span></span></div></div></div>
+      </section>
+
+      <section class="card hide" id="dopaErrorState" aria-live="polite">
+        <div class="dopa-error-state"><div class="icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></div><span class="badge danger" id="dopaErrorBadge">ค้นหาไม่สำเร็จ</span><h2 id="dopaErrorTitle">ไม่สามารถเรียกข้อมูลได้</h2><p id="dopaErrorHelp">ตรวจสอบเงื่อนไขค้นหาและสถานะบริการ</p><button class="btn secondary" type="button" onclick="dopaFocusSearch()"><i class="fa-solid fa-pen" aria-hidden="true"></i>แก้ไขเงื่อนไขค้นหา</button></div>
+      </section>
+
+      <section class="card hide" id="dopaCandidateState" aria-live="polite">
+        <div class="dopa-candidate-head"><div><h2 id="dopaCandidateHeading">พบบุคคลที่ชื่อใกล้เคียง</h2><p id="dopaCandidateSubheading">ตรวจสอบข้อมูลขั้นต่ำก่อนเลือกบุคคล</p></div><span class="badge" id="dopaCandidateCount">ผลลัพธ์ 1 จาก 1</span></div>
+        <div class="dopa-candidate">
+          <div class="dopa-candidate-main"><div class="dopa-candidate-name"><div class="dopa-candidate-avatar"><i class="fa-solid fa-user" aria-hidden="true"></i></div><div><h3 id="dopaCandidateName">-</h3><p>เลขประจำตัวประชาชน <span id="dopaCandidatePid">-</span></p></div></div><div class="dopa-candidate-grid"><div><span>วันเดือนปีเกิด</span><strong id="dopaCandidateDob">-</strong></div><div><span>เพศ</span><strong id="dopaCandidateGender">-</strong></div><div><span>สัญชาติ</span><strong id="dopaCandidateNationality">-</strong></div><div><span>สถานภาพบุคคล</span><strong id="dopaCandidateStatus">-</strong></div><div><span>สถานภาพเจ้าบ้าน</span><strong id="dopaCandidateOwnerStatus">-</strong></div><div><span>ข้อมูลเพิ่มเติม</span><strong id="dopaCandidateHint">-</strong></div></div></div>
+          <aside class="dopa-candidate-aside"><h3>เหตุผลที่ต้องเลือกก่อน</h3><div class="dopa-field"><span>บริการค้นหา</span><strong id="dopaCandidateService">serviceID 51</strong></div><div class="dopa-field"><span>หลักการเรียกข้อมูล</span><strong><code>limit=1</code> และเลื่อนด้วย <code>recordNumber</code></strong></div><div class="dopa-field"><span>ข้อมูลที่ยังไม่เรียก</span><strong>ภาพใบหน้า ที่อยู่ ประวัติชื่อ และเอกสารทะเบียน</strong></div></aside>
+        </div>
+        <div class="dopa-candidate-nav"><span id="dopaCandidateQuery">ค้นหาจาก: -</span><div><button class="btn secondary" id="dopaCandidatePrev" type="button" onclick="dopaMoveCandidate(-1)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>ก่อนหน้า</button><button class="btn" type="button" onclick="dopaSelectCandidate()"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>เลือกบุคคลนี้</button><button class="btn secondary" id="dopaCandidateNext" type="button" onclick="dopaMoveCandidate(1)">ถัดไป<i class="fa-solid fa-chevron-right" aria-hidden="true" style="margin-left:7px;margin-right:0"></i></button></div></div>
       </section>
 
       <div id="dopaResultWrap" class="hide">
+        <section class="card" id="dopaVerifiedCard">
+          <div class="dopa-result-summary">
+            <div class="dopa-photo" id="dopaPhoto"><div><i class="fa-solid fa-user-large" aria-hidden="true"></i><small>ภาพใบหน้าจาก serviceID 21</small></div></div>
+            <div class="dopa-person-title"><h2 id="fNameTh">-</h2><p><span id="fNameEn">-</span> · เลขประจำตัวประชาชน <strong id="fCitizenId">-</strong></p><div class="dopa-person-facts"><div class="dopa-field"><span>วันเดือนปีเกิด</span><strong id="fDob">-</strong></div><div class="dopa-field"><span>อายุ</span><strong id="fAge">-</strong></div><div class="dopa-field"><span>เพศ</span><strong id="fGender">-</strong></div><div class="dopa-field"><span>สัญชาติ</span><strong id="fNat">-</strong></div></div></div>
+            <div class="dopa-result-actions"><span class="dopa-status-pill success" id="statusPill"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>สถานภาพปกติ</span><small id="dopaFetchedAt">เรียกข้อมูลเมื่อ -</small><button class="btn secondary" type="button" onclick="dopaBackToCandidates()" id="dopaBackCandidateButton"><i class="fa-solid fa-people-arrows-left-right" aria-hidden="true"></i>กลับไปเลือกบุคคล</button></div>
+          </div>
 
-        <!-- QUICK SUMMARY BAR -->
-        <section class="case-context">
-          <div><small>เลขบัตรประชาชน</small><strong id="ctxId">-</strong></div>
-          <div><small>สถานะบุคคล</small><strong id="ctxStatus">-</strong></div>
-          <div><small>ประวัติเปลี่ยนชื่อ-สกุล</small><strong id="ctxNameHistCount">-</strong></div>
-          <div><small>คดีที่ผูกการสืบค้น</small><strong id="dopaCtxCase">-</strong></div>
-          <div><small>แหล่งข้อมูล</small><strong>adaptor-bora-pop</strong></div>
+          <nav class="dopa-tabs" role="tablist" aria-label="ข้อมูลทะเบียนบุคคล">
+            <button class="active" type="button" data-dopa-tab="person" onclick="dopaSwitchResultTab('person')"><i class="fa-solid fa-address-card" aria-hidden="true"></i>ข้อมูลบุคคล <span class="dopa-tab-state ok"><i class="fa-solid fa-check" aria-hidden="true"></i></span></button>
+            <button type="button" data-dopa-tab="address" onclick="dopaSwitchResultTab('address')"><i class="fa-solid fa-house" aria-hidden="true"></i>ทะเบียนบ้าน <span class="dopa-tab-state ok" id="dopaAddressTabState"><i class="fa-solid fa-check" aria-hidden="true"></i></span></button>
+            <button type="button" data-dopa-tab="name" onclick="dopaSwitchResultTab('name')"><i class="fa-solid fa-signature" aria-hidden="true"></i>ประวัติชื่อ <span class="dopa-tab-state ok" id="dopaNameTabState"><i class="fa-solid fa-check" aria-hidden="true"></i></span></button>
+            <button type="button" data-dopa-tab="status" onclick="dopaSwitchResultTab('status')"><i class="fa-solid fa-person-circle-check" aria-hidden="true"></i>สถานภาพบุคคล <span class="dopa-tab-state ok"><i class="fa-solid fa-check" aria-hidden="true"></i></span></button>
+            <button type="button" data-dopa-tab="death" onclick="dopaSwitchResultTab('death')"><i class="fa-solid fa-file-medical" aria-hidden="true"></i>มรณบัตร <span class="dopa-tab-state" id="dopaDeathTabState">0</span></button>
+            <button type="button" data-dopa-tab="card" onclick="dopaSwitchResultTab('card')"><i class="fa-solid fa-id-card" aria-hidden="true"></i>รายการทำบัตร <span class="dopa-tab-state ok" id="dopaCardTabState"><i class="fa-solid fa-check" aria-hidden="true"></i></span></button>
+          </nav>
+
+          <div class="dopa-tab-panel" id="dopaTabPerson"><div class="dopa-panel-head"><div><h3>ข้อมูลทะเบียนราษฎร</h3><p>ฟิลด์จาก serviceID 1 ไม่รวมที่อยู่และภาพใบหน้า</p></div><span class="badge success">เรียกข้อมูลสำเร็จ</span></div><div class="dopa-field-grid" id="dopaPersonGrid"></div></div>
+          <div class="dopa-tab-panel hide" id="dopaTabAddress"><div class="dopa-panel-head"><div><h3>ที่อยู่ตามทะเบียนบ้าน</h3><p>ไม่ใช่การยืนยันว่าบุคคลพักอาศัยอยู่จริงในปัจจุบัน</p></div><span class="badge success" id="dopaAddressStatusBadge">เรียกข้อมูลสำเร็จ</span></div><div id="dopaAddressContent"></div></div>
+          <div class="dopa-tab-panel hide" id="dopaTabName"><div class="dopa-panel-head"><div><h3>ประวัติการเปลี่ยนแปลงชื่อตัวและชื่อสกุล</h3><p>แยกค่าชื่อตัวและชื่อสกุลตามโครงสร้าง serviceID 9</p></div><span class="badge success" id="dopaNameStatusBadge">เรียกข้อมูลสำเร็จ</span></div><div class="table-wrap"><table><thead><tr><th>ประเภท</th><th>ค่าเดิม</th><th>ค่าใหม่</th><th>วันที่เปลี่ยน</th><th>สำนักทะเบียน</th></tr></thead><tbody id="nameHistoryBody"></tbody></table></div></div>
+          <div class="dopa-tab-panel hide" id="dopaTabStatus"><div class="dopa-panel-head"><div><h3>สถานภาพบุคคล</h3><p>ข้อมูลจาก serviceID 144 สำหรับตรวจสอบสถานะทะเบียน</p></div><span class="badge success">เรียกข้อมูลสำเร็จ</span></div><div class="dopa-field-grid" id="dopaStatusGrid"></div></div>
+          <div class="dopa-tab-panel hide" id="dopaTabDeath"><div class="dopa-panel-head"><div><h3>ข้อมูลใบมรณบัตร</h3><p>แสดงเมื่อ serviceID 27 พบข้อมูลเท่านั้น</p></div><span class="badge" id="dopaDeathStatusBadge">ไม่พบข้อมูล</span></div><div id="deathCertContent"></div></div>
+          <div class="dopa-tab-panel hide" id="dopaTabCard"><div class="dopa-panel-head"><div><h3>รายการคำขอมีบัตรประจำตัวประชาชน</h3><p>รายการจาก serviceID 32 ไม่ใช่ภาพบัตร และจำนวนรายการเป็นค่าที่ E-CMIS นับ</p></div><span class="badge success" id="dopaCardStatusBadge">เรียกข้อมูลสำเร็จ</span></div><div id="dopaCardContent"></div></div>
         </section>
 
-        <!-- ZONE 2 -->
-        <section class="card" style="margin-bottom:16px">
-          <div class="card-head">
-            <div><h2>ข้อมูลทะเบียนราษฎร &amp; ภาพใบหน้าปัจจุบัน</h2><p>ดึงข้อมูลอัตโนมัติจาก Linkage Center API กรมการปกครอง</p></div>
-            <span class="status-pill alive" id="statusPill"><i class="fa-solid fa-circle" aria-hidden="true"></i>ปกติ (มีชีวิต)</span>
-          </div>
-          <div class="id-card-body">
-            <div class="id-photo-wrap">
-              <div class="id-photo"><i class="fa-solid fa-user-large" aria-hidden="true"></i></div>
-              <div class="id-photo-date" id="photoDate">ถ่ายเมื่อ -</div>
-            </div>
-            <div class="id-info-grid">
-              <div class="cell"><span>คำนำหน้า / ชื่อ-สกุล (ไทย)</span><strong id="fNameTh">-</strong></div>
-              <div class="cell"><span>ชื่อ-สกุล (อังกฤษ)</span><strong id="fNameEn">-</strong></div>
-              <div class="cell"><span>เลขบัตรประชาชน</span><strong id="fCitizenId">-</strong></div>
-              <div class="cell"><span>วัน/เดือน/ปีเกิด</span><strong id="fDob">-</strong></div>
-              <div class="cell"><span>อายุ</span><strong id="fAge">-</strong></div>
-              <div class="cell"><span>สัญชาติ / ศาสนา</span><strong id="fNat">-</strong></div>
-              <div class="addr-row">
-                <span id="fAddress">-</span>
-                <button class="btn secondary" onclick="copyAddress()"><i class="fa-solid fa-copy" aria-hidden="true"></i>คัดลอก</button>
-              </div>
-            </div>
-          </div>
-          <div class="notice-box hide" id="deathBanner" style="margin:0 19px 19px;border-color:#e6b3af;background:var(--red2);color:var(--red)"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> พบข้อมูลมรณบัตร — บุคคลนี้เสียชีวิตแล้ว โปรดตรวจสอบแท็บ "รายละเอียดมรณบัตร" ก่อนดำเนินการต่อ</div>
-        </section>
+        <section class="dopa-import-band"><div><h2>นำข้อมูลที่เลือกเข้าสำนวนคดี</h2><p>ระบบจะตรวจเลขประชาชนในสำนวนก่อน และให้เลือกบทบาทกับชุดข้อมูลที่จะบันทึก</p></div><button class="btn" type="button" onclick="dopaOpenImportDialog()"><i class="fa-solid fa-file-import" aria-hidden="true"></i>นำข้อมูลเข้าสำนวน</button></section>
 
-        <!-- ZONE 3 -->
-        <section class="card" style="margin-bottom:16px">
-          <div class="card-head"><div><h2>ข้อมูลเชิงลึกทางทะเบียน</h2><p>ประวัติที่ช่วยตรวจสอบตัวตนและสถานะของบุคคล</p></div></div>
-          <div class="form-tabs-shell">
-            <nav class="form-tabs" aria-label="แท็บข้อมูลเชิงลึก">
-              <button class="active" data-tab="nameHistory" onclick="switchTab('nameHistory')"><span><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> ประวัติเปลี่ยนชื่อ-สกุล</span></button>
-              <button data-tab="deathCert" onclick="switchTab('deathCert')"><span><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i> รายละเอียดมรณบัตร</span></button>
-            </nav>
-          </div>
-          <div id="tab-nameHistory">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>ชื่อ-สกุลเดิม → ใหม่</th><th>วันที่เปลี่ยน</th><th>สำนักทะเบียนที่ดำเนินการ</th></tr></thead>
-                <tbody id="nameHistoryBody"></tbody>
-              </table>
-            </div>
-          </div>
-          <div id="tab-deathCert" class="hide"><div id="deathCertContent"></div></div>
-        </section>
+        <details class="dopa-tech">
+          <summary><i class="fa-solid fa-code" aria-hidden="true"></i> รายละเอียดการเชื่อมต่อสำหรับผู้ดูแลระบบ</summary>
+          <div class="dopa-tech-meta"><div><span>HTTP Status</span><strong id="dopaResponseHttp">200</strong><small>request response</small></div><div><span>รหัสกระบวนงาน</span><strong id="dopaResponseJob">รอ jobID จริง</strong><small>jobID</small></div><div><span>ผลรวมบริการ</span><strong id="dopaResponseServices">-</strong><small>data[].responseStatus</small></div><div><span>เวลาประมวลผล</span><strong id="dopaResponseTime">-</strong><small>executeTimeMs</small></div></div>
+          <div class="table-wrap"><table><thead><tr><th>บริการข้อมูล</th><th>serviceID</th><th>สถานะ</th><th>เวลาตอบกลับ</th><th>ความหมาย</th></tr></thead><tbody id="dopaServiceCallBody"></tbody></table></div>
+        </details>
 
-        <!-- ZONE 4 -->
-        <section class="card">
-          <div class="card-head"><div><h2>นำเข้าข้อมูลสู่สำนวนคดี</h2><p>นำชื่อ ที่อยู่ และประวัติทั้งหมดเข้าสำนวนแบบคลิกเดียว ไม่ต้องพิมพ์ข้อมูลเอง</p></div></div>
-          <div class="import-actions">
-            <div class="import-buttons">
-              <button class="btn secondary" onclick="addToCase('ผู้กล่าวหา (Complainant)')"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>เพิ่มเป็นผู้กล่าวหา</button>
-              <button class="btn danger" onclick="addToCase('ผู้ถูกกล่าวหา (Accused/Suspect)')"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>เพิ่มเป็นผู้ถูกกล่าวหา</button>
-              <button class="btn gold" onclick="addToCase('พยาน/บุคคลที่เกี่ยวข้อง (Witness)')"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>เพิ่มเป็นพยาน/บุคคลที่เกี่ยวข้อง</button>
-            </div>
-            <span class="badge" id="caseChipFooter">คดีเลขที่: -</span>
-          </div>
+        <section class="card dopa-audit">
+          <div class="card-head"><div><h2>Audit Log การเข้าถึงข้อมูล</h2><p>เก็บผู้ใช้ เงื่อนไข เลขสำนวน เวลา และผลการดำเนินการ โดยปกปิดเลขประชาชนบางส่วน</p></div></div>
+          <div class="table-wrap audit-log"><table><thead><tr><th>เวลา</th><th>ผู้ใช้งาน</th><th>การกระทำ</th><th>รายละเอียด</th><th>เลขที่สำนวน</th></tr></thead><tbody id="dopaAuditBody"></tbody></table></div>
         </section>
-
-        <section class="card" style="margin-top:16px">
-          <div class="card-head"><div><h2>Audit Log การเข้าถึงข้อมูล</h2><p>บันทึกผู้ใช้ เงื่อนไขที่สืบค้น เลขที่สำนวน และเวลา เพื่อการตรวจสอบย้อนหลังตาม PDPA</p></div></div>
-          <div class="table-wrap audit-log">
-            <table>
-              <thead><tr><th>เวลา</th><th>ผู้ใช้งาน</th><th>การกระทำ</th><th>รายละเอียด</th><th>เลขที่สำนวน</th></tr></thead>
-              <tbody id="dopaAuditBody"></tbody>
-            </table>
-          </div>
-        </section>
-
       </div>
+
+      <dialog class="dopa-import-dialog" id="dopaImportDialog" aria-labelledby="dopaImportTitle">
+        <div class="dopa-dialog-head"><div><h2 id="dopaImportTitle">นำข้อมูลเข้าสำนวนคดี</h2><p>ตรวจสอบบุคคล บทบาท และข้อมูลที่จะบันทึกก่อนยืนยัน</p></div><button class="dopa-dialog-close" type="button" onclick="dopaCloseImportDialog()" aria-label="ปิด"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+        <div class="dopa-dialog-body">
+          <div class="dopa-duplicate-note hide" id="dopaDuplicateNote"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span><strong>บุคคลนี้มีอยู่ในสำนวนแล้ว</strong><br>บทบาทปัจจุบัน: พยาน เพิ่มเมื่อ 10 สิงหาคม 2569 เลือกปรับปรุงข้อมูลหรือเพิ่มบทบาทใหม่ได้โดยไม่สร้างบุคคลซ้ำ</span></div>
+          <div class="dopa-import-summary"><div><span>บุคคล</span><strong id="dopaImportPerson">-</strong></div><div><span>สำนวนคดี</span><strong id="dopaImportCase">-</strong></div></div>
+          <div class="field"><label for="dopaImportRole">บทบาทในสำนวน <span style="color:var(--red)">*</span></label><select id="dopaImportRole"><option value="">-- เลือกบทบาท --</option><option>ผู้กล่าวหา</option><option selected>ผู้ถูกกล่าวหา</option><option>พยาน</option><option>บุคคลที่เกี่ยวข้อง</option></select></div>
+          <div class="field" style="margin-top:13px"><label>ข้อมูลที่จะนำเข้า</label><div class="dopa-import-options"><label><input type="checkbox" checked disabled>ข้อมูลระบุตัวบุคคล</label><label><input type="checkbox" checked>ที่อยู่ตามทะเบียนบ้าน</label><label><input type="checkbox" checked>ภาพใบหน้า</label><label><input type="checkbox" checked>ประวัติชื่อ</label><label><input type="checkbox">สถานภาพบุคคล</label><label><input type="checkbox">เอกสารทะเบียนที่พบ</label></div></div>
+        </div>
+        <div class="dopa-dialog-actions"><button class="btn secondary" type="button" onclick="dopaCloseImportDialog()">ยกเลิก</button><button class="btn secondary hide" type="button" id="dopaViewExistingButton" onclick="dopaViewExistingPerson()"><i class="fa-solid fa-eye" aria-hidden="true"></i>ดูข้อมูลเดิม</button><button class="btn" type="button" onclick="dopaConfirmImport()"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span id="dopaImportConfirmText">ยืนยันการนำเข้า</span></button></div>
+      </dialog>
     </div>
 
     <div class="content page-hidden" id="page-egp">
@@ -640,6 +787,287 @@
         </div>
       </section>
     </div>
+
+    <div class="content page-hidden sso-page" id="page-sso-hospital">
+      <div class="breadcrumb">E-CMIS <b>›</b> เครื่องมือสืบสวน <b>›</b> สำนักงานประกันสังคม <b>›</b> ผู้ประกันตนและสถานพยาบาล</div>
+      <div class="page-head">
+        <div>
+          <h1>ตรวจสอบผู้ประกันตนและสิทธิรักษาพยาบาล</h1>
+          <p>ค้นหาข้อมูลผู้ประกันตน สถานะปัจจุบัน และสถานพยาบาลตามสิทธิด้วยเลขประจำตัวประชาชน</p>
+        </div>
+        <div class="actions"><span class="badge case-chip-live"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</span><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>ข้อมูลส่วนบุคคล</span></div>
+      </div>
+
+      <div class="sso-service-strip">
+        <p><strong>SelectHospital</strong><br><code>POST /services/SelectHospital</code> · รับเลขประจำตัวประชาชน 13 หลัก · ผลลัพธ์จาก SOAP/XML</p>
+        <div class="sso-protocol"><span class="badge">SOAP</span><span class="badge">XML</span><span class="badge warning">UAT Mock</span></div>
+      </div>
+
+      <section class="toolbar" aria-label="เงื่อนไขค้นหาผู้ประกันตน">
+        <div class="field wide">
+          <label for="ssoHospitalCitizenId">เลขประจำตัวประชาชน (ssoNum) <span style="color:var(--red)">*</span></label>
+          <input id="ssoHospitalCitizenId" maxlength="13" inputmode="numeric" value="1101700999991" placeholder="กรอกตัวเลข 13 หลัก">
+          <span class="hint" id="ssoHospitalIdHint">ข้อมูลสมมติสำหรับเดโม: 1101700999991</span>
+        </div>
+        <div class="field">
+          <label for="ssoHospitalPurpose">วัตถุประสงค์การตรวจสอบ <span style="color:var(--red)">*</span></label>
+          <select id="ssoHospitalPurpose"><option value="">-- เลือกวัตถุประสงค์ --</option><option value="investigation" selected>ประกอบการสืบสวนข้อเท็จจริง</option><option value="case">ประกอบสำนวนคดี</option><option value="verify">ตรวจสอบสิทธิและสถานะบุคคล</option></select>
+        </div>
+        <div class="field">
+          <label for="ssoHospitalScenario">ผลจำลองสำหรับการนำเสนอ</label>
+          <select id="ssoHospitalScenario"><option value="success">ค้นหาสำเร็จ</option><option value="not-found">ไม่พบข้อมูล</option><option value="no-rights">ไม่มีสิทธิ์เรียกบริการ</option><option value="bad-credential">Credential ไม่ถูกต้อง</option><option value="invalid-parameter">พารามิเตอร์ไม่ถูกต้อง</option><option value="timeout">ระบบปลายทางไม่ตอบสนอง</option></select>
+          <span class="hint">ใช้เฉพาะ Mockup และตัดออกใน Production</span>
+        </div>
+        <div class="field-btn">
+          <button class="btn secondary" type="button" onclick="ssoHospitalReset()"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างข้อมูล</button>
+          <button class="btn" type="button" onclick="ssoHospitalSearch()"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ตรวจสอบข้อมูล</button>
+        </div>
+      </section>
+
+      <section class="card" id="ssoHospitalEmpty">
+        <div class="locked-empty"><i class="fa-solid fa-hospital-user" aria-hidden="true"></i><strong>ยังไม่มีข้อมูลแสดงผล</strong><span>กรอกเลขประจำตัวประชาชน เลือกวัตถุประสงค์ แล้วกด “ตรวจสอบข้อมูล”</span></div>
+      </section>
+
+      <div class="hide" id="ssoHospitalResult">
+        <section class="card" style="margin-bottom:16px">
+          <div class="sso-profile">
+            <div class="sso-profile-icon"><i class="fa-solid fa-user-shield" aria-hidden="true"></i></div>
+            <div><h2 id="ssoHospitalName">-</h2><p>เลขประจำตัวประชาชน <span id="ssoHospitalMaskedId">-</span> · <span id="ssoHospitalIdDesc">-</span></p></div>
+            <div class="sso-profile-meta"><span class="badge success" id="ssoHospitalActiveStatus">-</span><small id="ssoHospitalLastUpdate">ปรับปรุงล่าสุด -</small></div>
+          </div>
+          <div class="sso-response-meta" aria-label="ผลการเรียก SelectHospital">
+            <div><span>ผลการเรียก Service</span><strong id="ssoHospitalResponseStatus">สำเร็จ (true)</strong><small><code>status</code></small></div>
+            <div><span>ข้อความจากระบบต้นทาง</span><strong id="ssoHospitalResponseMessage">-</strong><small><code>message</code></small></div>
+            <div><span>วันที่ปรับปรุงข้อมูลล่าสุด</span><strong id="ssoHospitalResponseUpdated">-</strong><small><code>lastIncremental</code></small></div>
+            <div><span>ผลลัพธ์</span><strong>ข้อมูลผู้ประกันตน</strong><small><code>result: Rgw001</code></small></div>
+          </div>
+          <div class="sso-detail-section">
+            <h3><i class="fa-solid fa-address-card" aria-hidden="true"></i>ข้อมูลผู้ประกันตน</h3>
+            <div class="sso-detail-grid" id="ssoHospitalPersonGrid"></div>
+          </div>
+          <div class="sso-detail-section">
+            <h3><i class="fa-solid fa-house-medical" aria-hidden="true"></i>สถานพยาบาลและสิทธิการรักษา</h3>
+            <div class="sso-detail-grid" id="ssoHospitalBenefitGrid"></div>
+          </div>
+          <div class="sso-detail-section">
+            <h3><i class="fa-solid fa-building-shield" aria-hidden="true"></i>สำนักงานประกันสังคมที่รับผิดชอบ</h3>
+            <div class="sso-detail-grid" id="ssoHospitalBranchGrid"></div>
+          </div>
+          <div class="sso-source-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>แสดงฟิลด์ Response ของ SelectHospital ครบตาม Specification โดยข้อมูลทั้งหมดในหน้านี้เป็นข้อมูลสมมติสำหรับนำเสนอ และยังไม่ได้เชื่อมระบบสำนักงานประกันสังคมจริง</span></div>
+        </section>
+      </div>
+
+      <section class="card hide" id="ssoHospitalError" aria-live="polite">
+        <div class="sso-error-state">
+          <div class="sso-error-icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></div>
+          <span class="badge danger">เรียก Service ไม่สำเร็จ</span>
+          <h2 id="ssoHospitalErrorTitle">ไม่พบข้อมูล</h2>
+          <p id="ssoHospitalErrorHelp">ตรวจสอบเงื่อนไขการค้นหา หรือติดต่อผู้ดูแลระบบ</p>
+          <div class="sso-response-meta" aria-label="ผลตอบกลับกรณีไม่สำเร็จ">
+            <div><span>ผลการเรียก Service</span><strong>ไม่สำเร็จ (false)</strong><small><code>status</code></small></div>
+            <div><span>ข้อความจากระบบต้นทาง</span><strong id="ssoHospitalErrorMessage">-</strong><small><code>message</code></small></div>
+            <div><span>วันที่ปรับปรุงข้อมูลล่าสุด</span><strong>-</strong><small><code>lastIncremental: null</code></small></div>
+            <div><span>ผลลัพธ์</span><strong>ไม่มีข้อมูล</strong><small><code>result: null</code></small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card sso-audit" style="margin-top:16px">
+        <div class="card-head"><div><h2>Audit Log การเข้าถึงข้อมูล</h2><p>บันทึกทั้งผลสำเร็จ ไม่พบข้อมูล และข้อผิดพลาด โดยไม่เก็บ Credential หรือ Response XML</p></div></div>
+        <div class="table-wrap audit-log"><table><thead><tr><th>เวลา</th><th>ผู้ใช้งาน</th><th>Service</th><th>ผลการเรียก</th><th>รายละเอียด</th><th>เลขที่สำนวน</th></tr></thead><tbody id="ssoHospitalAuditBody"></tbody></table></div>
+      </section>
+    </div>
+
+    <div class="content page-hidden sso-page" id="page-sso-employer">
+      <div class="breadcrumb">E-CMIS <b>›</b> เครื่องมือสืบสวน <b>›</b> สำนักงานประกันสังคม <b>›</b> ข้อมูลสถานประกอบการ</div>
+      <div class="page-head">
+        <div>
+          <h1>ตรวจสอบข้อมูลสถานประกอบการ</h1>
+          <p>ค้นหาข้อมูลนายจ้าง ที่ตั้ง ประเภทธุรกิจ สถานะกิจการ และจำนวนลูกจ้างตามเลขบัญชีนายจ้างและรหัสสาขา</p>
+        </div>
+        <div class="actions"><span class="badge case-chip-live"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</span><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>บันทึก Audit Log ทุกครั้ง</span></div>
+      </div>
+
+      <div class="sso-service-strip">
+        <p><strong>EmployerDetail</strong> · บริการลำดับที่ 7 (ลำดับเดิม 8)<br><code>POST /services/EmployerDetail</code> · รับเลขบัญชีนายจ้าง 10 หลักและรหัสสาขา 6 หลัก · ผลลัพธ์จาก SOAP/XML</p>
+        <div class="sso-protocol"><span class="badge">SOAP</span><span class="badge">XML</span><span class="badge warning">UAT Mock</span></div>
+      </div>
+
+      <section class="toolbar" aria-label="เงื่อนไขค้นหาสถานประกอบการ">
+        <div class="field">
+          <label for="ssoEmployerAccNo">เลขบัญชีนายจ้าง (accNo) <span style="color:var(--red)">*</span></label>
+          <input id="ssoEmployerAccNo" maxlength="10" inputmode="numeric" value="1000000176" placeholder="ตัวเลข 10 หลัก">
+          <span class="hint" id="ssoEmployerAccHint">ข้อมูลสมมติสำหรับเดโม: 1000000176</span>
+        </div>
+        <div class="field">
+          <label for="ssoEmployerBranch">รหัสสาขา (accBran) <span style="color:var(--red)">*</span></label>
+          <input id="ssoEmployerBranch" maxlength="6" inputmode="numeric" value="000000" placeholder="ตัวเลข 6 หลัก">
+          <span class="hint" id="ssoEmployerBranchHint">สำนักงานใหญ่ใช้ 000000</span>
+        </div>
+        <div class="field">
+          <label for="ssoEmployerPurpose">วัตถุประสงค์การตรวจสอบ <span style="color:var(--red)">*</span></label>
+          <select id="ssoEmployerPurpose"><option value="">-- เลือกวัตถุประสงค์ --</option><option value="investigation" selected>ตรวจสอบสถานประกอบการที่เกี่ยวข้อง</option><option value="case">ประกอบสำนวนคดี</option><option value="asset">ตรวจสอบเส้นทางการจ้างงาน</option></select>
+        </div>
+        <div class="field">
+          <label for="ssoEmployerScenario">ผลจำลองสำหรับการนำเสนอ</label>
+          <select id="ssoEmployerScenario"><option value="success">ค้นหาสำเร็จ</option><option value="not-found">ไม่พบข้อมูล</option><option value="no-rights">ไม่มีสิทธิ์เรียกบริการ</option><option value="bad-credential">Credential ไม่ถูกต้อง</option><option value="invalid-acc-no">เลขบัญชีนายจ้างไม่ถูกต้อง</option><option value="invalid-acc-branch">รหัสสาขาไม่ถูกต้อง</option><option value="timeout">ระบบปลายทางไม่ตอบสนอง</option></select>
+          <span class="hint">ใช้เฉพาะ Mockup และตัดออกใน Production</span>
+        </div>
+        <div class="field-btn">
+          <button class="btn secondary" type="button" onclick="ssoEmployerReset()"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างข้อมูล</button>
+          <button class="btn" type="button" onclick="ssoEmployerSearch()"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ตรวจสอบสถานประกอบการ</button>
+        </div>
+      </section>
+
+      <section class="card" id="ssoEmployerEmpty">
+        <div class="locked-empty"><i class="fa-solid fa-building" aria-hidden="true"></i><strong>ยังไม่มีข้อมูลแสดงผล</strong><span>กรอกเลขบัญชีนายจ้างและรหัสสาขา แล้วกด “ตรวจสอบสถานประกอบการ”</span></div>
+      </section>
+
+      <div class="hide" id="ssoEmployerResult">
+        <div class="sso-kpis">
+          <div class="sso-kpi"><span>จำนวนลูกจ้างสาขานี้</span><strong id="ssoEmployerBranchEmployees">-</strong><small>branchEmplyeeNo</small></div>
+          <div class="sso-kpi"><span>จำนวนลูกจ้างทุกสาขา</span><strong id="ssoEmployerTotalEmployees">-</strong><small>totalEmployeeNo</small></div>
+          <div class="sso-kpi"><span>สถานะสถานประกอบการ</span><strong id="ssoEmployerStatus">-</strong><small id="ssoEmployerStatusCode">companyStatus</small></div>
+          <div class="sso-kpi"><span>ข้อมูลปรับปรุงล่าสุด</span><strong id="ssoEmployerUpdated">-</strong><small>lastIncremental</small></div>
+        </div>
+        <section class="card" style="margin-bottom:16px">
+          <div class="sso-profile">
+            <div class="sso-profile-icon"><i class="fa-solid fa-building-shield" aria-hidden="true"></i></div>
+            <div><h2 id="ssoEmployerName">-</h2><p>เลขบัญชีนายจ้าง <span id="ssoEmployerAccount">-</span> · สาขา <span id="ssoEmployerAccountBranch">-</span></p></div>
+            <div class="sso-profile-meta"><span class="badge success" id="ssoEmployerType">-</span></div>
+          </div>
+          <div class="sso-response-meta" aria-label="ผลการเรียก EmployerDetail">
+            <div><span>ผลการเรียก Service</span><strong id="ssoEmployerResponseStatus">สำเร็จ (true)</strong><small><code>status</code></small></div>
+            <div><span>ข้อความจากระบบต้นทาง</span><strong id="ssoEmployerResponseMessage">-</strong><small><code>message</code></small></div>
+            <div><span>วันที่ปรับปรุงข้อมูลล่าสุด</span><strong id="ssoEmployerResponseUpdated">-</strong><small><code>lastIncremental</code></small></div>
+            <div><span>ผลลัพธ์</span><strong>ข้อมูลสถานประกอบการ</strong><small><code>result: Rgw008</code></small></div>
+          </div>
+          <div class="sso-detail-section"><h3><i class="fa-solid fa-users" aria-hidden="true"></i>บัญชีนายจ้าง สาขา และจำนวนลูกจ้าง</h3><div class="sso-detail-grid" id="ssoEmployerAccountGrid"></div></div>
+          <div class="sso-detail-section"><h3><i class="fa-solid fa-file-lines" aria-hidden="true"></i>ข้อมูลทะเบียนและกิจการ</h3><div class="sso-detail-grid" id="ssoEmployerRegistrationGrid"></div></div>
+          <div class="sso-detail-section"><h3><i class="fa-solid fa-location-dot" aria-hidden="true"></i>ที่ตั้งและข้อมูลติดต่อ</h3><div class="sso-detail-grid" id="ssoEmployerContactGrid"></div></div>
+          <div class="sso-detail-section"><h3><i class="fa-solid fa-building-columns" aria-hidden="true"></i>สำนักงานประกันสังคมรับผิดชอบและรับชำระเงิน</h3><div class="sso-detail-grid" id="ssoEmployerSsoGrid"></div></div>
+          <div class="notice-box"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> เอกสารบรรยายว่า Service แสดง “จำนวนเงินสมทบที่ส่ง สปส.” แต่ Rgw008 และ XML ตัวอย่างไม่มีฟิลด์จำนวนเงินสมทบ จึงยังไม่แสดงค่าและต้องขอเจ้าของ API ยืนยันแหล่งข้อมูล</div>
+          <div class="sso-source-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>แสดงฟิลด์ Response ของ EmployerDetail ครบตาม Rgw008 จำนวนลูกจ้างและข้อมูลทะเบียนเป็นค่าจากระบบต้นทางโดยตรง และข้อมูลในหน้านี้เป็นข้อมูลสมมติสำหรับนำเสนอ</span></div>
+        </section>
+      </div>
+
+      <section class="card hide" id="ssoEmployerError" aria-live="polite">
+        <div class="sso-error-state">
+          <div class="sso-error-icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></div>
+          <span class="badge danger">เรียก Service ไม่สำเร็จ</span>
+          <h2 id="ssoEmployerErrorTitle">ไม่พบข้อมูล</h2>
+          <p id="ssoEmployerErrorHelp">ตรวจสอบเลขบัญชีนายจ้างและรหัสสาขา หรือติดต่อผู้ดูแลระบบ</p>
+          <div class="sso-response-meta" aria-label="ผลตอบกลับ EmployerDetail กรณีไม่สำเร็จ">
+            <div><span>ผลการเรียก Service</span><strong>ไม่สำเร็จ (false)</strong><small><code>status</code></small></div>
+            <div><span>ข้อความจากระบบต้นทาง</span><strong id="ssoEmployerErrorMessage">-</strong><small><code>message</code></small></div>
+            <div><span>วันที่ปรับปรุงข้อมูลล่าสุด</span><strong>-</strong><small><code>lastIncremental: null</code></small></div>
+            <div><span>ผลลัพธ์</span><strong>ไม่มีข้อมูล</strong><small><code>result: null</code></small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card sso-audit" style="margin-top:16px">
+        <div class="card-head"><div><h2>Audit Log การเข้าถึงข้อมูล</h2><p>บันทึกผู้ค้นหา เงื่อนไข ผลการเรียก และเลขที่สำนวน เพื่อการตรวจสอบย้อนหลัง</p></div></div>
+        <div class="table-wrap audit-log"><table><thead><tr><th>เวลา</th><th>ผู้ใช้งาน</th><th>Service</th><th>ผลการเรียก</th><th>รายละเอียด</th><th>เลขที่สำนวน</th></tr></thead><tbody id="ssoEmployerAuditBody"></tbody></table></div>
+      </section>
+    </div>
+
+    <div class="content page-hidden sso-page" id="page-sso-employment">
+      <div class="breadcrumb">E-CMIS <b>›</b> เครื่องมือสืบสวน <b>›</b> สำนักงานประกันสังคม <b>›</b> ประวัติการจ้างและเงินสมทบ</div>
+      <div class="page-head">
+        <div>
+          <h1>ตรวจสอบประวัติการจ้างและการส่งเงินสมทบ</h1>
+          <p>ค้นหาประวัติสถานประกอบการที่เคยจ้าง สถานะการจ้าง ค่าจ้าง และรายละเอียดเงินสมทบรายงวด</p>
+        </div>
+        <div class="actions"><span class="badge case-chip-live"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>คดีเลขที่: ปปท.บ.๑๒/๒๕๖๙</span><span class="secret"><i class="fa-solid fa-lock" aria-hidden="true"></i>ข้อมูลลับเฉพาะคดี</span></div>
+      </div>
+
+      <div class="sso-service-strip">
+        <p><strong>EmployeeEmployment</strong> · บริการลำดับที่ 13 (ลำดับเดิม 14)<br><code>POST /services/EmployeeEmployment</code> · รับเลขประจำตัวประชาชนและวันที่ลาออกรูปแบบ ddMMyyyy · คืนประวัติการจ้างและเงินสมทบ</p>
+        <div class="sso-protocol"><span class="badge">SOAP</span><span class="badge">XML</span><span class="badge warning">UAT Mock</span></div>
+      </div>
+
+      <section class="toolbar" aria-label="เงื่อนไขค้นหาประวัติการจ้าง">
+        <div class="field">
+          <label for="ssoEmploymentCitizenId">เลขประจำตัวประชาชน (ssoNum) <span style="color:var(--red)">*</span></label>
+          <input id="ssoEmploymentCitizenId" maxlength="13" inputmode="numeric" value="1101700999991" placeholder="กรอกตัวเลข 13 หลัก">
+          <span class="hint" id="ssoEmploymentIdHint">ข้อมูลสมมติสำหรับเดโม: 1101700999991</span>
+        </div>
+        <div class="field">
+          <label for="ssoEmploymentResignDate">วันที่ลาออก (resignDate) <span style="color:var(--red)">*</span></label>
+          <input id="ssoEmploymentResignDate" type="date" value="2024-03-03">
+          <span class="hint">หน้าจอรับวันที่ปกติ และ Backend แปลงเป็น ddMMyyyy</span>
+        </div>
+        <div class="field">
+          <label for="ssoEmploymentPurpose">วัตถุประสงค์การตรวจสอบ <span style="color:var(--red)">*</span></label>
+          <select id="ssoEmploymentPurpose"><option value="">-- เลือกวัตถุประสงค์ --</option><option value="investigation" selected>ตรวจสอบประวัติการทำงาน</option><option value="case">ประกอบสำนวนคดี</option><option value="contribution">ตรวจสอบข้อมูลเงินสมทบ</option></select>
+        </div>
+        <div class="field">
+          <label for="ssoEmploymentScenario">ผลจำลองสำหรับการนำเสนอ</label>
+          <select id="ssoEmploymentScenario"><option value="success">ค้นหาสำเร็จ</option><option value="not-found">ไม่พบข้อมูล</option><option value="no-rights">ไม่มีสิทธิ์เรียกบริการ</option><option value="bad-credential">Credential ไม่ถูกต้อง</option><option value="invalid-parameter">เลขประชาชนไม่ถูกต้อง</option><option value="invalid-resign-date">รูปแบบวันที่ลาออกไม่ถูกต้อง</option><option value="timeout">ระบบปลายทางไม่ตอบสนอง</option></select>
+          <span class="hint">ใช้เฉพาะ Mockup และตัดออกใน Production</span>
+        </div>
+        <div class="field-btn">
+          <button class="btn secondary" type="button" onclick="ssoEmploymentReset()"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>ล้างข้อมูล</button>
+          <button class="btn" type="button" onclick="ssoEmploymentSearch()"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>ตรวจสอบประวัติ</button>
+        </div>
+      </section>
+
+      <section class="card" id="ssoEmploymentEmpty">
+        <div class="locked-empty"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><strong>ยังไม่มีข้อมูลแสดงผล</strong><span>กรอกข้อมูลให้ครบ แล้วกด “ตรวจสอบประวัติ”</span></div>
+      </section>
+
+      <div class="hide" id="ssoEmploymentResult">
+        <div class="sso-kpis">
+          <div class="sso-kpi"><span>ประวัติการจ้าง</span><strong id="ssoEmploymentJobCount">-</strong><small>E-CMIS นับจาก detail1</small></div>
+          <div class="sso-kpi"><span>รายการเงินสมทบ</span><strong id="ssoEmploymentContributionCount">-</strong><small>E-CMIS นับจาก detail2</small></div>
+          <div class="sso-kpi"><span>ค่าจ้างรวมในผลลัพธ์</span><strong id="ssoEmploymentWageTotal">-</strong><small>E-CMIS รวมจาก cempTotalWages</small></div>
+          <div class="sso-kpi"><span>ข้อมูลปรับปรุงล่าสุด</span><strong id="ssoEmploymentUpdated">-</strong><small>lastIncremental</small></div>
+        </div>
+        <section class="card" style="margin-bottom:16px">
+          <div class="sso-profile">
+            <div class="sso-profile-icon"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+            <div><h2 id="ssoEmploymentName">-</h2><p>เลขประจำตัวประชาชน <span id="ssoEmploymentMaskedId">-</span> · สถานะ <span id="ssoEmploymentPersonStatus">-</span></p></div>
+            <div class="sso-profile-meta"><span class="badge" id="ssoEmploymentGender">-</span></div>
+          </div>
+          <div class="sso-response-meta" aria-label="ผลการเรียก EmployeeEmployment">
+            <div><span>ผลการเรียก Service</span><strong id="ssoEmploymentResponseStatus">สำเร็จ (true)</strong><small><code>status</code></small></div>
+            <div><span>ข้อความจากระบบต้นทาง</span><strong id="ssoEmploymentResponseMessage">-</strong><small><code>message</code></small></div>
+            <div><span>วันที่ปรับปรุงข้อมูลล่าสุด</span><strong id="ssoEmploymentResponseUpdated">-</strong><small><code>lastIncremental</code></small></div>
+            <div><span>ผลลัพธ์ / วันที่ส่งค้นหา</span><strong>Rgi001 · <span id="ssoEmploymentRequestDate">-</span></strong><small><code>result / request.resignDate</code></small></div>
+          </div>
+          <div class="sso-tabs" role="tablist" aria-label="ข้อมูลประวัติผู้ประกันตน">
+            <button class="active" type="button" data-sso-tab="person" onclick="ssoSwitchEmploymentTab('person')">ข้อมูลผู้ประกันตน</button>
+            <button type="button" data-sso-tab="jobs" onclick="ssoSwitchEmploymentTab('jobs')">ประวัติการจ้างงาน</button>
+            <button type="button" data-sso-tab="contributions" onclick="ssoSwitchEmploymentTab('contributions')">ประวัติเงินสมทบ</button>
+          </div>
+          <div class="sso-tab-panel" id="ssoEmploymentTabPerson"><div class="sso-detail-section"><h3><i class="fa-solid fa-address-card" aria-hidden="true"></i>ข้อมูลผู้ประกันตน</h3><div class="sso-detail-grid" id="ssoEmploymentPersonGrid"></div></div></div>
+          <div class="sso-tab-panel hide" id="ssoEmploymentTabJobs"><div class="table-wrap sso-contract-table"><table><thead><tr><th>สถานประกอบการ<small>companyName</small></th><th>เลขที่บัญชี<small>accNo</small></th><th>สาขา<small>accBran</small></th><th>วันเข้างานใหม่<small>expStartDate</small></th><th>วันที่ลาออก<small>empResignDate</small></th><th>รหัสสถานะ<small>employStatus</small></th><th>สถานะการจ้าง<small>employStatusDesc</small></th></tr></thead><tbody id="ssoEmploymentJobsBody"></tbody></table></div></div>
+          <div class="sso-tab-panel hide" id="ssoEmploymentTabContributions"><div class="table-wrap sso-contract-table contributions"><table><thead><tr><th>สถานประกอบการ<small>companyName</small></th><th>เลขที่บัญชี<small>accNo</small></th><th>สาขา<small>accBran</small></th><th>งวด<small>cchdPayPeriod</small></th><th>วันที่ชำระเงิน<small>cchdPayDate</small></th><th>เงินค่าจ้าง<small>cempTotalWages</small></th><th>เงินสมทบลูกจ้าง<small>cempCntrAmount</small></th><th>ชราภาพลูกจ้าง<small>cempCntrOldage</small></th><th>เจ็บป่วยลูกจ้าง<small>cempCntrSick</small></th><th>ว่างงานลูกจ้าง<small>cempCntrUnem</small></th></tr></thead><tbody id="ssoEmploymentContributionsBody"></tbody></table></div></div>
+          <div class="sso-source-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>แสดงฟิลด์ของ Person, detail1 และ detail2 ครบตาม Rgi001 ส่วนจำนวนรายการและค่าจ้างรวมเป็นค่าที่ E-CMIS คำนวณเพื่อช่วยอ่านผล ไม่ใช่ฟิลด์ที่สำนักงานประกันสังคมส่งมาโดยตรง</span></div>
+        </section>
+      </div>
+
+      <section class="card hide" id="ssoEmploymentError" aria-live="polite">
+        <div class="sso-error-state">
+          <div class="sso-error-icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></div>
+          <span class="badge danger">เรียก Service ไม่สำเร็จ</span>
+          <h2 id="ssoEmploymentErrorTitle">ไม่พบข้อมูล</h2>
+          <p id="ssoEmploymentErrorHelp">ตรวจสอบเลขประจำตัวประชาชนและวันที่ลาออก หรือติดต่อผู้ดูแลระบบ</p>
+          <div class="sso-response-meta" aria-label="ผลตอบกลับ EmployeeEmployment กรณีไม่สำเร็จ">
+            <div><span>ผลการเรียก Service</span><strong>ไม่สำเร็จ (false)</strong><small><code>status</code></small></div>
+            <div><span>ข้อความจากระบบต้นทาง</span><strong id="ssoEmploymentErrorMessage">-</strong><small><code>message</code></small></div>
+            <div><span>วันที่ปรับปรุงข้อมูลล่าสุด</span><strong>-</strong><small><code>lastIncremental: null</code></small></div>
+            <div><span>ผลลัพธ์</span><strong>ไม่มีข้อมูล</strong><small><code>result: null</code></small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card sso-audit" style="margin-top:16px">
+        <div class="card-head"><div><h2>Audit Log การเข้าถึงข้อมูล</h2><p>ไม่บันทึกจำนวนเงินหรือข้อมูลส่วนบุคคลเต็มใน Log เก็บเฉพาะข้อมูลอ้างอิงที่จำเป็น</p></div></div>
+        <div class="table-wrap audit-log"><table><thead><tr><th>เวลา</th><th>ผู้ใช้งาน</th><th>Service</th><th>ผลการเรียก</th><th>รายละเอียด</th><th>เลขที่สำนวน</th></tr></thead><tbody id="ssoEmploymentAuditBody"></tbody></table></div>
+      </section>
+    </div>
   </main>
 </div>
 
@@ -648,10 +1076,7 @@
 /* ===== สลับหน้าและเลขที่สำนวนคดีที่ใช้ร่วมกันทั้งสองหน้า ===== */
 function switchPage(route){
   document.querySelectorAll('.real-nav .nav-link').forEach(b=>b.classList.toggle('active', b.dataset.route===route));
-  document.getElementById('page-dopa').classList.toggle('page-hidden', route!=='dopa');
-  document.getElementById('page-egp').classList.toggle('page-hidden', route!=='egp');
-  document.getElementById('page-dlt-plate').classList.toggle('page-hidden', route!=='dlt-plate');
-  document.getElementById('page-dlt-doc').classList.toggle('page-hidden', route!=='dlt-doc');
+  document.querySelectorAll('.main > .content').forEach(page=>page.classList.toggle('page-hidden', page.id!=='page-'+route));
   syncCase();
   window.scrollTo({top:0});
 }
@@ -666,7 +1091,215 @@ syncCase();
 </script>
 
 <script>
-/* ================== หน้าตรวจสอบประวัติบุคคล (DOPA Linkage) ================== */
+/* ================== DOPA Linkage: spec-driven prototype ================== */
+const DOPA_PEOPLE = {
+  "1234567890123":{pid:"1234567890123",citizenId:"1-2345-67890-12-3",nameTh:"นาย สมชาย ใจดี",nameEn:"Mr. Somchai Jaidee",dob:"5 มิถุนายน 2532",age:"37 ปี",gender:"ชาย",nationality:"ไทย",status:"บุคคลมีสถานะปกติ",statusDetail:"มีชื่ออยู่ในทะเบียนบ้าน",ownerStatus:"ผู้อาศัย",father:"นาย สมบัติ ใจดี",mother:"นาง สมหญิง ใจดี",address:{houseNo:"124/8",villageNo:"5",alley:"ลาดพร้าว 42",alleyWay:"-",road:"ลาดพร้าว",subdistrict:"สามเสนนอก",district:"ห้วยขวาง",province:"กรุงเทพมหานคร",rcode:"สำนักทะเบียนท้องถิ่นเขตห้วยขวาง",houseType:"บ้าน"},moveIn:"15 มกราคม 2560",moveOut:"-",terminate:"-",imageAvailable:true,nameHistory:[{type:"ชื่อตัว",oldValue:"สมพงษ์",newValue:"สมชาย",date:"12 มกราคม 2560",office:"สำนักทะเบียนอำเภอเมืองขอนแก่น"},{type:"ชื่อสกุล",oldValue:"ศรีสุข",newValue:"ใจดี",date:"12 มกราคม 2560",office:"สำนักทะเบียนอำเภอเมืองขอนแก่น"}],death:null,cards:[{documentNumber:"1001-2565-004812",issueDate:"14 มีนาคม 2565",district:"เขตห้วยขวาง",province:"กรุงเทพมหานคร",country:"ประเทศไทย"},{documentNumber:"4001-2557-001943",issueDate:"2 มิถุนายน 2557",district:"อำเภอเมืองขอนแก่น",province:"ขอนแก่น",country:"ประเทศไทย"}],duplicateInCase:true},
+  "3456789012345":{pid:"3456789012345",citizenId:"3-4567-89012-34-5",nameTh:"นาย วิเชียร พงษ์สกุล",nameEn:"Mr. Wichian Pongsakul",dob:"20 กันยายน 2498",age:"70 ปี (ขณะเสียชีวิต)",gender:"ชาย",nationality:"ไทย",status:"เสียชีวิต",statusDetail:"จำหน่ายเนื่องจากเสียชีวิต",ownerStatus:"ผู้อาศัย",father:"นาย วิชัย พงษ์สกุล",mother:"นาง วรรณา พงษ์สกุล",address:{houseNo:"88/2",villageNo:"3",alley:"-",alleyWay:"-",road:"เทพารักษ์",subdistrict:"บางพลีใหญ่",district:"บางพลี",province:"สมุทรปราการ",rcode:"สำนักทะเบียนอำเภอบางพลี",houseType:"บ้าน"},moveIn:"4 พฤษภาคม 2548",moveOut:"3 พฤศจิกายน 2566",terminate:"3 พฤศจิกายน 2566",imageAvailable:true,nameHistory:[],death:{date:"3 พฤศจิกายน 2566",notifyDate:"4 พฤศจิกายน 2566",cause:"ภาวะหัวใจล้มเหลวเฉียบพลัน",place:"โรงพยาบาลสมุทรปราการ",documentNo:"มค.10540-66-004821",authority:"สำนักทะเบียนอำเภอบางพลี"},cards:[{documentNumber:"1103-2561-002811",issueDate:"9 กรกฎาคม 2561",district:"อำเภอบางพลี",province:"สมุทรปราการ",country:"ประเทศไทย"}],duplicateInCase:false},
+  "3102500123456":{pid:"3102500123456",citizenId:"3-1025-00123-45-6",nameTh:"นาย สมชาย ใจดี",nameEn:"Mr. Somchai Jaidee",dob:"12 สิงหาคม 2519",age:"50 ปี",gender:"ชาย",nationality:"ไทย",status:"บุคคลมีสถานะปกติ",statusDetail:"มีชื่ออยู่ในทะเบียนบ้าน",ownerStatus:"เจ้าบ้าน",father:"นาย สมนึก ใจดี",mother:"นาง สมพร ใจดี",address:{houseNo:"45",villageNo:"2",alley:"-",alleyWay:"-",road:"เจริญเขต",subdistrict:"สุไหงโก-ลก",district:"สุไหงโก-ลก",province:"นราธิวาส",rcode:"สำนักทะเบียนอำเภอสุไหงโก-ลก",houseType:"บ้าน"},moveIn:"8 ตุลาคม 2549",moveOut:"-",terminate:"-",imageAvailable:true,nameHistory:[],death:null,cards:[{documentNumber:"9601-2565-003114",issueDate:"3 เมษายน 2565",district:"อำเภอสุไหงโก-ลก",province:"นราธิวาส",country:"ประเทศไทย"}],duplicateInCase:false},
+  "5087654321098":{pid:"5087654321098",citizenId:"5-0876-54321-09-8",nameTh:"นาย สมชาย ใจดี",nameEn:"Mr. Somchai Jaidee",dob:"25 พฤษภาคม 2515",age:"54 ปี",gender:"ชาย",nationality:"ไทย",status:"บุคคลมีสถานะปกติ",statusDetail:"มีชื่ออยู่ในทะเบียนบ้าน",ownerStatus:"ผู้อาศัย",father:"นาย สมศักดิ์ ใจดี",mother:"นาง สมจิตร ใจดี",address:{houseNo:"56",villageNo:"4",alley:"-",alleyWay:"-",road:"สุขุมวิท",subdistrict:"หนองปรือ",district:"บางละมุง",province:"ชลบุรี",rcode:"สำนักทะเบียนอำเภอบางละมุง",houseType:"บ้าน"},moveIn:"9 กุมภาพันธ์ 2548",moveOut:"-",terminate:"-",imageAvailable:true,nameHistory:[],death:null,cards:[{documentNumber:"2004-2563-006021",issueDate:"18 กันยายน 2563",district:"อำเภอบางละมุง",province:"ชลบุรี",country:"ประเทศไทย"}],duplicateInCase:false},
+  "6076543210987":{pid:"6076543210987",citizenId:"6-0765-43210-98-7",nameTh:"นาย สมชาย ใจดี",nameEn:"Mr. Somchai Jaidee",dob:"11 มกราคม 2521",age:"48 ปี",gender:"ชาย",nationality:"ไทย",status:"อยู่ระหว่างย้ายทะเบียนบ้าน",statusDetail:"บุคคลย้ายลอย",ownerStatus:"ไม่ระบุ",father:"นาย สมเกียรติ ใจดี",mother:"นาง สมฤดี ใจดี",address:{houseNo:"321/5",villageNo:"-",alley:"สุขุมวิท 71",alleyWay:"-",road:"สุขุมวิท",subdistrict:"คลองตันเหนือ",district:"วัฒนา",province:"กรุงเทพมหานคร",rcode:"สำนักทะเบียนท้องถิ่นเขตวัฒนา",houseType:"บ้าน"},moveIn:"30 มีนาคม 2567",moveOut:"2 กรกฎาคม 2569",terminate:"-",imageAvailable:true,nameHistory:[],death:null,cards:[{documentNumber:"1009-2567-003421",issueDate:"30 มีนาคม 2567",district:"เขตวัฒนา",province:"กรุงเทพมหานคร",country:"ประเทศไทย"}],duplicateInCase:false}
+};
+
+const DOPA_NAME_RESULTS = {
+  current:["1234567890123","3102500123456","5087654321098","6076543210987"],
+  old:["1234567890123"]
+};
+const DOPA_SERVICE_CONTRACTS = [
+  {id:1,name:"ข้อมูลทะเบียนราษฎร",time:285},
+  {id:10,name:"ข้อมูลทะเบียนบ้าน",time:198},
+  {id:21,name:"ข้อมูลภาพใบหน้า",time:410},
+  {id:9,name:"ข้อมูลการเปลี่ยนแปลงชื่อตัว-ชื่อสกุล",time:240},
+  {id:144,name:"ข้อมูลสถานภาพบุคคล",time:176},
+  {id:27,name:"ข้อมูลใบมรณบัตร",time:221},
+  {id:32,name:"ข้อมูลรายการทำบัตรประจำตัวประชาชน",time:305}
+];
+const DOPA_SWAL={customClass:{popup:"ecmis-swal"},confirmButtonColor:"#16558f",cancelButtonColor:"#8593a3"};
+let dopaSearchMode="pid";
+let dopaCandidates=[];
+let dopaCandidateIndex=0;
+let dopaCurrentPerson=null;
+let dopaCurrentScenario="success";
+
+function dopaEscape(value){return String(value??"-").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));}
+function dopaMaskId(value){const id=String(value).replace(/\D/g,"");return id.length===13?`${id.slice(0,1)}-XXXX-XXXXX-XX-${id.slice(-1)}`:"-";}
+function dopaField(label,value,key,wide=false){return `<div class="dopa-field${wide?' wide':''}"><span>${dopaEscape(label)}</span><strong>${dopaEscape(value)}<small class="dopa-field-key">${dopaEscape(key)}</small></strong></div>`;}
+function dopaCaseNo(){return document.getElementById("globalCaseNo").value.trim();}
+function dopaAddAudit(action,detail,caseNo=dopaCaseNo()){
+  const body=document.getElementById("dopaAuditBody");
+  const row=document.createElement("tr");
+  const at=typeof nowStr==="function"?nowStr():new Date().toLocaleString("th-TH");
+  const user=typeof USER!=="undefined"?USER:"อรรถพล (เจ้าหน้าที่ ป.ป.ท.)";
+  row.innerHTML=`<td>${dopaEscape(at)}</td><td>${dopaEscape(user)}</td><td><strong>${dopaEscape(action)}</strong></td><td>${dopaEscape(detail)}</td><td>${dopaEscape(caseNo||"-")}</td>`;
+  body.insertBefore(row,body.firstChild);
+}
+
+function dopaSetSearchMode(mode){
+  dopaSearchMode=mode;
+  const map={pid:"dopaModePid","current-name":"dopaModeCurrent","old-name":"dopaModeOld"};
+  Object.entries(map).forEach(([value,id])=>{const button=document.getElementById(id);const active=value===mode;button.classList.toggle("active",active);button.setAttribute("aria-selected",String(active));});
+  document.getElementById("dopaPidFields").classList.toggle("hide",mode!=="pid");
+  document.getElementById("dopaCurrentNameFields").classList.toggle("hide",mode!=="current-name");
+  document.getElementById("dopaOldNameFields").classList.toggle("hide",mode!=="old-name");
+  dopaHideWorkStates();
+  document.getElementById("dopaLockedState").classList.remove("hide");
+}
+
+function dopaHideWorkStates(){
+  ["dopaLockedState","dopaLoadingState","dopaErrorState","dopaCandidateState","dopaResultWrap"].forEach(id=>document.getElementById(id).classList.add("hide"));
+}
+function dopaShowLoading(title,text){dopaHideWorkStates();document.getElementById("dopaLoadingTitle").textContent=title;document.getElementById("dopaLoadingText").textContent=text;document.getElementById("dopaLoadingState").classList.remove("hide");}
+function dopaFocusSearch(){document.querySelector("#page-dopa .dopa-search-tool").scrollIntoView({behavior:"smooth",block:"start"});const input=dopaSearchMode==="pid"?document.getElementById("citizenId"):dopaSearchMode==="current-name"?document.getElementById("dopaFirstName"):document.getElementById("dopaOldFirstName");input.focus();}
+
+const dopaIdInput=document.getElementById("citizenId");
+dopaIdInput.addEventListener("input",event=>{
+  const raw=event.target.value.replace(/\D/g,"").slice(0,13);
+  let formatted=raw;
+  if(raw.length>1)formatted=raw.slice(0,1)+"-"+raw.slice(1);
+  if(raw.length>5)formatted=formatted.slice(0,6)+"-"+raw.slice(5);
+  if(raw.length>10)formatted=formatted.slice(0,12)+"-"+raw.slice(10);
+  if(raw.length>12)formatted=formatted.slice(0,15)+"-"+raw.slice(12);
+  event.target.value=formatted;
+  const hint=document.getElementById("idHint");
+  hint.textContent=raw.length===13?"เลขประจำตัวประชาชนครบ 13 หลัก":`กรอกตัวเลขให้ครบ 13 หลัก (${raw.length}/13)`;
+  hint.classList.toggle("bad",raw.length>0&&raw.length!==13);
+});
+
+function dopaValidateSearch(){
+  if(!dopaCaseNo()){Swal.fire({...DOPA_SWAL,icon:"warning",title:"กรุณาระบุเลขที่สำนวนคดี",text:"การค้นหาทุกครั้งต้องผูกกับสำนวนเพื่อบันทึก Audit Log"});return null;}
+  if(!document.getElementById("purpose").value){Swal.fire({...DOPA_SWAL,icon:"warning",title:"กรุณาเลือกวัตถุประสงค์การค้นหา"});return null;}
+  if(dopaSearchMode==="pid"){
+    const pid=dopaIdInput.value.replace(/\D/g,"");
+    if(pid.length!==13){Swal.fire({...DOPA_SWAL,icon:"warning",title:"เลขประจำตัวประชาชนไม่ถูกต้อง",text:"กรุณากรอกตัวเลขให้ครบ 13 หลัก"});return null;}
+    if(pid.startsWith("0")){Swal.fire({...DOPA_SWAL,icon:"info",title:"เลขทะเบียนนิติบุคคล",text:"บริการ DOPA หน้านี้ใช้ค้นหาบุคคลธรรมดา ข้อมูลนิติบุคคลต้องเชื่อมกับกรมพัฒนาธุรกิจการค้า"});return null;}
+    return {pid,label:dopaMaskId(pid)};
+  }
+  if(dopaSearchMode==="current-name"){
+    const first=document.getElementById("dopaFirstName").value.trim(),middle=document.getElementById("dopaMiddleName").value.trim(),last=document.getElementById("dopaLastName").value.trim();
+    if(!first||!last){Swal.fire({...DOPA_SWAL,icon:"warning",title:"กรุณากรอกชื่อตัวและชื่อสกุล"});return null;}
+    return {first,middle,last,label:[first,middle,last].filter(Boolean).join(" ")};
+  }
+  const first=document.getElementById("dopaOldFirstName").value.trim(),last=document.getElementById("dopaOldLastName").value.trim();
+  if(!first||!last){Swal.fire({...DOPA_SWAL,icon:"warning",title:"กรุณากรอกชื่อตัวเดิมและชื่อสกุลเดิม"});return null;}
+  return {first,last,label:`${first} ${last}`};
+}
+
+function dopaSearch(){
+  const query=dopaValidateSearch();if(!query)return;
+  dopaCurrentScenario=document.getElementById("dopaScenario").value;
+  const service=dopaSearchMode==="pid"?"serviceID 1":dopaSearchMode==="current-name"?"serviceID 51":"serviceID 41";
+  dopaShowLoading("กำลังค้นหาบุคคล",`เรียก ${service} ผ่าน Linkage Proxy Server`);
+  window.setTimeout(()=>{
+    if(!["success","partial"].includes(dopaCurrentScenario)){dopaShowRequestError(dopaCurrentScenario,query.label);return;}
+    if(dopaSearchMode==="pid"){
+      const person=DOPA_PEOPLE[query.pid];
+      if(!person){dopaShowRequestError("not-found",query.label);return;}
+      dopaCandidates=[];dopaRenderPerson(person);
+      dopaAddAudit("ค้นหาด้วยเลขประชาชน",`${dopaMaskId(query.pid)} · พบข้อมูล`,dopaCaseNo());
+      return;
+    }
+    const matches=dopaSearchMode==="old-name"&&query.first==="สมพงษ์"?DOPA_NAME_RESULTS.old:dopaSearchMode==="current-name"&&query.first==="สมชาย"&&query.last==="ใจดี"?DOPA_NAME_RESULTS.current:[];
+    if(!matches.length){dopaShowRequestError("not-found",query.label);return;}
+    dopaCandidates=matches.map(pid=>DOPA_PEOPLE[pid]);dopaCandidateIndex=0;dopaRenderCandidate(query.label);
+    dopaAddAudit(dopaSearchMode==="old-name"?"ค้นหาด้วยชื่อเดิม":"ค้นหาด้วยชื่อปัจจุบัน",`${query.label} · พบ ${matches.length} รายการ`,dopaCaseNo());
+  },700);
+}
+
+function dopaRenderCandidate(queryLabel){
+  dopaHideWorkStates();
+  const person=dopaCandidates[dopaCandidateIndex],total=dopaCandidates.length;
+  document.getElementById("dopaCandidateHeading").textContent=total>1?`พบบุคคลชื่อซ้ำ ${total} รายการ`:"พบบุคคล 1 รายการ";
+  document.getElementById("dopaCandidateSubheading").textContent=total>1?"ตรวจสอบข้อมูลขั้นต่ำและเลือกบุคคลให้ถูกต้องก่อนเรียกทะเบียนเพิ่มเติม":"ตรวจสอบว่าเป็นบุคคลที่ต้องการก่อนดำเนินการต่อ";
+  document.getElementById("dopaCandidateCount").textContent=`ผลลัพธ์ ${dopaCandidateIndex+1} จาก ${total}`;
+  document.getElementById("dopaCandidateName").textContent=person.nameTh;
+  document.getElementById("dopaCandidatePid").textContent=dopaMaskId(person.pid);
+  document.getElementById("dopaCandidateDob").textContent=person.dob;
+  document.getElementById("dopaCandidateGender").textContent=person.gender;
+  document.getElementById("dopaCandidateNationality").textContent=person.nationality;
+  document.getElementById("dopaCandidateStatus").textContent=person.status;
+  document.getElementById("dopaCandidateOwnerStatus").textContent=person.ownerStatus;
+  document.getElementById("dopaCandidateHint").textContent=`บิดา: ${person.father}`;
+  document.getElementById("dopaCandidateService").textContent=dopaSearchMode==="old-name"?"serviceID 41":"serviceID 51";
+  document.getElementById("dopaCandidateQuery").textContent=`ค้นหาจาก: ${queryLabel||document.getElementById("dopaCandidateQuery").textContent.replace("ค้นหาจาก: ","")}`;
+  document.getElementById("dopaCandidatePrev").disabled=dopaCandidateIndex===0;
+  document.getElementById("dopaCandidateNext").disabled=dopaCandidateIndex===total-1;
+  document.getElementById("dopaCandidateState").classList.remove("hide");
+}
+function dopaMoveCandidate(step){
+  const next=dopaCandidateIndex+step;if(next<0||next>=dopaCandidates.length)return;
+  const query=document.getElementById("dopaCandidateQuery").textContent.replace("ค้นหาจาก: ","");
+  dopaCandidateIndex=next;dopaRenderCandidate(query);
+  dopaAddAudit("เปิดผลค้นหาชื่อรายการถัดไป",`recordNumber ${dopaCandidateIndex+1}/${dopaCandidates.length}`,dopaCaseNo());
+}
+function dopaSelectCandidate(){
+  const person=dopaCandidates[dopaCandidateIndex];
+  dopaShowLoading("กำลังเรียกข้อมูลทะเบียนเพิ่มเติม",`เลือก ${person.nameTh} แล้ว กำลังเรียกบริการตามสิทธิ์ของกระบวนงาน`);
+  window.setTimeout(()=>{dopaRenderPerson(person);dopaAddAudit("เลือกบุคคลจากผลค้นหาชื่อ",`${dopaMaskId(person.pid)} · recordNumber ${dopaCandidateIndex+1}`,dopaCaseNo());},700);
+}
+function dopaBackToCandidates(){if(!dopaCandidates.length)return;dopaHideWorkStates();dopaRenderCandidate(document.getElementById("dopaCandidateQuery").textContent.replace("ค้นหาจาก: ",""));}
+
+function dopaRenderPerson(person){
+  dopaCurrentPerson=person;dopaHideWorkStates();document.getElementById("dopaResultWrap").classList.remove("hide");
+  document.getElementById("fNameTh").textContent=person.nameTh;document.getElementById("fNameEn").textContent=person.nameEn;document.getElementById("fCitizenId").textContent=person.citizenId;document.getElementById("fDob").textContent=person.dob;document.getElementById("fAge").textContent=person.age;document.getElementById("fGender").textContent=person.gender;document.getElementById("fNat").textContent=person.nationality;
+  document.getElementById("dopaFetchedAt").textContent=`เรียกข้อมูลเมื่อ ${new Date().toLocaleString("th-TH",{dateStyle:"medium",timeStyle:"short"})}`;
+  const pill=document.getElementById("statusPill");pill.className=`dopa-status-pill ${person.death?'danger':person.status.includes('ย้าย')?'warning':'success'}`;pill.innerHTML=`<i class="fa-solid ${person.death?'fa-circle-exclamation':person.status.includes('ย้าย')?'fa-triangle-exclamation':'fa-circle-check'}" aria-hidden="true"></i>${dopaEscape(person.status)}`;
+  document.getElementById("dopaBackCandidateButton").classList.toggle("hide",!dopaCandidates.length);
+  const photo=document.getElementById("dopaPhoto");const photoDenied=dopaCurrentScenario==="partial";photo.className=`dopa-photo${photoDenied?' locked':''}`;photo.innerHTML=photoDenied?'<div><i class="fa-solid fa-lock" aria-hidden="true"></i><small>ไม่ได้รับสิทธิ์ serviceID 21</small></div>':'<div><i class="fa-solid fa-user-large" aria-hidden="true"></i><small>ภาพใบหน้า (Base64 Mock)</small></div>';
+  document.getElementById("dopaPersonGrid").innerHTML=[dopaField("ชื่อเต็ม",person.nameTh,"fullnameAndRank",true),dopaField("ชื่อภาษาอังกฤษ",person.nameEn,"englishTitleDesc / englishFirstName / englishLastName",true),dopaField("วันเดือนปีเกิด",person.dob,"dateOfBirth"),dopaField("อายุ",person.age,"age"),dopaField("เพศ",person.gender,"genderDesc"),dopaField("สัญชาติ",person.nationality,"nationalityDesc"),dopaField("สถานภาพบุคคล",person.status,"statusOfPersonDesc",true),dopaField("สถานภาพเจ้าบ้าน",person.ownerStatus,"ownerStatusDesc"),dopaField("ชื่อบิดา",person.father,"fatherName",true),dopaField("ชื่อมารดา",person.mother,"motherName",true)].join("");
+  dopaRenderAddress(person);dopaRenderNameHistory(person);dopaRenderStatus(person);dopaRenderDeath(person);dopaRenderCards(person);dopaRenderTechnical(person);
+  dopaSwitchResultTab("person");
+}
+
+function dopaFullAddress(address){return [address.houseNo,address.villageNo!=="-"?`หมู่ ${address.villageNo}`:"",address.alley!=="-"?`ซอย${address.alley}`:"",address.alleyWay!=="-"?`ตรอก${address.alleyWay}`:"",address.road!=="-"?`ถนน${address.road}`:"",`ตำบล/แขวง${address.subdistrict}`,`อำเภอ/เขต${address.district}`,`จังหวัด${address.province}`].filter(Boolean).join(" ");}
+function dopaRenderAddress(person){
+  document.getElementById("dopaAddressContent").innerHTML=`<div class="dopa-address-line"><div><span class="dopa-hint">ที่อยู่ตามทะเบียนบ้าน</span><strong id="fAddress">${dopaEscape(dopaFullAddress(person.address))}</strong></div><button class="btn secondary" type="button" onclick="dopaCopyAddress()" title="คัดลอกที่อยู่"><i class="fa-solid fa-copy" aria-hidden="true"></i>คัดลอก</button></div><div class="dopa-field-grid">${dopaField("บ้านเลขที่",person.address.houseNo,"houseNo")}${dopaField("หมู่",person.address.villageNo,"villageNo")}${dopaField("ซอย",person.address.alley,"alleyDesc")}${dopaField("ถนน",person.address.road,"roadDesc")}${dopaField("ตำบล/แขวง",person.address.subdistrict,"subdistrictDesc")}${dopaField("อำเภอ/เขต",person.address.district,"districtDesc")}${dopaField("จังหวัด",person.address.province,"provinceDesc")}${dopaField("สำนักทะเบียน",person.address.rcode,"rcodeDesc",true)}${dopaField("ประเภทบ้าน",person.address.houseType,"houseTypeDesc")}</div>`;
+}
+function dopaRenderNameHistory(person){
+  const body=document.getElementById("nameHistoryBody");
+  body.innerHTML=person.nameHistory.length?person.nameHistory.map(row=>`<tr><td><strong>${dopaEscape(row.type)}</strong></td><td class="dopa-history-old">${dopaEscape(row.oldValue)}</td><td class="dopa-history-new">${dopaEscape(row.newValue)}</td><td>${dopaEscape(row.date)}</td><td>${dopaEscape(row.office)}</td></tr>`).join(""):'<tr><td colspan="5"><div class="dopa-empty-panel"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>ไม่พบประวัติการเปลี่ยนแปลงชื่อตัวหรือชื่อสกุล</div></td></tr>';
+  document.getElementById("dopaNameTabState").textContent=String(person.nameHistory.length);document.getElementById("dopaNameTabState").className="dopa-tab-state ok";
+}
+function dopaRenderStatus(person){document.getElementById("dopaStatusGrid").innerHTML=[dopaField("สถานภาพบุคคล",person.status,"statusOfPersonDesc",true),dopaField("สถานะเพิ่มเติม",person.statusDetail,"subStatusOfPersonDesc",true),dopaField("วันที่ย้ายเข้า",person.moveIn,"dateOfMoveIn"),dopaField("วันที่ย้ายออก",person.moveOut,"dateOfMoveOut"),dopaField("วันที่ยกเลิกรายการ",person.terminate,"terminateDate")].join("");}
+function dopaRenderDeath(person){
+  const badge=document.getElementById("dopaDeathStatusBadge"),state=document.getElementById("dopaDeathTabState"),content=document.getElementById("deathCertContent");
+  if(!person.death){badge.className="badge";badge.textContent="ไม่พบข้อมูล";state.className="dopa-tab-state";state.textContent="0";content.innerHTML='<div class="dopa-empty-panel"><i class="fa-solid fa-file-circle-check" aria-hidden="true"></i>serviceID 27 ไม่พบข้อมูลใบมรณบัตรของบุคคลนี้</div>';return;}
+  badge.className="badge danger";badge.textContent="พบข้อมูลมรณบัตร";state.className="dopa-tab-state warn";state.textContent="1";content.innerHTML=`<div class="dopa-field-grid">${dopaField("วันที่เสียชีวิต",person.death.date,"dateOfDeath")}${dopaField("วันที่แจ้งตาย",person.death.notifyDate,"dateOfNotifying")}${dopaField("สาเหตุการเสียชีวิต",person.death.cause,"causeOfDeath",true)}${dopaField("สถานที่เสียชีวิต",person.death.place,"placeOfDeath*",true)}${dopaField("เลขที่เอกสาร",person.death.documentNo,"documentNo")}${dopaField("สำนักทะเบียนที่รับแจ้ง",person.death.authority,"authorityIssuing",true)}</div>`;
+}
+function dopaRenderCards(person){
+  const denied=dopaCurrentScenario==="partial",state=document.getElementById("dopaCardTabState"),badge=document.getElementById("dopaCardStatusBadge"),content=document.getElementById("dopaCardContent");
+  if(denied){state.className="dopa-tab-state lock";state.innerHTML='<i class="fa-solid fa-lock" aria-hidden="true"></i>';badge.className="badge warning";badge.textContent="ไม่ได้รับสิทธิ์";content.innerHTML='<div class="dopa-empty-panel"><i class="fa-solid fa-lock" aria-hidden="true"></i>ผู้ใช้หรือกระบวนงานนี้ยังไม่ได้รับสิทธิ์ serviceID 32</div>';return;}
+  state.className="dopa-tab-state ok";state.textContent=String(person.cards.length);badge.className="badge success";badge.textContent=`พบ ${person.cards.length} รายการ`;
+  content.innerHTML=`<div class="table-wrap"><table><thead><tr><th>หมายเลขคำขอมีบัตร</th><th>วันที่ออกคำร้อง</th><th>อำเภอ/สถานทูต</th><th>จังหวัด</th><th>ประเทศ</th></tr></thead><tbody>${person.cards.map(card=>`<tr><td><strong>${dopaEscape(card.documentNumber)}</strong><small>documentNumber</small></td><td>${dopaEscape(card.issueDate)}</td><td>${dopaEscape(card.district)}</td><td>${dopaEscape(card.province)}</td><td>${dopaEscape(card.country)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function dopaRenderTechnical(person){
+  const partial=dopaCurrentScenario==="partial";let success=0,denied=0,notFound=0,totalTime=0;
+  document.getElementById("dopaServiceCallBody").innerHTML=DOPA_SERVICE_CONTRACTS.map(service=>{const noRights=partial&&(service.id===21||service.id===32),empty=service.id===27&&!person.death;let status="200",label="เรียกข้อมูลสำเร็จ",badge="success";if(noRights){status="403";label="ไม่ได้รับสิทธิ์บริการ";badge="warning";denied++;}else if(empty){status="404";label="ไม่พบข้อมูลของบุคคลนี้";badge="";notFound++;}else success++;if(!noRights)totalTime+=service.time;return `<tr><td><strong>${dopaEscape(service.name)}</strong></td><td><code>${service.id}</code></td><td><span class="badge ${badge}">${status}</span></td><td>${noRights?'0':service.time} ms</td><td>${label}</td></tr>`;}).join("");
+  document.getElementById("dopaResponseHttp").textContent="200";document.getElementById("dopaResponseJob").textContent="รอ jobID จริง (Sandbox Mock)";document.getElementById("dopaResponseServices").textContent=`สำเร็จ ${success} · ไม่พบ ${notFound} · ไม่มีสิทธิ์ ${denied}`;document.getElementById("dopaResponseTime").textContent=`${totalTime} ms`;
+}
+function dopaSwitchResultTab(tab){document.querySelectorAll("#page-dopa [data-dopa-tab]").forEach(button=>{const active=button.dataset.dopaTab===tab;button.classList.toggle("active",active);button.setAttribute("aria-selected",String(active));});const ids={person:"dopaTabPerson",address:"dopaTabAddress",name:"dopaTabName",status:"dopaTabStatus",death:"dopaTabDeath",card:"dopaTabCard"};Object.entries(ids).forEach(([key,id])=>document.getElementById(id).classList.toggle("hide",key!==tab));}
+function dopaCopyAddress(){const text=document.getElementById("fAddress").textContent;navigator.clipboard.writeText(text).then(()=>Swal.fire({toast:true,position:"top-end",icon:"success",title:"คัดลอกที่อยู่ตามทะเบียนบ้านแล้ว",showConfirmButton:false,timer:1500,customClass:{popup:"ecmis-swal"}}));}
+
+function dopaShowRequestError(scenario,query){
+  const map={"not-found":{badge:"ไม่พบข้อมูล",title:"ไม่พบบุคคลตามเงื่อนไข",help:`ไม่พบข้อมูลสำหรับ “${query}” กรุณาตรวจสอบการสะกด หรือลองค้นด้วยวิธีอื่น`,http:"200"},"no-token":{badge:"ยืนยันตัวตนไม่สำเร็จ",title:"ไม่มี Bearer Token",help:"Backend ไม่ได้แนบ Authorization Header กรุณาเข้าสู่ระบบใหม่หรือติดต่อผู้ดูแลระบบ",http:"401"},"token-expired":{badge:"Session หมดอายุ",title:"Token หมดอายุ",help:"กรุณาเข้าสู่ระบบใหม่ก่อนค้นหาข้อมูลอีกครั้ง",http:"401"},"no-job-permission":{badge:"ไม่ได้รับสิทธิ์",title:"ไม่มีสิทธิ์ในกระบวนงาน",help:"ผู้ใช้ไม่ได้อยู่ในกลุ่มหรือช่วงเวลาที่ได้รับสิทธิ์ของ jobID นี้",http:"403"},"proxy-unavailable":{badge:"บริการไม่พร้อม",title:"Linkage Proxy Server ไม่พร้อมใช้งาน",help:"ไม่สามารถส่งคำขอไปยัง Linkage Center ได้ กรุณาติดต่อผู้ดูแลระบบ",http:"503"}};
+  const error=map[scenario]||map["not-found"];dopaHideWorkStates();document.getElementById("dopaErrorBadge").textContent=error.badge;document.getElementById("dopaErrorTitle").textContent=error.title;document.getElementById("dopaErrorHelp").textContent=error.help;document.getElementById("dopaErrorState").classList.remove("hide");dopaAddAudit("ค้นหา DOPA ไม่สำเร็จ",`${error.http} · ${error.badge} · ${query}`,dopaCaseNo());
+}
+
+function dopaOpenImportDialog(){
+  if(!dopaCurrentPerson)return;
+  const dialog=document.getElementById("dopaImportDialog"),duplicate=dopaCurrentPerson.duplicateInCase;
+  document.getElementById("dopaImportPerson").textContent=`${dopaCurrentPerson.nameTh} (${dopaMaskId(dopaCurrentPerson.pid)})`;document.getElementById("dopaImportCase").textContent=dopaCaseNo();document.getElementById("dopaDuplicateNote").classList.toggle("hide",!duplicate);document.getElementById("dopaViewExistingButton").classList.toggle("hide",!duplicate);document.getElementById("dopaImportConfirmText").textContent=duplicate?"ปรับปรุงข้อมูลและเพิ่มบทบาท":"ยืนยันการนำเข้า";dialog.showModal();
+}
+function dopaCloseImportDialog(){document.getElementById("dopaImportDialog").close();}
+function dopaViewExistingPerson(){Swal.fire({...DOPA_SWAL,icon:"info",title:"ข้อมูลเดิมในสำนวน",html:`<b>${dopaEscape(dopaCurrentPerson.nameTh)}</b><br>บทบาท: พยาน<br>เพิ่มเมื่อ 10 สิงหาคม 2569`});}
+function dopaConfirmImport(){
+  const role=document.getElementById("dopaImportRole").value;if(!role){Swal.fire({...DOPA_SWAL,icon:"warning",title:"กรุณาเลือกบทบาทในสำนวน"});return;}
+  const duplicate=dopaCurrentPerson.duplicateInCase,action=duplicate?"ปรับปรุงบุคคลเดิมและเพิ่มบทบาท":"เพิ่มบุคคลเข้าสำนวน";dopaCloseImportDialog();dopaAddAudit(action,`${role} · ${dopaMaskId(dopaCurrentPerson.pid)}`,dopaCaseNo());Swal.fire({...DOPA_SWAL,icon:"success",title:duplicate?"ปรับปรุงข้อมูลเดิมแล้ว":"นำข้อมูลเข้าสำนวนแล้ว",text:duplicate?`ไม่สร้างบุคคลซ้ำ ระบบปรับปรุงข้อมูลจาก DOPA และเพิ่มบทบาท ${role}`:`เพิ่ม ${dopaCurrentPerson.nameTh} เป็น${role}ในสำนวนเรียบร้อยแล้ว`});
+}
+function dopaReset(){dopaCandidates=[];dopaCandidateIndex=0;dopaCurrentPerson=null;dopaIdInput.value="1-2345-67890-12-3";document.getElementById("purpose").value="accused";document.getElementById("dopaScenario").value="success";dopaHideWorkStates();document.getElementById("dopaLockedState").classList.remove("hide");}
+</script>
+
+<script>
+function legacyDopaPrototype(){
+/* ================== Legacy DOPA prototype, retained locally for prior mock data ================== */
 const MOCK_DB = {
   "3102500123456": {
     citizenId:"3-1025-00123-45-6", nameTh:"นาย ประเสริฐ วงศ์คำ", nameEn:"Mr. Prasert Wongkham",
@@ -763,6 +1396,20 @@ const MOCK_DB = {
 };
 
 const dopaSwal = {customClass:{popup:'ecmis-swal'}, confirmButtonColor:'#16558f', cancelButtonColor:'#8593a3'};
+const DOPA_LINKAGE_SERVICES = [
+  {name:'ข้อมูลทะเบียนราษฎร',time:320},
+  {name:'ข้อมูลภาพใบหน้าปัจจุบัน',time:410},
+  {name:'ข้อมูลการเปลี่ยนแปลงชื่อ-สกุล',time:280},
+  {name:'ข้อมูลมรณบัตร',time:250}
+];
+
+function dopaEscape(value){
+  return String(value ?? '-').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+}
+function dopaMaskId(value){
+  const id=String(value).replace(/\D/g,'');
+  return id.length===13?`${id.slice(0,1)}-XXXX-XXXXX-XX-${id.slice(-1)}`:'-';
+}
 
 const idInput = document.getElementById('citizenId');
 idInput.addEventListener('input', e=>{
@@ -786,7 +1433,7 @@ function isJuristicId(id){ return id.length===13 && id.startsWith('0'); }
 function dopaAddAudit(action, detail, caseNo){
   const tb = document.getElementById('dopaAuditBody');
   const tr = document.createElement('tr');
-  tr.innerHTML = `<td>${nowStr()}</td><td>${USER}</td><td><strong>${action}</strong></td><td>${detail}</td><td>${caseNo||'-'}</td>`;
+  tr.innerHTML = `<td>${dopaEscape(nowStr())}</td><td>${dopaEscape(USER)}</td><td><strong>${dopaEscape(action)}</strong></td><td>${dopaEscape(detail)}</td><td>${dopaEscape(caseNo||'-')}</td>`;
   tb.insertBefore(tr, tb.firstChild);
 }
 function dltAddAudit(tbodyId, action, detail, caseNo){
@@ -800,29 +1447,85 @@ function dopaSearch(){
   const rawId = idInput.value.replace(/\D/g,'');
   const caseNo = document.getElementById('globalCaseNo').value.trim();
   const purpose = document.getElementById('purpose').value;
+  let scenario = document.getElementById('dopaScenario').value;
 
   if (rawId.length!==13){ Swal.fire({...dopaSwal, icon:'warning', title:'เลขบัตรประชาชนไม่ถูกต้อง', text:'กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก'}); return; }
   if (!caseNo){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาระบุเลขที่สำนวนคดี', text:'ต้องผูกการสืบค้นกับคดีทุกครั้งเพื่อบันทึก Audit Log'}); return; }
   if (!purpose){ Swal.fire({...dopaSwal, icon:'warning', title:'กรุณาเลือกวัตถุประสงค์การสืบค้น'}); return; }
 
+  document.getElementById('dopaResultWrap').classList.add('hide');
+  document.getElementById('dopaErrorState').classList.add('hide');
+  document.getElementById('dopaLockedState').classList.add('hide');
+
   if (isJuristicId(rawId)){
+    document.getElementById('dopaLockedState').classList.remove('hide');
     Swal.fire({...dopaSwal, icon:'info', title:'เลขนี้เป็นเลขทะเบียนนิติบุคคล', html:'DOPA (กรมการปกครอง) เก็บข้อมูลเฉพาะบุคคลธรรมดา เลขที่ขึ้นต้นด้วย <b>0</b> เป็นรูปแบบเลขทะเบียนนิติบุคคล ไม่ใช่เลขบัตรประชาชน<br><br>หากต้องการตรวจสอบข้อมูลนิติบุคคล (ชื่อบริษัท กรรมการ ผู้ถือหุ้น) ต้องเชื่อมโยงกับกรมพัฒนาธุรกิจการค้า (DBD) แยกต่างหาก ซึ่งยังไม่อยู่ในขอบเขตงานปัจจุบัน'});
     return;
   }
 
   const record = MOCK_DB[rawId];
-  Swal.fire({...dopaSwal, title:'กำลังเรียกข้อมูลจาก Linkage Center API...', html:'กรมการปกครอง (adaptor-bora-pop)', timerProgressBar:true, timer:900, didOpen:()=>Swal.showLoading(), allowOutsideClick:false})
+  if((scenario==='success'||scenario==='partial')&&!record)scenario='not-found';
+  Swal.fire({...dopaSwal, title:'กำลังเรียกข้อมูลจาก Linkage Center API...', html:'กรมการปกครอง (ผ่าน Linkage Proxy Server)', timerProgressBar:true, timer:900, didOpen:()=>Swal.showLoading(), allowOutsideClick:false})
   .then(()=>{
-    if (!record){
-      Swal.fire({...dopaSwal, icon:'error', title:'ไม่พบข้อมูลบุคคล', text:'ไม่พบข้อมูลตามเลขบัตรประชาชนที่ระบุในระบบทะเบียนราษฎร (mock)'});
-      document.getElementById('dopaResultWrap').classList.add('hide');
-      document.getElementById('dopaLockedState').classList.remove('hide');
+    if(!['success','partial'].includes(scenario)){
+      dopaShowError(scenario,rawId,caseNo);
       return;
     }
     renderRecord(record, caseNo);
-    dopaAddAudit('สืบค้นข้อมูลบุคคล', record.nameTh + ' (' + record.citizenId + ') — วัตถุประสงค์: ' + document.getElementById('purpose').selectedOptions[0].text, caseNo);
-    Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
+    dopaRenderLinkageResult(scenario);
+    if(scenario==='partial'){
+      document.getElementById('photoDate').textContent='บริการภาพใบหน้าไม่พร้อมใช้งาน';
+      dopaAddAudit('สืบค้นข้อมูลบุคคล (บางบริการไม่สำเร็จ)',`${dopaMaskId(rawId)} · สำเร็จ 3/4 บริการ · ${document.getElementById('purpose').selectedOptions[0].text}`,caseNo);
+      Swal.fire({toast:true,position:'top-end',icon:'warning',title:'ได้รับข้อมูลบางส่วน 3/4 บริการ',showConfirmButton:false,timer:2200,timerProgressBar:true,customClass:{popup:'ecmis-swal'}});
+    }else{
+      dopaAddAudit('สืบค้นข้อมูลบุคคล',`${dopaMaskId(rawId)} · สำเร็จ 4/4 บริการ · ${document.getElementById('purpose').selectedOptions[0].text}`,caseNo);
+      Swal.fire({toast:true, position:'top-end', icon:'success', title:'ดึงข้อมูลสำเร็จ 4/4 บริการ', showConfirmButton:false, timer:1800, timerProgressBar:true, customClass:{popup:'ecmis-swal'}});
+    }
   });
+}
+
+function dopaRenderLinkageResult(scenario){
+  const partial=scenario==='partial';
+  document.getElementById('dopaResponseHttp').textContent='200';
+  document.getElementById('dopaResponseJob').textContent='รอ jobID จริง (Sandbox Mock)';
+  document.getElementById('dopaResponseServices').textContent=partial?'สำเร็จ 3/4 บริการ':'สำเร็จ 4/4 บริการ';
+  document.getElementById('dopaResponseTime').textContent=partial?'940 ms':'900 ms';
+  document.getElementById('dopaServiceCallBody').innerHTML=DOPA_LINKAGE_SERVICES.map((service,index)=>{
+    const failed=partial&&index===1;
+    return `<tr><td><strong>${dopaEscape(service.name)}</strong></td><td><span class="badge warning">รอยืนยัน serviceID</span></td><td><span class="badge ${failed?'danger':'success'}">${failed?'503':'200'}</span></td><td><code>${failed?'-':'application/json; charset=utf-8'}</code></td><td>${failed?'530':service.time} ms</td><td>${failed?'Upstream service unavailable':'-'}</td></tr>`;
+  }).join('');
+}
+
+function dopaShowError(scenario,rawId,caseNo){
+  const errors={
+    'not-found':{http:'200',title:'ไม่พบข้อมูลบุคคล',help:'บริการข้อมูลตอบกลับว่าไม่พบข้อมูลตามเลขประจำตัวประชาชน',message:'data[].responseStatus = 404 / Not Found',data:'ไม่มีข้อมูลบุคคล',time:'220 ms'},
+    'no-token':{http:'401',title:'ไม่มี Bearer Token',help:'Backend ไม่ได้แนบ Authorization Header ตามรูปแบบที่ Linkage Proxy รองรับ',message:'Header Authorization only support type "Bearer Token"',data:'data: null',time:'0 ms'},
+    'token-expired':{http:'401',title:'Token หมดอายุหรือถูก Revoke',help:'ต้องต่ออายุ Session หรือ Login ใหม่ก่อนร้องขอข้อมูล',message:'token is expired',data:'data: null',time:'0 ms'},
+    'no-job-permission':{http:'403',title:'ไม่มีสิทธิ์ในกระบวนงาน',help:'jobID ไม่ถูกต้อง หรือผู้ใช้ไม่ได้อยู่ในกลุ่ม/ช่วงเวลาที่ได้รับสิทธิ์',message:'jobID not found or user has no permission',data:'data: null',time:'0 ms'},
+    'proxy-unavailable':{http:'503',title:'Linkage Proxy Server ไม่พร้อมใช้งาน',help:'ตรวจสอบการติดตั้ง การลงทะเบียน Docker และ Network จาก Proxy ไปยัง Linkage Center',message:'Local Linkage Proxy is unavailable (mock)',data:'ไม่ได้ส่งคำขอ',time:'0 ms'}
+  };
+  const error=errors[scenario]||errors['proxy-unavailable'];
+  document.getElementById('dopaErrorTitle').textContent=error.title;
+  document.getElementById('dopaErrorHelp').textContent=error.help;
+  document.getElementById('dopaErrorHttp').textContent=error.http;
+  document.getElementById('dopaErrorMessage').textContent=error.message;
+  document.getElementById('dopaErrorData').textContent=error.data;
+  document.getElementById('dopaErrorTime').textContent=error.time;
+  document.getElementById('dopaErrorState').classList.remove('hide');
+  dopaAddAudit('ร้องขอข้อมูล DOPA ไม่สำเร็จ',`${error.http} · ${error.message} · ${dopaMaskId(rawId)}`,caseNo);
+  Swal.fire({...dopaSwal,icon:scenario==='not-found'?'info':'error',title:error.title,text:error.help});
+}
+
+function dopaReset(){
+  idInput.value='';
+  document.getElementById('purpose').value='';
+  document.getElementById('dopaScenario').value='success';
+  document.getElementById('idHint').textContent='รูปแบบ: 1-2345-67890-12-3';
+  document.getElementById('idHint').classList.remove('bad');
+  document.getElementById('dopaResultWrap').classList.add('hide');
+  document.getElementById('dopaErrorState').classList.add('hide');
+  document.getElementById('dopaLockedState').classList.remove('hide');
+  currentPerson=null;
 }
 
 let currentPerson = null;
@@ -903,6 +1606,8 @@ function addToCase(role){
       Swal.fire({...dopaSwal, icon:'success', title:'นำเข้าสำนวนคดีสำเร็จ', text:`บันทึกชื่อ ที่อยู่ และประวัติของ ${name} ลงในสำนวนคดีเรียบร้อยแล้ว โดยไม่มีการพิมพ์ข้อมูลด้วยมือ`});
     }
   });
+}
+
 }
 
 /* ================== ข้อมูลยานพาหนะ (เชื่อมโยงกรมการขนส่งทางบก / DLT VehicleInfo2Service) ================== */
@@ -2023,6 +2728,290 @@ function addAudit(action, detail, caseNo){
 function notImplemented(){
   Swal.fire({toast:true, position:'top-end', icon:'info', title:'หน้าจอจำลอง ยังไม่เชื่อมข้อมูลจริง', showConfirmButton:false, timer:1400, customClass:{popup:'ecmis-swal'}});
 }
+</script>
+
+<script>
+/* ================== สำนักงานประกันสังคม (SSO SOAP Web Service Mockup) ================== */
+const SSO_USER = 'อรรถพล';
+const SSO_SWAL = {customClass:{popup:'ecmis-swal'}, confirmButtonColor:'#16558f', cancelButtonColor:'#8593a3'};
+const SSO_MOCK = {
+  hospital:{
+    key:'1101700999991', lastIncremental:'31/03/2569', empResignDate:'-', hospitalCode:'1209999', hospitalName:'โรงพยาบาลตัวอย่างกลาง', medYY:'69',
+    mselExpireDate:'31/12/2569', mselLastChange:'18/02/2569', mselStartDate:'01/01/2569', mselStatus:'A', mselStatusDesc:'มีสิทธิรักษา',
+    ssoBranchCode:'1002', ssoBranchName:'สำนักงานประกันสังคมกรุงเทพมหานครพื้นที่ 2',
+    person:{activeStatus:'V',activeStatusDesc:'ผู้ประกันตนมาตรา 39',empBirthDate:'14/06/2531',expirationDate:'-',firstName:'พิมพ์ชนก',lastName:'แสงทอง',gender:'F',genderDesc:'หญิง',idType:'1',idDesc:'บัตรประชาชน',ssoNum:'1101700999991',titleCode:'4',titleCodeDesc:'นางสาว'}
+  },
+  employer:{
+    key:'1000000176|000000', lastIncremental:'31/03/2569', accBranch:'000000',accNo:'1000000176',branchEmplyeeNo:'128',companyAddress:'88 ถนนตัวอย่าง แขวงคลองสาน เขตคลองสาน กรุงเทพมหานคร',companyName:'บริษัท สยามพัฒนาโซลูชัน จำกัด (ข้อมูลสมมติ)',companyRigNo:'0105566999999',companyStatus:'A',companyStatusDesc:'เป็นสมาชิก',companyTel:'02-000-0000',companyType:'01',companyTypeDesc:'บริษัทจำกัด',companyZip:'10600',contactAddress:'99 อาคารตัวอย่าง ถนนเจริญนคร แขวงคลองต้นไทร เขตคลองสาน กรุงเทพมหานคร',contactFax:'02-000-0002',contactTel:'02-000-0001',contactZip:'10600',fdappl:'01/05/2558',lddate:'-',newOperateDate:'-',paySsoBranchCode:'1003',paySsoBranchName:'สำนักงานประกันสังคมกรุงเทพมหานครพื้นที่ 3',ssoBranchCode:'1003',ssoBranchName:'สำนักงานประกันสังคมกรุงเทพมหานครพื้นที่ 3',totalEmployeeNo:'356'
+  },
+  employment:{
+    key:'1101700999991', lastIncremental:'31/03/2569',
+    person:{activeStatus:'V',activeStatusDesc:'ผู้ประกันตนมาตรา 39',empBirthDate:'14/06/2531',expirationDate:'-',firstName:'พิมพ์ชนก',lastName:'แสงทอง',gender:'F',genderDesc:'หญิง',idType:'1',idDesc:'บัตรประชาชน',ssoNum:'1101700999991',titleCode:'4',titleCodeDesc:'นางสาว'},
+    detail1:[
+      {accBran:'100001',accNo:'9900000391',companyName:'ผู้ประกันตนตามมาตรา 39 กรุงเทพมหานคร (ข้อมูลสมมติ)',empResignDate:'-',employStatus:'A',employStatusDesc:'ACTIVE',expStartDate:'10/06/2567'},
+      {accBran:'000000',accNo:'1000000176',companyName:'บริษัท สยามพัฒนาโซลูชัน จำกัด (ข้อมูลสมมติ)',empResignDate:'03/03/2567',employStatus:'R',employStatusDesc:'ลาออก',expStartDate:'03/01/2564'},
+      {accBran:'000002',accNo:'1000002874',companyName:'บริษัท กรุงเทพธุรกิจตัวอย่าง จำกัด (ข้อมูลสมมติ)',empResignDate:'31/12/2563',employStatus:'R',employStatusDesc:'ลาออก',expStartDate:'01/04/2560'}
+    ],
+    detail2:[
+      {accBran:'000000',accNo:'1000000176',cchdPayDate:'25/10/2566',cchdPayPeriod:'256609',cempCntrAmount:'750.00',cempCntrOldage:'450.00',cempCntrSick:'225.00',cempCntrUnem:'75.00',cempTotalWages:'15000.00',companyName:'บริษัท สยามพัฒนาโซลูชัน จำกัด (ข้อมูลสมมติ)'},
+      {accBran:'000000',accNo:'1000000176',cchdPayDate:'24/11/2566',cchdPayPeriod:'256610',cempCntrAmount:'750.00',cempCntrOldage:'450.00',cempCntrSick:'225.00',cempCntrUnem:'75.00',cempTotalWages:'15000.00',companyName:'บริษัท สยามพัฒนาโซลูชัน จำกัด (ข้อมูลสมมติ)'},
+      {accBran:'000000',accNo:'1000000176',cchdPayDate:'23/12/2566',cchdPayPeriod:'256611',cempCntrAmount:'750.00',cempCntrOldage:'450.00',cempCntrSick:'225.00',cempCntrUnem:'75.00',cempTotalWages:'15000.00',companyName:'บริษัท สยามพัฒนาโซลูชัน จำกัด (ข้อมูลสมมติ)'},
+      {accBran:'000000',accNo:'1000000176',cchdPayDate:'26/01/2567',cchdPayPeriod:'256612',cempCntrAmount:'750.00',cempCntrOldage:'450.00',cempCntrSick:'225.00',cempCntrUnem:'75.00',cempTotalWages:'15000.00',companyName:'บริษัท สยามพัฒนาโซลูชัน จำกัด (ข้อมูลสมมติ)'}
+    ]
+  }
+};
+
+function ssoEscape(value){
+  return String(value ?? '-').replace(/[&<>'"]/g, char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+}
+function ssoNow(){
+  const d=new Date();
+  return d.toLocaleDateString('th-TH',{day:'2-digit',month:'short',year:'2-digit'})+' '+d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'});
+}
+function ssoMaskId(value){
+  const v=String(value).replace(/\D/g,'');
+  return v.length===13 ? v.slice(0,1)+'-XXXX-XXXXX-XX-'+v.slice(-1) : '-';
+}
+function ssoMoney(value){
+  return Number(value||0).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2})+' บาท';
+}
+function ssoFieldsHtml(fields){
+  return fields.map(([label,value,wide,fieldKey])=>`<div class="cell${wide?' wide':''}"><span>${ssoEscape(label)}</span><strong>${ssoEscape(value||'-')}</strong>${fieldKey?`<small class="sso-field-key">${ssoEscape(fieldKey)}</small>`:''}</div>`).join('');
+}
+function ssoAudit(tbodyId, service, result, detail){
+  const body=document.getElementById(tbodyId);
+  const caseNo=document.getElementById('globalCaseNo').value.trim()||'-';
+  const cls=result==='สำเร็จ'?'success':(result==='ไม่พบข้อมูล'?'warning':'danger');
+  const row=document.createElement('tr');
+  row.innerHTML=`<td>${ssoEscape(ssoNow())}</td><td>${ssoEscape(SSO_USER)}</td><td><strong>${ssoEscape(service)}</strong></td><td><span class="badge ${cls}">${ssoEscape(result)}</span></td><td>${ssoEscape(detail)}</td><td>${ssoEscape(caseNo)}</td>`;
+  body.insertBefore(row,body.firstChild);
+}
+function ssoValidateCommon(purposeId){
+  const caseNo=document.getElementById('globalCaseNo').value.trim();
+  if(!caseNo){Swal.fire({...SSO_SWAL,icon:'warning',title:'กรุณาระบุเลขที่สำนวนคดี',text:'การค้นหาข้อมูลประกันสังคมต้องผูกกับสำนวนเพื่อบันทึก Audit Log'});return false;}
+  if(!document.getElementById(purposeId).value){Swal.fire({...SSO_SWAL,icon:'warning',title:'กรุณาเลือกวัตถุประสงค์การตรวจสอบ'});return false;}
+  return true;
+}
+function ssoValidateDigits(id,length,label,hintId){
+  const input=document.getElementById(id), value=input.value.replace(/\D/g,'');
+  input.value=value.slice(0,length);
+  const hint=hintId?document.getElementById(hintId):null;
+  if(value.length!==length){
+    if(hint){hint.textContent=`ต้องเป็นตัวเลข ${length} หลัก (ขณะนี้ ${value.length}/${length})`;hint.classList.add('bad');}
+    Swal.fire({...SSO_SWAL,icon:'warning',title:`${label}ไม่ถูกต้อง`,text:`กรุณากรอกตัวเลขให้ครบ ${length} หลัก`});
+    return null;
+  }
+  if(hint){hint.textContent='รูปแบบถูกต้อง';hint.classList.remove('bad');}
+  return value;
+}
+function ssoSetVisibility(emptyId,resultId,showResult){
+  document.getElementById(emptyId).classList.toggle('hide',showResult);
+  document.getElementById(resultId).classList.toggle('hide',!showResult);
+}
+function ssoShowError(config, outcome, searchedValue){
+  const map={
+    'not-found':{icon:'info',title:'ไม่พบข้อมูล',text:'ไม่พบข้อมูลตามเงื่อนไขที่ระบุ',result:'ไม่พบข้อมูล',code:'DATA_NOT_FOUND',upstreamMessage:'Data not found'},
+    'no-rights':{icon:'error',title:'ไม่มีสิทธิ์เรียกใช้บริการ',text:'บัญชีระบบของสำนักงาน ป.ป.ท. ยังไม่ได้รับสิทธิ์สำหรับ Service นี้ กรุณาติดต่อผู้ดูแลระบบ',result:'ไม่สำเร็จ',code:'INSUFFICIENT_RIGHTS',upstreamMessage:'Insufficient rights for service'},
+    'bad-credential':{icon:'error',title:'ไม่สามารถยืนยันตัวตนกับระบบต้นทาง',text:'ไม่สามารถเชื่อมต่อบริการได้ กรุณาติดต่อผู้ดูแลระบบ',result:'ไม่สำเร็จ',code:'AUTHENTICATION_FAILED',upstreamMessage:'Invalid username/password.'},
+    'invalid-parameter':{icon:'warning',title:'พารามิเตอร์ไม่ถูกต้อง',text:'ระบบต้นทางปฏิเสธรูปแบบข้อมูลที่ส่ง กรุณาตรวจสอบเลขประจำตัวประชาชนให้ครบ 13 หลัก',result:'ไม่สำเร็จ',code:'INVALID_REQUEST_PARAMETER',upstreamMessage:'Invalid request parameter : ssoNum[13]'},
+    'invalid-acc-no':{icon:'warning',title:'เลขบัญชีนายจ้างไม่ถูกต้อง',text:'เลขบัญชีนายจ้างต้องเป็นตัวเลข 10 หลัก',result:'ไม่สำเร็จ',code:'INVALID_ACC_NO',upstreamMessage:'Invalid request parameter : accNo[10]'},
+    'invalid-acc-branch':{icon:'warning',title:'รหัสสาขาไม่ถูกต้อง',text:'รหัสสาขาต้องเป็นตัวเลข 6 หลัก',result:'ไม่สำเร็จ',code:'INVALID_ACC_BRANCH',upstreamMessage:'Invalid request parameter : accBran[6]'},
+    'invalid-resign-date':{icon:'warning',title:'รูปแบบวันที่ลาออกไม่ถูกต้อง',text:'วันที่ลาออกต้องเป็นตัวเลข 8 หลัก รูปแบบ ddMMyyyy เช่น 31012558',result:'ไม่สำเร็จ',code:'INVALID_RESIGN_DATE',upstreamMessage:'Invalid request parameter : resignDate(ddMMyyyy)'},
+    'timeout':{icon:'error',title:'ระบบประกันสังคมไม่ตอบสนอง',text:'กรุณาลองใหม่ภายหลัง หากยังเกิดปัญหาให้ติดต่อผู้ดูแลระบบพร้อมเลขที่สำนวน',result:'ไม่สำเร็จ',code:'UPSTREAM_TIMEOUT',upstreamMessage:'Upstream service timeout'}
+  };
+  const error=map[outcome]||map['timeout'];
+  if(config.errorId){
+    document.getElementById(config.emptyId).classList.add('hide');
+    document.getElementById(config.resultId).classList.add('hide');
+    document.getElementById(config.errorId).classList.remove('hide');
+    document.getElementById(config.errorTitleId).textContent=error.title;
+    document.getElementById(config.errorHelpId).textContent=error.text;
+    let upstreamMessage=error.upstreamMessage;
+    if(outcome==='not-found'&&config.service==='SelectHospital')upstreamMessage=`Data not found for SSO_NUM = ${config.requestValue}`;
+    if(outcome==='not-found'&&config.service==='EmployerDetail')upstreamMessage=`Data not found for ACC_NO, ACC_BRAN (${config.requestValue})`;
+    if(outcome==='not-found'&&config.service==='EmployeeEmployment')upstreamMessage=`Data not found for SSO_NUM = ${config.requestValue}`;
+    document.getElementById(config.errorMessageId).textContent=upstreamMessage;
+  }else{
+    ssoSetVisibility(config.emptyId,config.resultId,false);
+  }
+  ssoAudit(config.auditId,config.service,error.result,`${error.code} · เงื่อนไข ${searchedValue}`);
+  Swal.fire({...SSO_SWAL,icon:error.icon,title:error.title,text:error.text});
+}
+function ssoLoading(service,callback){
+  Swal.fire({...SSO_SWAL,title:'กำลังตรวจสอบข้อมูลสำนักงานประกันสังคม...',html:`<b>${ssoEscape(service)}</b><br>กำลังรอผลจาก SOAP Web Service`,timerProgressBar:true,timer:750,didOpen:()=>Swal.showLoading(),allowOutsideClick:false,showConfirmButton:false}).then(callback);
+}
+function ssoSuccessToast(title){
+  Swal.fire({toast:true,position:'top-end',icon:'success',title,showConfirmButton:false,timer:1800,timerProgressBar:true,customClass:{popup:'ecmis-swal'}});
+}
+function ssoBindNumeric(id,length,hintId){
+  const el=document.getElementById(id);
+  el.addEventListener('input',()=>{
+    const value=el.value.replace(/\D/g,'').slice(0,length);el.value=value;
+    const hint=document.getElementById(hintId);
+    if(!value){hint.textContent=`กรอกตัวเลข ${length} หลัก`;hint.classList.remove('bad');}
+    else if(value.length===length){hint.textContent='รูปแบบถูกต้อง';hint.classList.remove('bad');}
+    else{hint.textContent=`ต้องมี ${length} หลัก (${value.length}/${length})`;hint.classList.add('bad');}
+  });
+}
+
+function ssoHospitalSearch(){
+  const id=ssoValidateDigits('ssoHospitalCitizenId',13,'เลขประจำตัวประชาชน','ssoHospitalIdHint');
+  if(!id||!ssoValidateCommon('ssoHospitalPurpose'))return;
+  let scenario=document.getElementById('ssoHospitalScenario').value;
+  if(scenario==='success'&&id!==SSO_MOCK.hospital.key)scenario='not-found';
+  document.getElementById('ssoHospitalError').classList.add('hide');
+  document.getElementById('ssoHospitalResult').classList.add('hide');
+  ssoLoading('SelectHospital',()=>{
+    if(scenario!=='success'){ssoShowError({emptyId:'ssoHospitalEmpty',resultId:'ssoHospitalResult',errorId:'ssoHospitalError',errorTitleId:'ssoHospitalErrorTitle',errorHelpId:'ssoHospitalErrorHelp',errorMessageId:'ssoHospitalErrorMessage',auditId:'ssoHospitalAuditBody',service:'SelectHospital',requestValue:id},scenario,ssoMaskId(id));return;}
+    const r=SSO_MOCK.hospital,p=r.person;
+    document.getElementById('ssoHospitalError').classList.add('hide');
+    document.getElementById('ssoHospitalName').textContent=`${p.titleCodeDesc} ${p.firstName} ${p.lastName}`;
+    document.getElementById('ssoHospitalMaskedId').textContent=ssoMaskId(p.ssoNum);
+    document.getElementById('ssoHospitalIdDesc').textContent=p.idDesc;
+    document.getElementById('ssoHospitalActiveStatus').textContent=p.activeStatusDesc;
+    document.getElementById('ssoHospitalLastUpdate').textContent='ปรับปรุงล่าสุด '+r.lastIncremental;
+    document.getElementById('ssoHospitalResponseStatus').textContent='สำเร็จ (true)';
+    document.getElementById('ssoHospitalResponseMessage').textContent='-';
+    document.getElementById('ssoHospitalResponseUpdated').textContent=r.lastIncremental;
+    document.getElementById('ssoHospitalPersonGrid').innerHTML=ssoFieldsHtml([
+      ['รหัสสถานะผู้ประกันตน',p.activeStatus,false,'person.activeStatus'],['สถานะผู้ประกันตน',p.activeStatusDesc,false,'person.activeStatusDesc'],
+      ['วันเดือนปีเกิด',p.empBirthDate,false,'person.empBirthDate'],['วันที่มรณะ',p.expirationDate,false,'person.expirationDate'],
+      ['ชื่อผู้ประกันตน',p.firstName,false,'person.firstName'],['นามสกุลผู้ประกันตน',p.lastName,false,'person.lastName'],
+      ['รหัสเพศ',p.gender,false,'person.gender'],['เพศ',p.genderDesc,false,'person.genderDesc'],
+      ['รหัสประเภทบัตร',p.idType,false,'person.idType'],['ประเภทบัตร',p.idDesc,false,'person.idDesc'],
+      ['เลขประจำตัวประชาชน',ssoMaskId(p.ssoNum),false,'person.ssoNum'],['รหัสคำนำหน้าชื่อ',p.titleCode,false,'person.titleCode'],
+      ['คำนำหน้าชื่อ',p.titleCodeDesc,false,'person.titleCodeDesc']
+    ]);
+    document.getElementById('ssoHospitalBenefitGrid').innerHTML=ssoFieldsHtml([
+      ['วันที่ลาออก',r.empResignDate,false,'empResignDate'],['รหัสสถานพยาบาล',r.hospitalCode,false,'hospitalCode'],
+      ['ชื่อสถานพยาบาล',r.hospitalName,true,'hospitalName'],['ปีการเลือกโรงพยาบาล',r.medYY,false,'medYY'],
+      ['บัตรหมดอายุ',r.mselExpireDate,false,'mselExpireDate'],['วันที่เปลี่ยนแปลงครั้งสุดท้าย',r.mselLastChange,false,'mselLastChange'],
+      ['วันออกบัตร / วันที่เริ่มสิทธิ',r.mselStartDate,false,'mselStartDate'],['รหัสสถานะการอนุมัติ',r.mselStatus,false,'mselStatus'],
+      ['ความหมายรหัสสถานะการอนุมัติ',r.mselStatusDesc,true,'mselStatusDesc']
+    ]);
+    document.getElementById('ssoHospitalBranchGrid').innerHTML=ssoFieldsHtml([
+      ['รหัส สปส. รับผิดชอบ',r.ssoBranchCode,false,'ssoBranchCode'],['ชื่อ สปส. รับผิดชอบ',r.ssoBranchName,true,'ssoBranchName']
+    ]);
+    ssoSetVisibility('ssoHospitalEmpty','ssoHospitalResult',true);
+    ssoAudit('ssoHospitalAuditBody','SelectHospital','สำเร็จ',`พบข้อมูล ${ssoMaskId(id)} · ${document.getElementById('ssoHospitalPurpose').selectedOptions[0].text}`);
+    ssoSuccessToast('ดึงข้อมูลผู้ประกันตนสำเร็จ');
+  });
+}
+function ssoHospitalReset(){
+  document.getElementById('ssoHospitalCitizenId').value='';document.getElementById('ssoHospitalPurpose').value='';document.getElementById('ssoHospitalScenario').value='success';document.getElementById('ssoHospitalIdHint').textContent='กรอกตัวเลข 13 หลัก';document.getElementById('ssoHospitalIdHint').classList.remove('bad');document.getElementById('ssoHospitalError').classList.add('hide');ssoSetVisibility('ssoHospitalEmpty','ssoHospitalResult',false);
+}
+
+function ssoEmployerSearch(){
+  const acc=ssoValidateDigits('ssoEmployerAccNo',10,'เลขบัญชีนายจ้าง','ssoEmployerAccHint');
+  if(!acc)return;
+  const branch=ssoValidateDigits('ssoEmployerBranch',6,'รหัสสาขา','ssoEmployerBranchHint');
+  if(!branch||!ssoValidateCommon('ssoEmployerPurpose'))return;
+  let scenario=document.getElementById('ssoEmployerScenario').value;
+  if(scenario==='success'&&`${acc}|${branch}`!==SSO_MOCK.employer.key)scenario='not-found';
+  document.getElementById('ssoEmployerError').classList.add('hide');
+  document.getElementById('ssoEmployerResult').classList.add('hide');
+  ssoLoading('EmployerDetail',()=>{
+    if(scenario!=='success'){ssoShowError({emptyId:'ssoEmployerEmpty',resultId:'ssoEmployerResult',errorId:'ssoEmployerError',errorTitleId:'ssoEmployerErrorTitle',errorHelpId:'ssoEmployerErrorHelp',errorMessageId:'ssoEmployerErrorMessage',auditId:'ssoEmployerAuditBody',service:'EmployerDetail',requestValue:`${acc}, ${branch}`},scenario,`${acc} / ${branch}`);return;}
+    const r=SSO_MOCK.employer;
+    document.getElementById('ssoEmployerError').classList.add('hide');
+    document.getElementById('ssoEmployerBranchEmployees').textContent=Number(r.branchEmplyeeNo).toLocaleString('th-TH')+' คน';
+    document.getElementById('ssoEmployerTotalEmployees').textContent=Number(r.totalEmployeeNo).toLocaleString('th-TH')+' คน';
+    document.getElementById('ssoEmployerStatus').textContent=r.companyStatusDesc;
+    document.getElementById('ssoEmployerStatusCode').textContent='รหัส '+r.companyStatus;
+    document.getElementById('ssoEmployerUpdated').textContent=r.lastIncremental;
+    document.getElementById('ssoEmployerName').textContent=r.companyName;
+    document.getElementById('ssoEmployerAccount').textContent=r.accNo;
+    document.getElementById('ssoEmployerAccountBranch').textContent=r.accBranch;
+    document.getElementById('ssoEmployerType').textContent=r.companyTypeDesc;
+    document.getElementById('ssoEmployerResponseStatus').textContent='สำเร็จ (true)';
+    document.getElementById('ssoEmployerResponseMessage').textContent='-';
+    document.getElementById('ssoEmployerResponseUpdated').textContent=r.lastIncremental;
+    document.getElementById('ssoEmployerAccountGrid').innerHTML=ssoFieldsHtml([
+      ['เลขที่บัญชีนายจ้าง',r.accNo,false,'accNo'],['สาขา',r.accBranch,false,'accBranch'],
+      ['จำนวนพนักงานของสาขา',Number(r.branchEmplyeeNo).toLocaleString('th-TH')+' คน',false,'branchEmplyeeNo'],
+      ['จำนวนพนักงานทั้งหมดทุกสาขา',Number(r.totalEmployeeNo).toLocaleString('th-TH')+' คน',false,'totalEmployeeNo']
+    ]);
+    document.getElementById('ssoEmployerRegistrationGrid').innerHTML=ssoFieldsHtml([
+      ['ชื่อสถานประกอบการ',r.companyName,true,'companyName'],['เลขทะเบียนพาณิชย์',r.companyRigNo,false,'companyRigNo'],
+      ['รหัสสถานะสถานประกอบการ',r.companyStatus,false,'companyStatus'],['สถานะสถานประกอบการ',r.companyStatusDesc,false,'companyStatusDesc'],
+      ['รหัสประเภทธุรกิจ',r.companyType,false,'companyType'],['ประเภทธุรกิจ',r.companyTypeDesc,false,'companyTypeDesc'],
+      ['วันที่จ่ายเงิน (ตามคำอธิบายใน Spec)',r.fdappl,false,'fdappl'],['วันที่ยกเลิกกิจการ',r.lddate,false,'lddate'],
+      ['วันที่เปิดกิจการใหม่หลังหยุดชั่วคราว',r.newOperateDate,true,'newOperateDate']
+    ]);
+    document.getElementById('ssoEmployerContactGrid').innerHTML=ssoFieldsHtml([
+      ['ที่อยู่สถานประกอบการ',r.companyAddress,true,'companyAddress'],['รหัสไปรษณีย์สถานประกอบการ',r.companyZip,false,'companyZip'],
+      ['โทรศัพท์สถานประกอบการ',r.companyTel,false,'companyTel'],['ที่อยู่ติดต่อ',r.contactAddress,true,'contactAddress'],
+      ['โทรสารติดต่อ',r.contactFax,false,'contactFax'],['โทรศัพท์ติดต่อ',r.contactTel,false,'contactTel'],
+      ['รหัสไปรษณีย์ติดต่อ',r.contactZip,false,'contactZip']
+    ]);
+    document.getElementById('ssoEmployerSsoGrid').innerHTML=ssoFieldsHtml([
+      ['รหัส สปส. จ่ายเงิน',r.paySsoBranchCode,false,'paySsoBranchCode'],['สปส. จ่ายเงิน',r.paySsoBranchName,true,'paySsoBranchName'],
+      ['รหัส สปส. รับผิดชอบ',r.ssoBranchCode,false,'ssoBranchCode'],['สปส. รับผิดชอบ',r.ssoBranchName,true,'ssoBranchName']
+    ]);
+    ssoSetVisibility('ssoEmployerEmpty','ssoEmployerResult',true);
+    ssoAudit('ssoEmployerAuditBody','EmployerDetail','สำเร็จ',`พบบัญชีนายจ้าง ${acc} สาขา ${branch} · ${document.getElementById('ssoEmployerPurpose').selectedOptions[0].text}`);
+    ssoSuccessToast('ดึงข้อมูลสถานประกอบการสำเร็จ');
+  });
+}
+function ssoEmployerReset(){
+  document.getElementById('ssoEmployerAccNo').value='';document.getElementById('ssoEmployerBranch').value='';document.getElementById('ssoEmployerPurpose').value='';document.getElementById('ssoEmployerScenario').value='success';document.getElementById('ssoEmployerAccHint').textContent='กรอกตัวเลข 10 หลัก';document.getElementById('ssoEmployerBranchHint').textContent='กรอกตัวเลข 6 หลัก';['ssoEmployerAccHint','ssoEmployerBranchHint'].forEach(id=>document.getElementById(id).classList.remove('bad'));document.getElementById('ssoEmployerError').classList.add('hide');ssoSetVisibility('ssoEmployerEmpty','ssoEmployerResult',false);
+}
+
+function ssoEmploymentSearch(){
+  const id=ssoValidateDigits('ssoEmploymentCitizenId',13,'เลขประจำตัวประชาชน','ssoEmploymentIdHint');
+  const date=document.getElementById('ssoEmploymentResignDate').value;
+  if(!id||!ssoValidateCommon('ssoEmploymentPurpose'))return;
+  if(!date){Swal.fire({...SSO_SWAL,icon:'warning',title:'กรุณาระบุวันที่ลาออก',text:'เอกสาร API กำหนด resignDate เป็นพารามิเตอร์รูปแบบ ddMMyyyy'});return;}
+  let scenario=document.getElementById('ssoEmploymentScenario').value;
+  if(scenario==='success'&&id!==SSO_MOCK.employment.key)scenario='not-found';
+  const [year,month,day]=date.split('-').map(Number), resignDate=`${String(day).padStart(2,'0')}${String(month).padStart(2,'0')}${year+543}`;
+  document.getElementById('ssoEmploymentError').classList.add('hide');
+  document.getElementById('ssoEmploymentResult').classList.add('hide');
+  ssoLoading('EmployeeEmployment',()=>{
+    if(scenario!=='success'){ssoShowError({emptyId:'ssoEmploymentEmpty',resultId:'ssoEmploymentResult',errorId:'ssoEmploymentError',errorTitleId:'ssoEmploymentErrorTitle',errorHelpId:'ssoEmploymentErrorHelp',errorMessageId:'ssoEmploymentErrorMessage',auditId:'ssoEmploymentAuditBody',service:'EmployeeEmployment',requestValue:id},scenario,`${ssoMaskId(id)} / ${resignDate}`);return;}
+    const r=SSO_MOCK.employment,p=r.person,wages=r.detail2.reduce((sum,item)=>sum+Number(item.cempTotalWages||0),0);
+    document.getElementById('ssoEmploymentError').classList.add('hide');
+    document.getElementById('ssoEmploymentJobCount').textContent=r.detail1.length.toLocaleString('th-TH')+' รายการ';
+    document.getElementById('ssoEmploymentContributionCount').textContent=r.detail2.length.toLocaleString('th-TH')+' งวด';
+    document.getElementById('ssoEmploymentWageTotal').textContent=Number(wages).toLocaleString('th-TH')+' บาท';
+    document.getElementById('ssoEmploymentUpdated').textContent=r.lastIncremental;
+    document.getElementById('ssoEmploymentName').textContent=`${p.titleCodeDesc} ${p.firstName} ${p.lastName}`;
+    document.getElementById('ssoEmploymentMaskedId').textContent=ssoMaskId(p.ssoNum);
+    document.getElementById('ssoEmploymentPersonStatus').textContent=p.activeStatusDesc;
+    document.getElementById('ssoEmploymentGender').textContent=p.genderDesc;
+    document.getElementById('ssoEmploymentResponseStatus').textContent='สำเร็จ (true)';
+    document.getElementById('ssoEmploymentResponseMessage').textContent='-';
+    document.getElementById('ssoEmploymentResponseUpdated').textContent=r.lastIncremental;
+    document.getElementById('ssoEmploymentRequestDate').textContent=resignDate;
+    document.getElementById('ssoEmploymentPersonGrid').innerHTML=ssoFieldsHtml([
+      ['รหัสสถานะผู้ประกันตน',p.activeStatus,false,'person.activeStatus'],['สถานะผู้ประกันตน',p.activeStatusDesc,false,'person.activeStatusDesc'],
+      ['วันเดือนปีเกิด',p.empBirthDate,false,'person.empBirthDate'],['วันที่มรณะ',p.expirationDate,false,'person.expirationDate'],
+      ['ชื่อผู้ประกันตน',p.firstName,false,'person.firstName'],['นามสกุลผู้ประกันตน',p.lastName,false,'person.lastName'],
+      ['รหัสเพศ',p.gender,false,'person.gender'],['เพศ',p.genderDesc,false,'person.genderDesc'],
+      ['รหัสประเภทบัตร',p.idType,false,'person.idType'],['ประเภทบัตร',p.idDesc,false,'person.idDesc'],
+      ['เลขประจำตัวประชาชน',ssoMaskId(p.ssoNum),false,'person.ssoNum'],['รหัสคำนำหน้าชื่อ',p.titleCode,false,'person.titleCode'],
+      ['คำนำหน้าชื่อ',p.titleCodeDesc,false,'person.titleCodeDesc']
+    ]);
+    document.getElementById('ssoEmploymentJobsBody').innerHTML=r.detail1.map(item=>`<tr><td><strong>${ssoEscape(item.companyName)}</strong></td><td>${ssoEscape(item.accNo)}</td><td>${ssoEscape(item.accBran)}</td><td>${ssoEscape(item.expStartDate)}</td><td>${ssoEscape(item.empResignDate||'-')}</td><td>${ssoEscape(item.employStatus)}</td><td><span class="badge ${item.employStatus==='A'?'success':'warning'}">${ssoEscape(item.employStatusDesc)}</span></td></tr>`).join('');
+    document.getElementById('ssoEmploymentContributionsBody').innerHTML=r.detail2.map(item=>`<tr><td><strong>${ssoEscape(item.companyName)}</strong></td><td>${ssoEscape(item.accNo)}</td><td>${ssoEscape(item.accBran)}</td><td>${ssoEscape(item.cchdPayPeriod)}</td><td>${ssoEscape(item.cchdPayDate)}</td><td>${ssoEscape(ssoMoney(item.cempTotalWages))}</td><td>${ssoEscape(ssoMoney(item.cempCntrAmount))}</td><td>${ssoEscape(ssoMoney(item.cempCntrOldage))}</td><td>${ssoEscape(ssoMoney(item.cempCntrSick))}</td><td>${ssoEscape(ssoMoney(item.cempCntrUnem))}</td></tr>`).join('');
+    ssoSwitchEmploymentTab('person');
+    ssoSetVisibility('ssoEmploymentEmpty','ssoEmploymentResult',true);
+    ssoAudit('ssoEmploymentAuditBody','EmployeeEmployment','สำเร็จ',`พบข้อมูล ${ssoMaskId(id)} · ประวัติการจ้าง ${r.detail1.length} รายการ · เงินสมทบ ${r.detail2.length} งวด`);
+    ssoSuccessToast('ดึงประวัติการจ้างและเงินสมทบสำเร็จ');
+  });
+}
+function ssoEmploymentReset(){
+  document.getElementById('ssoEmploymentCitizenId').value='';document.getElementById('ssoEmploymentResignDate').value='';document.getElementById('ssoEmploymentPurpose').value='';document.getElementById('ssoEmploymentScenario').value='success';document.getElementById('ssoEmploymentIdHint').textContent='กรอกตัวเลข 13 หลัก';document.getElementById('ssoEmploymentIdHint').classList.remove('bad');document.getElementById('ssoEmploymentError').classList.add('hide');ssoSetVisibility('ssoEmploymentEmpty','ssoEmploymentResult',false);
+}
+function ssoSwitchEmploymentTab(tab){
+  document.querySelectorAll('[data-sso-tab]').forEach(button=>button.classList.toggle('active',button.dataset.ssoTab===tab));
+  ['person','jobs','contributions'].forEach(name=>document.getElementById('ssoEmploymentTab'+name.charAt(0).toUpperCase()+name.slice(1)).classList.toggle('hide',name!==tab));
+}
+
+ssoBindNumeric('ssoHospitalCitizenId',13,'ssoHospitalIdHint');
+ssoBindNumeric('ssoEmployerAccNo',10,'ssoEmployerAccHint');
+ssoBindNumeric('ssoEmployerBranch',6,'ssoEmployerBranchHint');
+ssoBindNumeric('ssoEmploymentCitizenId',13,'ssoEmploymentIdHint');
 </script>
 </body>
 </html>
